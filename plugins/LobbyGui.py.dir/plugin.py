@@ -44,6 +44,17 @@ class MeinInventoryEvent(PythonListener):
             if item.getType() == bukkit.Material.DIAMOND:
                 event.setCancelled(True)
                 event.getView().getPlayer().sendMessage("OPTION #1 GEKLICKT!")
+                inv = event.getView().getPlayer().getServer().createInventory(event.getView().getPlayer(),27,"WARP")
+                test = ItemStack(bukkit.Material.GOLD_BLOCK, 1)
+                testmeta = test.getItemMeta()
+                testmeta.setDisplayName("Lobby")
+                test.setItemMeta(testmeta)
+                inv.addItem(test)
+                event.getView().getPlayer().openInventory(inv)
+            elif item.getType() == bukkit.Material.GOLD_BLOCK:
+                event.setCancelled(True)
+                event.getView().getPlayer().sendMessage("WARP NACH LOBBY!!!")
+                event.getView().getPlayer().chat("/warp Lobby")
 
 
 class LobbyGUI(PythonPlugin):
