@@ -23,7 +23,6 @@ class MeinInteractEvent(PythonListener):
                         EventPriority.NORMAL)  # Hier kommt das Event
     def onEvent(self, event):
         if event.getItem().getType() == bukkit.Material.COMPASS:
-            # loc = event.getSpawnLocation()  # location
             inv = event.getPlayer().getServer().createInventory(event.getPlayer(), 27, "KOMPASS")
             test = ItemStack(bukkit.Material.DIAMOND, 1)
             testmeta = test.getItemMeta()
@@ -31,9 +30,8 @@ class MeinInteractEvent(PythonListener):
             test.setItemMeta(testmeta)
             inv.addItem(test)
             event.getPlayer().openInventory(inv)
-            # event.getPlayer().setCompassTarget(location)
-        pass
-
+        else:
+            pass
 
 class MeinInventoryEvent(PythonListener):
     @PythonEventHandler(InventoryClickEvent, EventPriority.NORMAL)
