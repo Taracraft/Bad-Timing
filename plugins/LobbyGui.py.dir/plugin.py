@@ -12,9 +12,11 @@ class MeinJoinEvent(PythonListener):
     def onEvent(self, event):
         # loc = event.getSpawnLocation()  # location
         l = event.getPlayer().getWorld().getName()  # weltname
-        if l.decode() == 'Lobby':
+        if l.decode() == 'Lobby' and not event.getInventory().contains(bukkit.Material.COMPASS):
             event.getPlayer().getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
+            event.getPlayer().sendMessage("Kompass erhalten!")
             # event.getPlayer().setCompassTarget(location)
+        pass
 
 
 class MeinInteractEvent(PythonListener):
@@ -24,22 +26,21 @@ class MeinInteractEvent(PythonListener):
         if event.getItem().getType() == bukkit.Material.COMPASS:
             # loc = event.getSpawnLocation()  # location
             l = event.getPlayer().getWorld().getName()  # weltname
-            if l.decode() == 'Lobby':
-                inv = event.getPlayer().getServer().createInventory(
-                    event.getPlayer(), 27, "KOMPASS")
-                test = ItemStack(bukkit.Material.DIAMOND, 1)
-                testmeta = test.getItemMeta()
-                testmeta.setDisplayName("Menu Eintrag #1")
-                test.setItemMeta(testmeta)
-                inv.addItem(test)
-                event.getPlayer().openInventory(inv)
-                # event.getPlayer().setCompassTarget(location)
+            inv = event.getPlayer().getServer().createInventory(event.getPlayer(), 27, "KOMPASS")
+            test = ItemStack(bukkit.Material.DIAMOND, 1)
+            testmeta = test.getItemMeta()
+            testmeta.setDisplayName("Menu Eintrag #1")
+            test.setItemMeta(testmeta)
+            inv.addItem(test)
+            event.getPlayer().openInventory(inv)
+            # event.getPlayer().setCompassTarget(location)
+        pass
 
 
 class MeinInventoryEvent(PythonListener):
     @PythonEventHandler(InventoryClickEvent, EventPriority.NORMAL)
     def onEvent(self, event):
-        if event.getView().getPlayer().getWorld().getName().decode() == 'Lobby':
+        if event.getView().getTitle().decode().lower() == "kompass":
             item = event.getCurrentItem()
             if item.getType() == bukkit.Material.DIAMOND:
                 event.setCancelled(True)
@@ -55,7 +56,7 @@ class MeinInventoryEvent(PythonListener):
                 event.setCancelled(True)
                 event.getView().getPlayer().sendMessage("WARP NACH LOBBY!!!")
                 event.getView().getPlayer().chat("/warp Lobby")
-
+        pass
 
 class LobbyGUI(PythonPlugin):
     def onEnable(self):
@@ -73,4 +74,5 @@ class LobbyGUI(PythonPlugin):
     
     def onCommand(self, sender, command, label, args):
         sender.getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
+        sender.sendMessage("Kompass erhalten!")
         return True
