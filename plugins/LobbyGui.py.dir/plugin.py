@@ -67,6 +67,9 @@ class LobbyGUI(PythonPlugin):
         self.pm.registerEvents(self.lst1, self)
         self.pm.registerEvents(self.lst2, self)
         self.pm.registerEvents(self.lst3, self)
-
+    
     def onDisable(self):
         self.getLogger().info("Lobby-GUI disabled!")
+    
+    def onCommand(self, sender, command, label, args):
+        sender.getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
