@@ -73,3 +73,4 @@ class LobbyGUI(PythonPlugin):
     
     def onCommand(self, sender, command, label, args):
         sender.getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
+        return True
