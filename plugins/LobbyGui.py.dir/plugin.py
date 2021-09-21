@@ -54,7 +54,6 @@ class MeinInventoryEvent(PythonListener):
                 event.setCancelled(True)
                 event.getView().getPlayer().sendMessage("WARP NACH LOBBY!!!")
                 event.getView().getPlayer().chat("/warp Lobby")
-        pass
 
 class LobbyGUI(PythonPlugin):
     def onEnable(self):
@@ -71,9 +70,10 @@ class LobbyGUI(PythonPlugin):
         self.getLogger().info("Lobby-GUI disabled!")
     
     def onCommand(self, sender, command, label, args):
-        if sender.getInventory().contains(bukkit.Material.COMPASS):
-            sender.sendMessage("Du besitzt bereits ein Kompass!")
-        else:
-            sender.getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
-            sender.sendMessage("Kompass erhalten!")
+        if command.getName().decode().lower() == 'navigation':
+            if sender.getInventory().contains(bukkit.Material.COMPASS):
+                sender.sendMessage("Du besitzt bereits ein Kompass!")
+            else:
+                sender.getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
+                sender.sendMessage("Kompass erhalten!")
         return True
