@@ -73,6 +73,9 @@ class LobbyGUI(PythonPlugin):
         self.getLogger().info("Lobby-GUI disabled!")
     
     def onCommand(self, sender, command, label, args):
-        sender.getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
-        sender.sendMessage("Kompass erhalten!")
+        if sender.getInventory().contains(bukkit.Material.COMPASS):
+            sender.sendMessage("Du besitzt bereits ein Kompass!")
+        else:
+            sender.getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
+            sender.sendMessage("Kompass erhalten!")
         return True
