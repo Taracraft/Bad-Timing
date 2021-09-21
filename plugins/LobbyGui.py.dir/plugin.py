@@ -11,8 +11,7 @@ class MeinJoinEvent(PythonListener):
                         EventPriority.NORMAL)  # Hier kommt das Event
     def onEvent(self, event):
         # loc = event.getSpawnLocation()  # location
-        l = event.getPlayer().getWorld().getName()  # weltname
-        if l.decode() == 'Lobby' and not event.getInventory().contains(bukkit.Material.COMPASS):
+        if event.getPlayer().getWorld().getName().decode() == 'Lobby' and not event.getInventory().contains(bukkit.Material.COMPASS):
             event.getPlayer().getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
             event.getPlayer().sendMessage("Kompass erhalten!")
             # event.getPlayer().setCompassTarget(location)
@@ -25,7 +24,6 @@ class MeinInteractEvent(PythonListener):
     def onEvent(self, event):
         if event.getItem().getType() == bukkit.Material.COMPASS:
             # loc = event.getSpawnLocation()  # location
-            l = event.getPlayer().getWorld().getName()  # weltname
             inv = event.getPlayer().getServer().createInventory(event.getPlayer(), 27, "KOMPASS")
             test = ItemStack(bukkit.Material.DIAMOND, 1)
             testmeta = test.getItemMeta()
