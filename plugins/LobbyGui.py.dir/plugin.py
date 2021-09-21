@@ -11,7 +11,7 @@ class MeinJoinEvent(PythonListener):
                         EventPriority.NORMAL)  # Hier kommt das Event
     def onEvent(self, event):
         # loc = event.getSpawnLocation()  # location
-        if event.getPlayer().getWorld().getName().decode() == 'Lobby' and not event.getInventory().contains(bukkit.Material.COMPASS):
+        if event.getPlayer().getWorld().getName().decode() == 'Lobby' and not event.getPlayer().getInventory().contains(bukkit.Material.COMPASS):
             event.getPlayer().getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
             event.getPlayer().sendMessage("Kompass erhalten!")
             # event.getPlayer().setCompassTarget(location)
@@ -38,7 +38,7 @@ class MeinInteractEvent(PythonListener):
 class MeinInventoryEvent(PythonListener):
     @PythonEventHandler(InventoryClickEvent, EventPriority.NORMAL)
     def onEvent(self, event):
-        if event.getView().getTitle().decode().lower() == "kompass":
+        if event.getView().getTitle().decode().lower() in ["kompass","warp"]:
             item = event.getCurrentItem()
             if item.getType() == bukkit.Material.DIAMOND:
                 event.setCancelled(True)
