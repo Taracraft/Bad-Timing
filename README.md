@@ -3,7 +3,7 @@
 ```python
 from com.ziclix.python.sql import zxJDBC
 
-connectionUrl = "jdbc:mysql://localhost:3307"
+connectionUrl = "jdbc:mysql://localhost:3307" # oder "jdbc:mysql://localhost:3307/DBNAME"
 cnxn = zxJDBC.connect(
         connectionUrl,
         "root",
