@@ -11,8 +11,12 @@ API_CCUR= "BTC,LTC,ETH,DOGE,IOTA"
 API_FULL_URL = API_URL + "?fsyms=" + API_CCUR + "&tsyms=" + API_CUR
 
 class getLiveData(object):
-	def __init__(self):
-		self.__get_all__()
+	def fetch(self):
+		try:
+			self.__get_all__()
+		except IOError, err:
+			return False
+		return True
 	
 	def __get_all__(self):
 		self.__json__ = json.loads(urllib.urlopen(API_FULL_URL).read().decode())
