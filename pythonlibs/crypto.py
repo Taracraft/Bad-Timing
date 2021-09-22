@@ -38,9 +38,12 @@ class getLiveData(object):
 
 if __name__ == '__main__':
 	data = getLiveData()
-	btc = data.getBTC()
-	ltc = data.getLTC()
-	eth = data.getETH()
-	doge = data.getDOGE()
-	iota = data.getIOTA()
-	print("1 BTC = {}\n1 LTC = {}\n1 ETH = {}\n1 DOGE = {}\n1 IOTA = {}".format(btc,ltc,eth,doge,iota))
+        if not data.fetch():
+            print "Fehler beim Holen der Kurse!"
+        else:
+            btc = data.getBTC()
+            ltc = data.getLTC()
+	    eth = data.getETH()
+	    doge = data.getDOGE()
+	    iota = data.getIOTA()
+	    print("1 BTC = {}\n1 LTC = {}\n1 ETH = {}\n1 DOGE = {}\n1 IOTA = {}".format(btc,ltc,eth,doge,iota))
