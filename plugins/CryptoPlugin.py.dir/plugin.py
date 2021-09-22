@@ -1,5 +1,5 @@
 import sys
-sys.path.append("../../pythonlibs/")
+sys.path.append("./pythonlibs/")
 
 import crypto
 
@@ -14,6 +14,9 @@ class CryptoPlugin(PythonPlugin):
 		if len(args) < 1:
 			return False
 		cdata = crypto.getLiveData()
+                if not cdata.fetch():
+                    sender.sendMessage("Fehler beim holen der Kurse!")
+                    return True
 		if args[0].decode() == 'list':
 			sender.sendMessage("BTC: {}".format(cdata.getBTC()))
 			sender.sendMessage("LTC: {}".format(cdata.getLTC()))
