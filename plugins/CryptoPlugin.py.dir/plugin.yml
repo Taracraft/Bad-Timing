@@ -1,0 +1,7 @@
+name: Crypto Plugin
+main: CryptoPlugin
+version: 0.1
+commands:
+    crypto:
+        usage: /crypto <sell | buy | list | status> [anzahl]
+        description: Kryptowährungen
