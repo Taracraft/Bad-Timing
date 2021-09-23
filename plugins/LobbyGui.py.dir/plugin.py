@@ -1,57 +1,59 @@
 # -*- coding: utf-8 -*-
 
+import sys
+sys.path.append("./pythonlibs/")
+
 from org.bukkit.event import EventPriority
 from org.bukkit.inventory import ItemStack
 from org.bukkit.event.player import PlayerJoinEvent, PlayerInteractEvent
 from org.bukkit.event.inventory import InventoryClickEvent
 
+WARP_MENUS = ["lobby","farmwelt","4-gewinnt","bank","citybuild","cshop","end","end-xp-farm","gasthaus","nether","shops","xp-farm"]
+MENUS = ["kompass","warp"]
 
 class MeinJoinEvent(PythonListener):
-    @PythonEventHandler(PlayerJoinEvent,
-                        EventPriority.NORMAL)  # Hier kommt das Event
+    @PythonEventHandler(PlayerJoinEvent,EventPriority.NORMAL)
     def onEvent(self, event):
-        # loc = event.getSpawnLocation()  # location
         if event.getPlayer().getWorld().getName().decode() == 'Lobby' and not event.getPlayer().getInventory().contains(bukkit.Material.COMPASS):
             event.getPlayer().getInventory().addItem(ItemStack(bukkit.Material.COMPASS, 1))
             event.getPlayer().sendMessage("Kompass erhalten!")
-            # event.getPlayer().setCompassTarget(location)
-        pass
 
 
 class MeinInteractEvent(PythonListener):
-    @PythonEventHandler(PlayerInteractEvent,
-                        EventPriority.NORMAL)  # Hier kommt das Event
+    @PythonEventHandler(PlayerInteractEvent, EventPriority.NORMAL)
     def onEvent(self, event):
         if event.getItem().getType() == bukkit.Material.COMPASS:
-            inv = event.getPlayer().getServer().createInventory(event.getPlayer(), 27, "KOMPASS")
+            inv = event.getPlayer().getServer().createInventory(event.getPlayer(), 27, "kompass")
             test = ItemStack(bukkit.Material.DIAMOND, 1)
             testmeta = test.getItemMeta()
-            testmeta.setDisplayName("Menu Eintrag #1")
+            testmeta.setDisplayName("Warp")
             test.setItemMeta(testmeta)
             inv.addItem(test)
             event.getPlayer().openInventory(inv)
-        else:
-            pass
 
 class MeinInventoryEvent(PythonListener):
     @PythonEventHandler(InventoryClickEvent, EventPriority.NORMAL)
     def onEvent(self, event):
-        if event.getView().getTitle().decode().lower() in ["kompass","warp"]:
+        if event.getView().getTitle().decode().lower() in MENUS:
+            event.setCancelled(True)
             item = event.getCurrentItem()
-            if item.getType() == bukkit.Material.DIAMOND:
-                event.setCancelled(True)
-                event.getView().getPlayer().sendMessage("OPTION #1 GEKLICKT!")
-                inv = event.getView().getPlayer().getServer().createInventory(event.getView().getPlayer(),27,"WARP")
-                test = ItemStack(bukkit.Material.GOLD_BLOCK, 1)
-                testmeta = test.getItemMeta()
-                testmeta.setDisplayName("Lobby")
-                test.setItemMeta(testmeta)
-                inv.addItem(test)
+            item_name = item.getItemMeta().getDisplayName().decode().lower()
+            if item_name == "warp":
+                # WARP-MENU
+                inv = event.getView().getPlayer().getServer().createInventory(event.getView().getPlayer(),27,"warp")
+                items = []
+                for W in WARP_MENUS:
+                    itm   = ItemStack(bukkit.Material.GOLD_BLOCK, 1)
+                    itm_m = itm.getItemMeta()
+                    itm_m.setDisplayName(W)
+                    itm.setItemMeta(itm_m)
+                    items.append(itm)
+                for i in items:
+                    inv.addItem(i)
                 event.getView().getPlayer().openInventory(inv)
-            elif item.getType() == bukkit.Material.GOLD_BLOCK:
-                event.setCancelled(True)
-                event.getView().getPlayer().sendMessage("WARP NACH LOBBY!!!")
-                event.getView().getPlayer().chat("/warp Lobby")
+            elif item_name in WARP_MENUS:
+                event.getView().getPlayer().sendMessage("WARP NACH {}!!!".format(item_name))
+                event.getView().getPlayer().chat("/warp {}".format(item_name))
 
 class LobbyGUI(PythonPlugin):
     def onEnable(self):
