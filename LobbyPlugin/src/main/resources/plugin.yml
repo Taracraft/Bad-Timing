@@ -1,0 +1,19 @@
+name: LobbyGUI-Plugin
+version: '${project.version}'
+main: janhelbling.jansmod.Jansmod
+api-version: 1.17
+authors: [ Jan, Thomas ]
+description: LobbyPlugin für den besten Minecraft-Server - Bad Timing
+commands:
+  navigation:
+    usage: /navigation
+    description: Holt den Navigations-Kompass ins Inventar
+  setwarp:
+    usage: /setwarp <name>
+    description: Setzen eines neuen warp's
+  mysql-test:
+    usage: /mysql-test
+    description: MySQL TEST
+  install-1337:
+    usage: /install-1337
+    description: Installiert MySQL DatenBank

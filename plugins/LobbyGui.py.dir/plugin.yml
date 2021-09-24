@@ -1,7 +1,0 @@
-name: LobbyGUI
-main: LobbyGUI
-version: 1
-commands:
-    navigation:
-        usage: /navigation
-        description: Holt den Kompass ins Inventar
