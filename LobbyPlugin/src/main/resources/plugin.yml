@@ -11,9 +11,18 @@ commands:
   setwarp:
     usage: /setwarp <name>
     description: Setzen eines neuen warp's
-  mysql-test:
-    usage: /mysql-test
-    description: MySQL TEST
+  disablewarp:
+    usage: /disbalewarp <name>
+    description: Warp deaktivieren
+  deletewarp:
+    usage: /deletewarp <name>
+    description: Warp löschen
+  enablewarp:
+    usage: /enablewarp <name>
+    description: Warp löschen
+  listwarp:
+    usage: /listwarp
+    description: Warps auflisten
   install-1337:
     usage: /install-1337
     description: Installiert MySQL DatenBank

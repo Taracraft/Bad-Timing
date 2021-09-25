@@ -41,6 +41,10 @@ public class BTDatabaseHelper {
             }
     }
 
+    String sqlisecure(String v){
+        return v.replace("\"","\\\"").replace("\'","\\\'");
+    }
+
     void install() throws SQLException {
         this.stmt.execute("DROP TABLE IF EXISTS warp;");
         this.stmt.execute("CREATE TABLE IF NOT EXISTS warp(location TEXT, enabled BOOLEAN, x DOUBLE DEFAULT NULL, y DOUBLE DEFAULT NULL, z DOUBLE DEFAULT NULL);");

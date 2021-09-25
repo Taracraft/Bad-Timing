@@ -138,11 +138,39 @@ public final class Jansmod extends JavaPlugin {
                 BTDatabaseHelper dbh = new BTDatabaseHelper();
                 Location loc = sender.getServer().getPlayer(sender.getName()).getLocation();
                 try {
-                    // ToDo: MySQL-Injection BLOCK!
-                    dbh.exec(String.format("INSERT INTO warp VALUES(\"%s\",true,ROUND(%f,2),ROUND(%f,2),ROUND(%f,2));", args[0], loc.getX(), loc.getY(), loc.getZ()));
+                    dbh.exec("DELETE FROM warp WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
+                    dbh.exec(String.format("INSERT INTO warp VALUES(\"%s\",true,ROUND(%f,2),ROUND(%f,2),ROUND(%f,2));", dbh.sqlisecure(args[0]), loc.getX(), loc.getY(), loc.getZ()));
+                    sender.sendMessage("Warp "+args[0]+" hinzugefügt!");
                 } catch (SQLException e){
                     sender.sendMessage(e.getMessage().toString());
                 }
+        }
+            else if(cmd.toLowerCase().equals("deletewarp")){
+            BTDatabaseHelper dbh = new BTDatabaseHelper();
+            try {
+                dbh.exec("DELETE FROM warp WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
+                sender.sendMessage("Warp "+args[0]+" gelöscht!");
+            } catch (SQLException e){
+                sender.sendMessage(e.getMessage().toString());
+            }
+        }
+        else if(cmd.toLowerCase().equals("disablewarp")){
+            BTDatabaseHelper dbh = new BTDatabaseHelper();
+            try {
+                dbh.exec("UPDATE warp SET enabled=false WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
+                sender.sendMessage("Warp "+args[0]+" deaktiviert!");
+            } catch (SQLException e){
+                sender.sendMessage(e.getMessage().toString());
+            }
+        }
+        else if(cmd.toLowerCase().equals("enablewarp")){
+            BTDatabaseHelper dbh = new BTDatabaseHelper();
+            try {
+                dbh.exec("UPDATE warp SET enabled=true WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
+                sender.sendMessage("Warp "+args[0]+" aktiviert!");
+            } catch (SQLException e){
+                sender.sendMessage(e.getMessage().toString());
+            }
         }
         else if(cmd.toLowerCase().equals("install-1337")){
             try {
@@ -154,13 +182,13 @@ public final class Jansmod extends JavaPlugin {
                 sender.sendMessage(e.getMessage().toString());
             }
         }
-        else if(cmd.toLowerCase().equals("mysql-test")){
+        else if(cmd.toLowerCase().equals("listwarp")){
             try {
                 BTDatabaseHelper dbh = new BTDatabaseHelper();
                 dbh.commit();
-                ResultSet r = dbh.query("SELECT location FROM warp;");
+                ResultSet r = dbh.query("SELECT location,enabled FROM warp;");
                 while (r != null && r.next()) {
-                    sender.sendMessage(r.getString("location"));
+                    sender.sendMessage(r.getString("location")+" - "+String.valueOf(r.getBoolean("enabled")));
                 }
             } catch(SQLException e){
                 sender.sendMessage(e.getMessage().toString());
