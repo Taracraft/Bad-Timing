@@ -145,7 +145,7 @@ public final class Jansmod extends JavaPlugin {
                     sender.sendMessage(e.getMessage().toString());
                 }
         }
-            else if(cmd.toLowerCase().equals("deletewarp")){
+        else if(cmd.toLowerCase().equals("deletewarp") && args.length == 1){
             BTDatabaseHelper dbh = new BTDatabaseHelper();
             try {
                 dbh.exec("DELETE FROM warp WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
@@ -154,7 +154,7 @@ public final class Jansmod extends JavaPlugin {
                 sender.sendMessage(e.getMessage().toString());
             }
         }
-        else if(cmd.toLowerCase().equals("disablewarp")){
+        else if(cmd.toLowerCase().equals("disablewarp") && args.length == 1){
             BTDatabaseHelper dbh = new BTDatabaseHelper();
             try {
                 dbh.exec("UPDATE warp SET enabled=false WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
@@ -163,7 +163,7 @@ public final class Jansmod extends JavaPlugin {
                 sender.sendMessage(e.getMessage().toString());
             }
         }
-        else if(cmd.toLowerCase().equals("enablewarp")){
+        else if(cmd.toLowerCase().equals("enablewarp") && args.length == 1){
             BTDatabaseHelper dbh = new BTDatabaseHelper();
             try {
                 dbh.exec("UPDATE warp SET enabled=true WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
@@ -182,16 +182,20 @@ public final class Jansmod extends JavaPlugin {
                 sender.sendMessage(e.getMessage().toString());
             }
         }
-        else if(cmd.toLowerCase().equals("listwarp")){
-            try {
-                BTDatabaseHelper dbh = new BTDatabaseHelper();
-                dbh.commit();
-                ResultSet r = dbh.query("SELECT location,enabled FROM warp;");
-                while (r != null && r.next()) {
-                    sender.sendMessage(r.getString("location")+" - "+String.valueOf(r.getBoolean("enabled")));
+        else{
+            if(cmd.toLowerCase().equals("listwarp") && args.length == 0){
+                try {
+                    BTDatabaseHelper dbh = new BTDatabaseHelper();
+                    dbh.commit();
+                    ResultSet r = dbh.query("SELECT location,enabled FROM warp;");
+                    while (r != null && r.next()) {
+                        sender.sendMessage(r.getString("location")+" - "+String.valueOf(r.getBoolean("enabled")));
+                    }
+                } catch(SQLException e){
+                    sender.sendMessage(e.getMessage().toString());
                 }
-            } catch(SQLException e){
-                sender.sendMessage(e.getMessage().toString());
+            } else {
+                return false;   
             }
         }
         return true;
