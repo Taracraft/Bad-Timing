@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LobbyPlugin.iml" filepath="$PROJECT_DIR$/LobbyPlugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jansmod.iml" filepath="$PROJECT_DIR$/jansmod.iml" />
     </modules>
   </component>
 </project>

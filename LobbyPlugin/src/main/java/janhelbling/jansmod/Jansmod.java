@@ -34,8 +34,10 @@ class PATH {
             while(rslt.next()) {
                 this.WARP_LOCATIONS.add(rslt.getString("location"));
             }
+            this.WARP_LOCATIONS.add("Zurück");
         } catch (Exception e){
             this.WARP_LOCATIONS.add("Lobby");
+            this.WARP_LOCATIONS.add("Zurück");
         }
         String[] arr = this.WARP_LOCATIONS.toArray(new String[0]);
         return arr;
@@ -67,7 +69,7 @@ class MeinInteractListener implements Listener {
                 its.setItemMeta(itm);
                 inv.addItem(its);
             }
-            // event.getPlayer().closeInventory(); // TESTEN!!!
+            event.getPlayer().closeInventory(); // TESTEN!!!
             event.getPlayer().openInventory(inv);
         }
     }
@@ -78,7 +80,22 @@ class MeinInventoryClickListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event){
         PATH p = new PATH();
         for(String pa : p.getPaths()){
-            if(event.getView().getTitle().equals(pa) && event.getCurrentItem().getType() == Material.GOLD_BLOCK){
+            if(event.getCurrentItem().getItemMeta().getDisplayName().equals("Zurück")){
+                Inventory inv = event.getView().getPlayer().getServer().createInventory(event.getView().getPlayer(),54,"Kompass");
+                String[] pt = new PATH().getPaths();
+                for(String pat : pt){
+                    if(pat.equals("Kompass"))
+                        continue;
+                    ItemStack its = new ItemStack(Material.GOLD_BLOCK,1);
+                    ItemMeta itm = its.getItemMeta();
+                    itm.setDisplayName(pat);
+                    its.setItemMeta(itm);
+                    inv.addItem(its);
+                }
+                // event.getPlayer().closeInventory(); // TESTEN!!!
+                event.getView().getPlayer().openInventory(inv);
+            }
+            else if(event.getView().getTitle().equals(pa) && event.getCurrentItem().getType() == Material.GOLD_BLOCK){
                 event.setCancelled(true);
                 ItemStack item = event.getCurrentItem();
                 String item_name = item.getItemMeta().getDisplayName();
@@ -96,7 +113,7 @@ class MeinInventoryClickListener implements Listener {
             }
         }
         for(String wpl: p.getWarpLocations()){
-            if(event.getCurrentItem().getItemMeta().getDisplayName().equals(wpl) && event.getCurrentItem().getType() == Material.GOLD_BLOCK){
+            if(event.getCurrentItem().getItemMeta().getDisplayName().equals(wpl) && !wpl.contains("Zurück") && event.getCurrentItem().getType() == Material.GOLD_BLOCK){
                 event.setCancelled(true);
                 event.getView().getPlayer().getServer().getPlayer(event.getWhoClicked().getName()).chat("/warp "+wpl);
             }
