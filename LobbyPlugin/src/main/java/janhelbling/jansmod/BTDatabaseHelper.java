@@ -7,7 +7,7 @@ public class BTDatabaseHelper {
     private Statement stmt = null;
     BTDatabaseHelper(){
         try {
-            this.con = DriverManager.getConnection("jdbc:mysql://localhost/a?user=root&password=password");
+            this.con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bt_navigation_?user=mc&password=3J2av&1i");
             this.stmt = this.con.createStatement();
         } catch (SQLException e){
             this.con = null;
