@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="949f55c3-ea55-4394-919e-b379aa33f334" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mariadb_jdbc_mariadb_java_client_3_0_2_rc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jansmod.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jansmod.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/janhelbling/jansmod/BTDatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/janhelbling/jansmod/BTDatabaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/janhelbling/jansmod/Jansmod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/janhelbling/jansmod/Jansmod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jansmod-0.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-jansmod-0.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/janhelbling/jansmod/BTDatabaseHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/janhelbling/jansmod/BTDatabaseHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/janhelbling/jansmod/Jansmod.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/janhelbling/jansmod/Jansmod.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/janhelbling/jansmod/MeinInventoryClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/janhelbling/jansmod/MeinInventoryClickListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/janhelbling/jansmod/PATH.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/janhelbling/jansmod/PATH.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jansmod-0.1.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/jansmod-0.1.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-jansmod-0.1.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-jansmod-0.1.1.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +148,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

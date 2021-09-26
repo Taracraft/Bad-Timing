@@ -9,7 +9,7 @@ public class BTDatabaseHelper {
     private Statement stmt = null;
     BTDatabaseHelper(CommandSender s){
         try {
-            this.con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bt_navigation_?user=mc&password=3J2av&1i");
+            this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bt_navigation_?user=mc&password=X3LyjrmFfL5QLjd9");
             this.stmt = this.con.createStatement();
         } catch (SQLException e){
             s.sendMessage("ERROR MYSQL VERBINDUNG: "+e.getMessage().toString());
