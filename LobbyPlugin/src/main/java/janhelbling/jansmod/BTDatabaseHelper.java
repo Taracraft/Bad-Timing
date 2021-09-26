@@ -1,16 +1,18 @@
 package janhelbling.jansmod;
 
+import org.bukkit.command.CommandSender;
+
 import java.sql.*;
 
 public class BTDatabaseHelper {
     private Connection con = null;
     private Statement stmt = null;
-    BTDatabaseHelper(){
+    BTDatabaseHelper(CommandSender s){
         try {
             this.con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bt_navigation_?user=mc&password=3J2av&1i");
             this.stmt = this.con.createStatement();
         } catch (SQLException e){
-            this.con = null;
+            s.sendMessage("ERROR MYSQL VERBINDUNG: "+e.getMessage().toString());
         }
     }
 

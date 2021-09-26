@@ -27,9 +27,9 @@ class PATH {
     String[] getPaths(){
         return this.MENUS;
     }
-    String[] getWarpLocations(){
+    String[] getWarpLocations(CommandSender s){
         try {
-            btdb = new BTDatabaseHelper();
+            btdb = new BTDatabaseHelper(s);
             ResultSet rslt = this.btdb.query("SELECT location FROM warp WHERE enabled=true;");
             while(rslt.next()) {
                 this.WARP_LOCATIONS.add(rslt.getString("location"));
@@ -101,7 +101,7 @@ class MeinInventoryClickListener implements Listener {
                 String item_name = item.getItemMeta().getDisplayName();
                 if(item_name.equals("Warp")){
                     Inventory inv = event.getView().getPlayer().getServer().createInventory(event.getView().getPlayer(),54,"Warp");
-                    for(String m: p.getWarpLocations()) {
+                    for(String m: p.getWarpLocations(event.getView().getPlayer())) {
                         ItemStack ist = new ItemStack(Material.GOLD_BLOCK);
                         ItemMeta imt = ist.getItemMeta();
                         imt.setDisplayName(m);
@@ -112,7 +112,7 @@ class MeinInventoryClickListener implements Listener {
                 }
             }
         }
-        for(String wpl: p.getWarpLocations()){
+        for(String wpl: p.getWarpLocations(event.getView().getPlayer().getServer().getConsoleSender())){
             if(event.getCurrentItem().getItemMeta().getDisplayName().equals(wpl) && !wpl.contains("Zurück") && event.getCurrentItem().getType() == Material.GOLD_BLOCK){
                 event.setCancelled(true);
                 event.getView().getPlayer().getServer().getPlayer(event.getWhoClicked().getName()).chat("/warp "+wpl);
@@ -135,7 +135,7 @@ public final class Jansmod extends JavaPlugin {
             }
         }
         else if(cmd.toLowerCase().equals("setwarp") && args.length == 1){
-                BTDatabaseHelper dbh = new BTDatabaseHelper();
+                BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
                 Location loc = sender.getServer().getPlayer(sender.getName()).getLocation();
                 try {
                     dbh.exec("DELETE FROM warp WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
@@ -146,7 +146,7 @@ public final class Jansmod extends JavaPlugin {
                 }
         }
         else if(cmd.toLowerCase().equals("deletewarp") && args.length == 1){
-            BTDatabaseHelper dbh = new BTDatabaseHelper();
+            BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
             try {
                 dbh.exec("DELETE FROM warp WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
                 sender.sendMessage("Warp "+args[0]+" gelöscht!");
@@ -155,7 +155,7 @@ public final class Jansmod extends JavaPlugin {
             }
         }
         else if(cmd.toLowerCase().equals("disablewarp") && args.length == 1){
-            BTDatabaseHelper dbh = new BTDatabaseHelper();
+            BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
             try {
                 dbh.exec("UPDATE warp SET enabled=false WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
                 sender.sendMessage("Warp "+args[0]+" deaktiviert!");
@@ -164,7 +164,7 @@ public final class Jansmod extends JavaPlugin {
             }
         }
         else if(cmd.toLowerCase().equals("enablewarp") && args.length == 1){
-            BTDatabaseHelper dbh = new BTDatabaseHelper();
+            BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
             try {
                 dbh.exec("UPDATE warp SET enabled=true WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
                 sender.sendMessage("Warp "+args[0]+" aktiviert!");
@@ -174,7 +174,7 @@ public final class Jansmod extends JavaPlugin {
         }
         else if(cmd.toLowerCase().equals("install-1337")){
             try {
-                BTDatabaseHelper dbh = new BTDatabaseHelper();
+                BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
                 dbh.install();
                 dbh.close();
                 sender.sendMessage("Database installed/reseted!");
@@ -185,7 +185,7 @@ public final class Jansmod extends JavaPlugin {
         else{
             if(cmd.toLowerCase().equals("listwarp") && args.length == 0){
                 try {
-                    BTDatabaseHelper dbh = new BTDatabaseHelper();
+                    BTDatabaseHelper dbh = new BTDatabaseHelper(sender  );
                     dbh.commit();
                     ResultSet r = dbh.query("SELECT location,enabled FROM warp;");
                     while (r != null && r.next()) {
