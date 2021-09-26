@@ -8,9 +8,6 @@ commands:
   navigation:
     usage: /navigation
     description: Holt den Navigations-Kompass ins Inventar
-  setwarp:
-    usage: /setwarp <name>
-    description: Setzen eines neuen warp's
   disablewarp:
     usage: /disbalewarp <name>
     description: Warp deaktivieren
