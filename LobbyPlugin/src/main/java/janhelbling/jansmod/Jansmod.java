@@ -134,17 +134,6 @@ public final class Jansmod extends JavaPlugin {
                 sender.sendMessage("Du besitzt bereits ein Kompass!");
             }
         }
-        else if(cmd.toLowerCase().equals("setwarp") && args.length == 1){
-                BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
-                Location loc = sender.getServer().getPlayer(sender.getName()).getLocation();
-                try {
-                    dbh.exec("DELETE FROM warp WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
-                    dbh.exec(String.format("INSERT INTO warp VALUES(\"%s\",true,ROUND(%f,2),ROUND(%f,2),ROUND(%f,2));", dbh.sqlisecure(args[0]), loc.getX(), loc.getY(), loc.getZ()));
-                    sender.sendMessage("Warp "+args[0]+" hinzugefügt!");
-                } catch (SQLException e){
-                    sender.sendMessage(e.getMessage().toString());
-                }
-        }
         else if(cmd.toLowerCase().equals("deletewarp") && args.length == 1){
             BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
             try {
