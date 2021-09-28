@@ -12,7 +12,7 @@ public class BTDatabaseHelper {
             this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bt_navigation_?user=mc&password=X3LyjrmFfL5QLjd9");
             this.stmt = this.con.createStatement();
         } catch (SQLException e){
-            s.sendMessage("ERROR MYSQL VERBINDUNG: "+e.getMessage().toString());
+            s.getServer().getLogger().info(e.getMessage().toString());
         }
     }
 
