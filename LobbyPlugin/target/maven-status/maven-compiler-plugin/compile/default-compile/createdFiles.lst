@@ -1,6 +1,6 @@
-janhelbling\jansmod\MeinInventoryClickListener.class
-janhelbling\jansmod\BTDatabaseHelper.class
-janhelbling\jansmod\PATH.class
-janhelbling\jansmod\MeinInteractListener.class
-janhelbling\jansmod\MeinKompassListener.class
-janhelbling\jansmod\Jansmod.class
+janhelbling/jansmod/MeinInteractListener.class
+janhelbling/jansmod/MeinKompassListener.class
+janhelbling/jansmod/PATH.class
+janhelbling/jansmod/Jansmod.class
+janhelbling/jansmod/MeinInventoryClickListener.class
+janhelbling/jansmod/BTDatabaseHelper.class

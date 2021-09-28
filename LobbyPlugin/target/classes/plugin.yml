@@ -8,21 +8,14 @@ commands:
   navigation:
     usage: /navigation
     description: Holt den Navigations-Kompass ins Inventar
-  setwarp:
-    usage: /setwarp <name>
-    description: Setzen eines neuen warp's
-  disablewarp:
-    usage: /disbalewarp <name>
-    description: Warp deaktivieren
-  deletewarp:
-    usage: /deletewarp <name>
-    description: Warp löschen
-  enablewarp:
-    usage: /enablewarp <name>
-    description: Warp löschen
-  listwarp:
-    usage: /listwarp
-    description: Warps auflisten
-  install-1337:
+  install-warp-db:
     usage: /install-1337
     description: Installiert MySQL DatenBank
+    permission: jhinstall.warp
+    permission-message: Kannst du nicht benutzen
+
+permissions:
+  jhinstall.warp:
+    description: Installiere Warp-DB
+    default: op
+

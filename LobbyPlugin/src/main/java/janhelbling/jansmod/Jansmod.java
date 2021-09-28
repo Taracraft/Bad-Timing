@@ -134,34 +134,7 @@ public final class Jansmod extends JavaPlugin {
                 sender.sendMessage("Du besitzt bereits ein Kompass!");
             }
         }
-        else if(cmd.toLowerCase().equals("deletewarp") && args.length == 1){
-            BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
-            try {
-                dbh.exec("DELETE FROM warp WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
-                sender.sendMessage("Warp "+args[0]+" gelöscht!");
-            } catch (SQLException e){
-                sender.sendMessage(e.getMessage().toString());
-            }
-        }
-        else if(cmd.toLowerCase().equals("disablewarp") && args.length == 1){
-            BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
-            try {
-                dbh.exec("UPDATE warp SET enabled=false WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
-                sender.sendMessage("Warp "+args[0]+" deaktiviert!");
-            } catch (SQLException e){
-                sender.sendMessage(e.getMessage().toString());
-            }
-        }
-        else if(cmd.toLowerCase().equals("enablewarp") && args.length == 1){
-            BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
-            try {
-                dbh.exec("UPDATE warp SET enabled=true WHERE location=\""+dbh.sqlisecure(args[0])+"\";");
-                sender.sendMessage("Warp "+args[0]+" aktiviert!");
-            } catch (SQLException e){
-                sender.sendMessage(e.getMessage().toString());
-            }
-        }
-        else if(cmd.toLowerCase().equals("install-1337")){
+        else if(cmd.toLowerCase().equals("install-warp-db")) {
             try {
                 BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
                 dbh.install();
@@ -169,22 +142,6 @@ public final class Jansmod extends JavaPlugin {
                 sender.sendMessage("Database installed/reseted!");
             } catch (SQLException e) {
                 sender.sendMessage(e.getMessage().toString());
-            }
-        }
-        else{
-            if(cmd.toLowerCase().equals("listwarp") && args.length == 0){
-                try {
-                    BTDatabaseHelper dbh = new BTDatabaseHelper(sender  );
-                    dbh.commit();
-                    ResultSet r = dbh.query("SELECT location,enabled FROM warp;");
-                    while (r != null && r.next()) {
-                        sender.sendMessage(r.getString("location")+" - "+String.valueOf(r.getBoolean("enabled")));
-                    }
-                } catch(SQLException e){
-                    sender.sendMessage(e.getMessage().toString());
-                }
-            } else {
-                return false;   
             }
         }
         return true;
