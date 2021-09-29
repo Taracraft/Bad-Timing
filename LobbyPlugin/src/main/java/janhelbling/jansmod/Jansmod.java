@@ -28,7 +28,7 @@ class PATH {
     String[] getWarpLocations(CommandSender s){
         try {
             this.btdb = new BTDatabaseHelper(s);
-            ResultSet results = this.btdb.query("SELECT location FROM warp WHERE enabled=true;");
+            ResultSet results = this.btdb.query("SELECT location FROM warp;");
             while(results.next()) {
                 this.WARP_LOCATIONS.add(results.getString("location"));
             }

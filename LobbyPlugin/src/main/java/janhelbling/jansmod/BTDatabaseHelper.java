@@ -58,18 +58,18 @@ public class BTDatabaseHelper {
 
     void install() throws SQLException {
         this.stmt.execute("DROP TABLE IF EXISTS warp;");
-        this.stmt.execute("CREATE TABLE IF NOT EXISTS warp(location TEXT, enabled BOOLEAN, x DOUBLE DEFAULT NULL, y DOUBLE DEFAULT NULL, z DOUBLE DEFAULT NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Lobby\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Farmwelt\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"CityBuild\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Bank\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Shops\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"CShop\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Gasthaus\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"XP-Farm\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"End-XP-Farm\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"End\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Nether\",true,NULL,NULL,NULL);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"4-Gewinnt\",true,NULL,NULL,NULL);");
+        this.stmt.execute("CREATE TABLE IF NOT EXISTS warp(location TEXT);");
+        this.stmt.execute("INSERT INTO warp VALUES(\"Lobby\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"Farmwelt\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"CityBuild\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"Bank\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"Shops\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"CShop\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"Gasthaus\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"XP-Farm\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"End-XP-Farm\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"End\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"Nether\");");
+        this.stmt.execute("INSERT INTO warp VALUES(\"4-Gewinnt\");");
     }
 }
