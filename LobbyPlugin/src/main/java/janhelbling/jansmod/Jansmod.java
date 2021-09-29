@@ -1,7 +1,5 @@
 package janhelbling.jansmod;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -29,13 +27,17 @@ class PATH {
     }
     String[] getWarpLocations(CommandSender s){
         try {
-            btdb = new BTDatabaseHelper(s);
-            ResultSet rslt = this.btdb.query("SELECT location FROM warp WHERE enabled=true;");
-            while(rslt.next()) {
-                this.WARP_LOCATIONS.add(rslt.getString("location"));
+            this.btdb = new BTDatabaseHelper(s);
+            ResultSet results = this.btdb.query("SELECT location FROM warp WHERE enabled=true;");
+            while(results.next()) {
+                this.WARP_LOCATIONS.add(results.getString("location"));
             }
             this.WARP_LOCATIONS.add("Zurück");
-        } catch (Exception e){
+        } catch (SQLException e){
+            if(s.isOp()){
+                s.sendMessage("Fehler bei MySQL-Select " +e.getMessage().toString());
+            }
+            s.getServer().getLogger().info("Fehler bei MySQL-Select " +e.getMessage().toString());
             this.WARP_LOCATIONS.add("Lobby");
             this.WARP_LOCATIONS.add("Zurück");
         }
@@ -69,7 +71,7 @@ class MeinInteractListener implements Listener {
                 its.setItemMeta(itm);
                 inv.addItem(its);
             }
-            event.getPlayer().closeInventory(); // TESTEN!!!
+            event.getPlayer().closeInventory();
             event.getPlayer().openInventory(inv);
         }
     }
@@ -92,7 +94,7 @@ class MeinInventoryClickListener implements Listener {
                     its.setItemMeta(itm);
                     inv.addItem(its);
                 }
-                // event.getPlayer().closeInventory(); // TESTEN!!!
+                event.getView().getPlayer().closeInventory();
                 event.getView().getPlayer().openInventory(inv);
             }
             else if(event.getView().getTitle().equals(pa) && event.getCurrentItem().getType() == Material.GOLD_BLOCK){
@@ -126,7 +128,7 @@ public final class Jansmod extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Inventory inv = getServer().getPlayer(sender.getName()).getInventory();
         String cmd = command.getName();
-        if (cmd.toLowerCase().equals("navigation")) {
+        if (cmd.equalsIgnoreCase("navigation")) {
             if (!inv.contains(Material.COMPASS)) {
                 inv.addItem(new ItemStack(Material.COMPASS));
                 sender.sendMessage("Kompass hinzugefügt!");
@@ -134,7 +136,7 @@ public final class Jansmod extends JavaPlugin {
                 sender.sendMessage("Du besitzt bereits ein Kompass!");
             }
         }
-        else if(cmd.toLowerCase().equals("install-warp-db")) {
+        else if(cmd.equalsIgnoreCase("install-warp-db")) {
             try {
                 BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
                 dbh.install();

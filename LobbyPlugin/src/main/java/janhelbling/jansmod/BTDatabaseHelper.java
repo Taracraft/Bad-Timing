@@ -7,12 +7,17 @@ import java.sql.*;
 public class BTDatabaseHelper {
     private Connection con = null;
     private Statement stmt = null;
-    BTDatabaseHelper(CommandSender s){
+    CommandSender sender = null;
+    BTDatabaseHelper(CommandSender sender){
+        this.sender = sender;
         try {
             this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bt_navigation_?user=mc&password=X3LyjrmFfL5QLjd9");
             this.stmt = this.con.createStatement();
         } catch (SQLException e){
-            s.getServer().getLogger().info(e.getMessage().toString());
+            if(this.sender.isOp()) {
+                this.sender.sendMessage("Fehler bei MySQL-Verbindung: " + e.getMessage().toString());
+            }
+            this.sender.getServer().getLogger().info("Fehler bei MySQL-Verbindung: " +e.getMessage().toString());
         }
     }
 
@@ -20,32 +25,36 @@ public class BTDatabaseHelper {
         try {
             this.con.close();
         } catch (SQLException e){
-
+            if(this.sender.isOp()){
+                this.sender.sendMessage("Fehler bei schliessung der MySQL-Verbindung: " + e.getMessage().toString());
+            }
+            this.sender.getServer().getLogger().info("Fehler bei MySQL-Verbindung: " +e.getMessage().toString());
         }
     }
 
-    void commit(){
-        try {
-            this.con.commit();
-        } catch (SQLException e){
-
-        }
-    }
-
+    /*
     void exec(String sql) throws SQLException {
         this.stmt.execute(sql);
     }
+     */
+
     ResultSet query(String sql){
             try{
                 return this.stmt.executeQuery(sql);
             } catch (SQLException e){
+                if(this.sender.isOp()){
+                    this.sender.sendMessage("Fehler bei MySQL-Query: " + e.getMessage().toString());
+                }
+                this.sender.getServer().getLogger().info("Fehler bei MySQL-Query: " +e.getMessage().toString());
                 return null;
             }
     }
 
+    /*
     String sqlisecure(String v){
         return v.replace("\"","\\\"").replace("\'","\\\'");
     }
+    */
 
     void install() throws SQLException {
         this.stmt.execute("DROP TABLE IF EXISTS warp;");

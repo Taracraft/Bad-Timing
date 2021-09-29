@@ -1,5 +1,5 @@
 name: LobbyGUI-Plugin
-version: '0.1.1'
+version: '0.2.1'
 main: janhelbling.jansmod.Jansmod
 api-version: 1.17
 authors: [ Jan, Thomas ]
@@ -9,8 +9,8 @@ commands:
     usage: /navigation
     description: Holt den Navigations-Kompass ins Inventar
   install-warp-db:
-    usage: /install-1337
-    description: Installiert MySQL DatenBank
+    usage: /install-warp-db
+    description: Installiert Datenbank
     permission: jhinstall.warp
     permission-message: Kannst du nicht benutzen
 

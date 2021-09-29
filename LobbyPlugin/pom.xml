@@ -6,7 +6,7 @@
 
     <groupId>janhelbling</groupId>
     <artifactId>jansmod</artifactId>
-    <version>0.1.1</version>
+    <version>0.2.1</version>
     <packaging>jar</packaging>
 
     <name>LobbyPlugin</name>
