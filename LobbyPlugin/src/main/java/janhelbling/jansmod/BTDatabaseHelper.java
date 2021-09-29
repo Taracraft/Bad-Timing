@@ -21,22 +21,16 @@ public class BTDatabaseHelper {
         }
     }
 
-    void close(){
+    void close() {
         try {
             this.con.close();
-        } catch (SQLException e){
-            if(this.sender.isOp()){
+        } catch (SQLException e) {
+            if (this.sender.isOp()) {
                 this.sender.sendMessage("Fehler bei schliessung der MySQL-Verbindung: " + e.getMessage().toString());
             }
-            this.sender.getServer().getLogger().info("Fehler bei MySQL-Verbindung: " +e.getMessage().toString());
+            this.sender.getServer().getLogger().info("Fehler bei MySQL-Verbindung: " + e.getMessage().toString());
         }
     }
-
-    /*
-    void exec(String sql) throws SQLException {
-        this.stmt.execute(sql);
-    }
-     */
 
     ResultSet query(String sql){
             try{
@@ -50,26 +44,16 @@ public class BTDatabaseHelper {
             }
     }
 
-    /*
     String sqlisecure(String v){
         return v.replace("\"","\\\"").replace("\'","\\\'");
     }
-    */
 
     void install() throws SQLException {
+        /*
+         Warp-Locations
+         */
         this.stmt.execute("DROP TABLE IF EXISTS warp;");
-        this.stmt.execute("CREATE TABLE IF NOT EXISTS warp(location TEXT);");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Lobby\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Farmwelt\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"CityBuild\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Bank\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Shops\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"CShop\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Gasthaus\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"XP-Farm\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"End-XP-Farm\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"End\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"Nether\");");
-        this.stmt.execute("INSERT INTO warp VALUES(\"4-Gewinnt\");");
+        this.stmt.execute("CREATE TABLE IF NOT EXISTS warp(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,location TEXT);");
+        this.stmt.execute("INSERT INTO warp(location) VALUES(\"Lobby\"),(\"Farmwelt\"),(\"CityBuild\"),(\"Bank\"),(\"Shops\"),(\"CShop\"),(\"Gasthaus\"),(\"XP-Farm\"),(\"End-XP-Farm\"),(\"End\"),(\"Nether\"),(\"4-Gewinnt\");");
     }
 }
