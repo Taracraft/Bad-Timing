@@ -4,14 +4,14 @@ import org.bukkit.command.CommandSender;
 
 import java.sql.*;
 
-public class BTDatabaseHelper {
+public class WarpDatabaseHelper {
     private Connection con = null;
     private Statement stmt = null;
     CommandSender sender = null;
-    BTDatabaseHelper(CommandSender sender){
+    WarpDatabaseHelper(CommandSender sender){
         this.sender = sender;
         try {
-            this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bt_navigation_?user=mc&password=X3LyjrmFfL5QLjd9");
+            this.con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bt_?user=root&password=password");
             this.stmt = this.con.createStatement();
         } catch (SQLException e){
             if(this.sender.isOp()) {
@@ -46,14 +46,5 @@ public class BTDatabaseHelper {
 
     String sqlisecure(String v){
         return v.replace("\"","\\\"").replace("\'","\\\'");
-    }
-
-    void install() throws SQLException {
-        /*
-         Warp-Locations
-         */
-        this.stmt.execute("DROP TABLE IF EXISTS warp;");
-        this.stmt.execute("CREATE TABLE IF NOT EXISTS warp(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,location TEXT);");
-        this.stmt.execute("INSERT INTO warp(location) VALUES(\"Lobby\"),(\"Farmwelt\"),(\"CityBuild\"),(\"Bank\"),(\"Shops\"),(\"CShop\"),(\"Gasthaus\"),(\"XP-Farm\"),(\"End-XP-Farm\"),(\"End\"),(\"Nether\"),(\"4-Gewinnt\");");
     }
 }

@@ -18,8 +18,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 class PATH {
-    private String[] MENUS = {"Kompass","Warp"};
-    BTDatabaseHelper btdb = null;
+    private String[] MENUS = {"Kompass","Warp","Geld","Kryptowährungen","Einstellungen"};
+    public String[] GELD_OPTS = {"Saldo","Ein/Auszahlen","Geld-Senden","Zurück"};
+    public String[] GELD_WERTE = {"10","25","50","100","1000","2500","5000","10000"};
+    WarpDatabaseHelper btdb = null;
     ArrayList<String> WARP_LOCATIONS = new ArrayList<String>();
 
     String[] getPaths(){
@@ -27,7 +29,7 @@ class PATH {
     }
     String[] getWarpLocations(CommandSender s){
         try {
-            this.btdb = new BTDatabaseHelper(s);
+            this.btdb = new WarpDatabaseHelper(s);
             ResultSet results = this.btdb.query("SELECT location FROM warp;");
             while(results.next()) {
                 this.WARP_LOCATIONS.add(results.getString("location"));
@@ -111,6 +113,74 @@ class MeinInventoryClickListener implements Listener {
                         inv.addItem(ist);
                     }
                     event.getView().getPlayer().openInventory(inv);
+                } else if(item_name.equals("Geld")){
+                    Inventory inv = event.getView().getPlayer().getServer().createInventory(event.getView().getPlayer(),54,"Geld");
+                    for(String m: p.GELD_OPTS) {
+                        ItemStack ist = new ItemStack(Material.GOLD_BLOCK);
+                        ItemMeta imt = ist.getItemMeta();
+                        imt.setDisplayName(m);
+                        ist.setItemMeta(imt);
+                        inv.addItem(ist);
+                    }
+                    event.getView().getPlayer().openInventory(inv);
+                } else if(item_name.equals("Saldo")){
+                    event.getView().getPlayer().closeInventory();
+                    GeldDatabaseHelper g = new GeldDatabaseHelper(event.getView().getPlayer());
+                    try {
+                        g.createuser();
+                        float m = g.getGeld();
+                        float b = g.getBankGeld();
+                        event.getView().getPlayer().sendMessage("GELD: "+String.valueOf(m));
+                        event.getView().getPlayer().sendMessage("BANK: "+String.valueOf(b));
+                    } catch(SQLException e){
+                        event.getView().getPlayer().sendMessage("ERROR "+e.getMessage().toString());
+                    }
+                } else if(item_name.equals("Ein/Auszahlen")){
+                    Inventory inv = event.getView().getPlayer().getServer().createInventory(event.getView().getPlayer(),54,"Geld");
+                    for(String m: p.GELD_WERTE) {
+                        ItemStack ist = new ItemStack(Material.GOLD_BLOCK);
+                        ItemMeta imt = ist.getItemMeta();
+                        imt.setDisplayName(m);
+                        ist.setItemMeta(imt);
+                        inv.addItem(ist);
+                    }
+                    event.getView().getPlayer().openInventory(inv);
+                } else if(item_name.equals("10") || item_name.equals("25") || item_name.equals("50") || item_name.equals("100") || item_name.equals("1000") || item_name.equals("2500") || item_name.equals("5000") || item_name.equals("10000")){
+                    if(event.getClick().isLeftClick()) {
+                        GeldDatabaseHelper geldDatabaseHelper = new GeldDatabaseHelper(event.getView().getPlayer());
+                        float b = Float.valueOf(item_name);
+                        try {
+                            if (geldDatabaseHelper.removeGeld(b)) {
+                                geldDatabaseHelper.addBankGeld(b);
+                                event.getView().getPlayer().sendMessage(String.valueOf(b) + " auf das Konto eingezahlt!");
+                                event.getView().getPlayer().sendMessage("Konto-Saldo: " + String.valueOf(geldDatabaseHelper.getBankGeld()));
+                            } else {
+                                event.getView().getPlayer().sendMessage("Nicht genug Geld!");
+                            }
+                        } catch (SQLException e) {
+                            if (event.getView().getPlayer().isOp()) {
+                                event.getView().getPlayer().sendMessage(e.getMessage().toString());
+                            }
+                            event.getView().getPlayer().getServer().getLogger().info(e.getMessage().toString());
+                        }
+                    } else if(event.getClick().isRightClick()) {
+                        GeldDatabaseHelper geldDatabaseHelper = new GeldDatabaseHelper(event.getView().getPlayer());
+                        float b = Float.valueOf(item_name);
+                        try {
+                            if(geldDatabaseHelper.removeBankGeld(b)){
+                                geldDatabaseHelper.addGeld(b);
+                                event.getView().getPlayer().sendMessage("Geld ausgezahlt!");
+                                event.getView().getPlayer().sendMessage("Konto-Saldo: " + String.valueOf(geldDatabaseHelper.getBankGeld()));
+                            } else {
+                                event.getView().getPlayer().sendMessage("Nicht genug Geld!");
+                            }
+                        } catch (SQLException e) {
+                            if (event.getView().getPlayer().isOp()) {
+                                event.getView().getPlayer().sendMessage(e.getMessage().toString());
+                            }
+                            event.getView().getPlayer().getServer().getLogger().info(e.getMessage().toString());
+                        }
+                    }
                 }
             }
         }
@@ -138,9 +208,8 @@ public final class Jansmod extends JavaPlugin {
         }
         else if(cmd.equalsIgnoreCase("install-warp-db")) {
             try {
-                BTDatabaseHelper dbh = new BTDatabaseHelper(sender);
-                dbh.install();
-                dbh.close();
+                InstallDB dbi = new InstallDB();
+                dbi.install();
                 sender.sendMessage("Database installed/reseted!");
             } catch (SQLException e) {
                 sender.sendMessage(e.getMessage().toString());
