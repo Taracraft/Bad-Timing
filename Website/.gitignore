@@ -1,0 +1,32 @@
+# PhpStorm
+.idea/
+*.iml
+*.iws
+
+# Visual Studio Code
+.vscode/
+.history
+
+# Mac
+.DS_Store
+
+# Azuriom
+public/assets/vendor
+
+# PHP CS Fixer
+.php_cs.cache
+
+# Laravel
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log

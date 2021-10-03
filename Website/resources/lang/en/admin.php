@@ -1,0 +1,656 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used on the admin dashboard
+    |
+    */
+
+    'nav' => [
+        'dashboard' => 'Dashboard',
+        'settings' => [
+            'heading' => 'Settings',
+            'settings' => [
+                'settings' => 'Settings',
+                'global' => 'Global',
+                'security' => 'Security',
+                'performances' => 'Performance',
+                'seo' => 'SEO',
+                'auth' => 'Authentication',
+                'mail' => 'Mail',
+                'maintenance' => 'Maintenance',
+            ],
+            'navbar' => 'Navbar',
+            'servers' => 'Servers',
+        ],
+
+        'users' => [
+            'heading' => 'Users',
+            'users' => 'Users',
+            'roles' => 'Roles',
+            'bans' => 'Bans',
+        ],
+
+        'content' => [
+            'heading' => 'Content',
+            'pages' => 'Pages',
+            'posts' => 'Posts',
+            'images' => 'Images',
+        ],
+
+        'extensions' => [
+            'heading' => 'Extensions',
+            'plugins' => 'Plugins',
+            'themes' => 'Themes',
+        ],
+
+        'other' => [
+            'heading' => 'Other',
+            'update' => 'Update',
+            'logs' => 'Logs',
+        ],
+
+        'profile' => [
+            'profile' => 'Profile',
+        ],
+
+        'back-website' => 'Go back to website',
+
+        'support' => 'Support',
+        'documentation' => 'Documentation',
+    ],
+
+    'confirm-delete' => [
+        'title' => 'Delete?',
+        'description' => 'Are you sure you want to delete this? You won\'t be able to go back!',
+    ],
+
+    'footer' => 'Powered by :azuriom &copy; :year. Panel designed by :startbootstrap.',
+
+    /*
+    |
+    | Admin pages
+    |
+    */
+
+    'dashboard' => [
+        'title' => 'Dashboard',
+
+        'new-update' => 'A new version of Azuriom is available: :version',
+        'https-warning' => 'Your website is not using https, you should enable and force it for your security and the one of the users.',
+        'proxy-warning' => 'If you are using Cloudflare, you should install the Cloudflare Support plugin.',
+        'recent-users' => 'Recent users',
+        'active-users' => 'Active users',
+        'emails-disabled' => 'Emails are disabled. If a user forgets his password he will not be able to reset it. You can enable emails in the <a href=":url">mail settings</a>.',
+        'users' => 'Users',
+        'posts' => 'Posts',
+        'pages' => 'Pages',
+        'images' => 'Images',
+    ],
+
+    'settings' => [
+        'index' => [
+            'title' => 'Global settings',
+
+            'site-name' => 'Site Name',
+            'site-url' => 'Site URL',
+            'site-description' => 'Site Description',
+            'meta' => 'Meta keywords',
+            'meta-info' => 'The keywords must be separated with a comma.',
+            'favicon' => 'Favicon',
+            'background' => 'Background',
+            'logo' => 'Logo',
+            'timezone' => 'Timezone',
+            'locale' => 'Locale',
+            'money' => 'Name of the site\'s currency',
+            'copyright' => 'Copyright',
+            'user-money-transfer' => 'Enable money transfer between users',
+            'site-key' => 'Site key for azuriom.com',
+            'site-key-label' => 'The azuriom.com site key is required to install premiums extensions purchased on the market. You can obtain your site key in your <a href="https://azuriom.com/profile" target="_blank" rel="noopener norefferer">Azuriom profile</a>.',
+        ],
+
+        'security' => [
+            'title' => 'Security settings',
+
+            'captcha' => [
+                'title' => 'Captcha',
+                'site-key' => 'Site key',
+                'secret-key' => 'Secret key',
+                'recaptcha' => 'You can get reCaptcha keys on the <a href="https://www.google.com/recaptcha/" target="_blank" rel="noopener noreferrer"> Google reCaptcha website</a>. You need to use reCaptcha <strong>v2 invisible</strong> keys.',
+                'hcaptcha' => 'You can get hCaptcha keys on the <a href="https://www.hcaptcha.com/" target="_blank" rel="noopener noreferrer"> hCaptcha website</a>.',
+            ],
+
+            'hash' => 'Hash algorithm',
+            'hash-info' => 'Argon2id is the most secure algorithm but it requires PHP 7.3 or higher. If you are running PHP 7.2 you should use Argon2i.',
+            'hash-error' => 'This hash algorithm is not supported by your current PHP version.',
+        ],
+
+        'performances' => [
+            'title' => 'Performance settings',
+
+            'cache' => [
+                'title' => 'Clear Cache',
+                'description' => 'Clear the website cache.',
+
+                'status' => [
+                    'cleared' => 'Cache cleared with success.',
+                    'clear-error' => 'Error while clearing cache.',
+                ],
+
+                'actions' => [
+                    'clear' => 'Clear Cache',
+                ],
+            ],
+
+            'boost' => [
+                'title' => 'AzBoost',
+                'description' => 'AzBoost improves your website performances by adding one more exclusive cache layer.',
+                'info' => 'If you have some issues after enabling an extension you should reload the cache.',
+
+                'current' => [
+                    'status' => 'AzBoost is currently :status.',
+                    'enabled' => '<span class="text-success">enabled</span>',
+                    'disabled' => '<span class="text-danger">disabled</span>',
+                ],
+
+                'status' => [
+                    'enabled' => 'AzBoost is now enabled.',
+                    'disabled' => 'AzBoost is now disabled.',
+                    'reloaded' => 'AzBoost was reloaded.',
+
+                    'enable-error' => 'Error while enabling AzBoost.',
+                ],
+
+                'actions' => [
+                    'enable' => 'Enable AzBoost',
+                    'disable' => 'Disable AzBoost',
+                    'reload' => 'Reload AzBoost',
+                ],
+            ],
+        ],
+
+        'seo' => [
+            'title' => 'SEO settings',
+
+            'html-head-code' => 'HTML code to include in the <head> of all pages.',
+            'html-body-code' => 'HTML code to include in the <body> of all pages.',
+
+            'html-code-info' => 'E.g: Cookie banner, Google Analytics, etc',
+
+            'welcome-popup' => [
+                'enable' => 'Enable welcome popup?',
+                'message' => 'Welcome Popup Message',
+                'info' => 'This popup will be displayed the first time a user visits the site.',
+            ],
+        ],
+
+        'auth' => [
+            'title' => 'Authentication',
+
+            'conditions-url' => 'Conditions URL',
+            'conditions-info' => 'Users will have to accept these conditions when registering.',
+            'enable-user-registration' => 'Enable user registration',
+            'enable-user-registration-label' => 'It can still be possible to register through plugins.',
+            'auth-api' => 'Enable Auth API',
+            'auth-api-label' => 'This API allows you to add a custom authentication to your game server. For Minecraft servers using a launcher, you can use <a href="https://github.com/Azuriom/AzAuth" target="_blank" rel="noopener noreferrer">AzAuth</a> for an easy and quick integration.',
+            'minecraft-verification' => 'Enable Minecraft username verification with minecraft.net',
+        ],
+
+        'mail' => [
+            'title' => 'Mail settings',
+            'from-address' => 'Email address used to send emails.',
+            'driver' => 'Email type',
+            'driver-info' => 'Azuriom supports SMTP and Sendmail for sending emails. You can find more information on the mail configuration on our <a href="https://azuriom.com/docs" target="_blank" rel="noopener noreferrer">documentation</a>.',
+            'disabled-warn' => 'When emails are disabled, users will not be able to reset their password if they forget it.',
+            'sendmail-warn' => 'Using Sendmail is not recommended and you should instead use an SMTP server when possible.',
+            'smtp' => [
+                'host' => 'SMTP Host Address',
+                'port' => 'SMTP Host Port',
+                'encryption' => 'Encryption Protocol',
+                'username' => 'SMTP Server Username',
+                'password' => 'SMTP Server Password',
+            ],
+            'enable-users-verification' => 'Enable user email address verification',
+            'send' => 'Send a test email',
+            'sent' => 'The test mail has been successfully sent.',
+        ],
+
+        'maintenance' => [
+            'title' => 'Maintenance settings',
+
+            'enable' => 'Enable maintenance',
+            'message' => 'Maintenance message',
+        ],
+
+        'status' => [
+            'updated' => 'The settings have been updated.',
+        ],
+    ],
+
+    'navbar-elements' => [
+        'title' => 'Navbar',
+        'title-edit' => 'Edit navbar element :element',
+        'title-create' => 'Create navbar element',
+
+        'dropdown-info' => 'You can add elements to this dropdown when this element is saved.',
+
+        'fields' => [
+            'home' => 'Home',
+            'link' => 'External link',
+            'page' => 'Page',
+            'post' => 'Post',
+            'posts' => 'Posts list',
+            'plugin' => 'Plugin',
+            'dropdown' => 'Dropdown',
+            'new-tab' => 'Open in new tab',
+        ],
+
+        'status' => [
+            'nav-updated' => 'Navbar updated.',
+
+            'created' => 'The navbar element has been created.',
+            'updated' => 'This navbar element has been updated.',
+            'deleted' => 'This navbar element has been deleted.',
+
+            'not-empty' => 'You cannot delete dropdown with elements.',
+        ],
+    ],
+
+    'servers' => [
+        'title' => 'Servers',
+        'title-edit' => 'Edit server :server',
+        'title-create' => 'Add server',
+
+        'default' => 'Default server',
+        'default-info' => 'The number of players connected from the default server will be displayed on the site if the current theme supports it.',
+
+        'ping-no-commands' => 'The ping link doesn\'t need a plugin, but you can\'t execute commands with it.',
+        'query-no-commands' => 'With query link, it\'s not possible to execute commands on the server.',
+
+        'query-port-info' => 'Can be empty if it\'s the same as the game port.',
+
+        'fields' => [
+            'address' => 'Address',
+            'port' => 'Port',
+
+            'rcon-password' => 'Rcon Password',
+            'rcon-port' => 'Rcon Port',
+            'query-port' => 'Source Query Port',
+
+            'azlink-port' => 'AzLink Port',
+        ],
+
+        'actions' => [
+            'verify-connection' => 'Verify the connection',
+        ],
+
+        'azlink' => [
+            'link' => 'To link Minecraft to your website using AzLink:',
+            'link-1' => '<a href="https://azuriom.com/azlink">Download the plugin AzLink</a> and install it on your server.',
+            'link-2' => 'Restart the server.',
+            'link-3' => 'Execute this command on the server: ',
+
+            'link-info' => 'You can link your Minecraft server to your website with the command: ',
+            'port-info' => 'If you are using a different AzLink port than the default, you must configure it with the command: ',
+
+            'enable-ping' => 'Enable instant commands (require an open port on the server)',
+            'ping-info' => 'When instant commands are not enabled, commands will be executed with a delay of 30 seconds to 1 minute.',
+            'custom-port' => 'Use a custom AzLink port',
+        ],
+
+        'players' => ':count player|:count players',
+        'offline' => 'Offline',
+
+        'status' => [
+            'created' => 'The server has been added.',
+            'updated' => 'The server has been updated.',
+            'deleted' => 'The server has been deleted.',
+
+            'connect-success' => 'The connection to the server has been made successfully!',
+            'connect-error' => 'The connection to the server failed: :error',
+
+            'not-azlink' => 'This server is not connected via AzLink.',
+            'azlink-connect' => 'The connection to the server has failed, the address and/or port are incorrect, or the port is closed.',
+            'azlink-badresponse' => 'The connection to the server has failed (code :code), the token is invalid or the server is misconfigured. You can redo the link command to fix this.',
+        ],
+
+        'type' => [
+            'mc-ping' => 'Minecraft Ping',
+            'mc-rcon' => 'Minecraft RCON',
+            'mc-azlink' => 'AzLink',
+            'source-query' => 'Source Query',
+            'source-rcon' => 'Source RCON',
+            'bedrock-ping' => 'Bedrock Ping',
+            'bedrock-rcon' => 'Bedrock RCON',
+            'fivem-status' => 'FiveM status',
+            'fivem-rcon' => 'FiveM RCON',
+            'rust-rcon' => 'Rust RCON',
+            'flyff-server' => 'Flyff Server', // TODO make this dynamic
+        ],
+    ],
+
+    'users' => [
+        'title' => 'Users',
+        'title-edit' => 'Edit user :user',
+        'title-create' => 'Create user',
+
+        'fields' => [
+            'register-date' => 'Registered at',
+            'last-login' => 'Last login at',
+            'email-verified' => 'Email Address verified',
+            '2fa' => 'Two Factor Authentication',
+            'ip' => 'IP Address',
+        ],
+
+        'info' => [
+            'admin' => 'Admin',
+            'banned' => 'Banned',
+            'deleted' => 'Deleted',
+        ],
+
+        'actions' => [
+            'ban' => 'Ban',
+            'unban' => 'Unban',
+            'delete' => 'Delete',
+            'verify-email' => 'Verify email',
+            'disable-2fa' => 'Disable 2fa',
+        ],
+
+        'alert-deleted' => 'This user is deleted, it can\'t be edited.',
+        'alert-banned' => [
+            'title' => 'This user is currently banned:',
+            'banned-by' => 'Banned by: :author',
+            'reason' => 'Reason: :reason',
+            'date' => 'Date: :date',
+        ],
+
+        'edit-profile' => 'Edit profile',
+
+        'user-info' => 'User information',
+
+        'ban-title' => 'Ban :user',
+        'ban-description' => 'Are you sure you want to ban this user?',
+
+        'status' => [
+            'created' => 'The user has been created.',
+            'updated' => 'This user has been updated.',
+            'deleted' => 'This user has been deleted.',
+
+            'email-verified' => 'The Email Address has been verified.',
+            '2fa-disabled' => 'The Two Factor Authentication has been disabled.',
+
+            'banned' => 'This user is now banned.',
+            'unbanned' => 'This user has been unbanned.',
+        ],
+    ],
+
+    'roles' => [
+        'title' => 'Roles',
+        'title-edit' => 'Edit role :role',
+        'title-create' => 'Create role',
+
+        'permissions' => 'Permissions',
+        'perm-admin' => [
+            'label' => 'Administrator',
+            'info' => 'When the group is admin it has all the permissions.',
+        ],
+
+        'info' => [
+            'default' => 'Default',
+            'admin' => 'Admin',
+        ],
+
+        'status' => [
+            'power-updated' => 'The roles have been updated.',
+            'created' => 'The role has been created.',
+            'updated' => 'This role has been updated.',
+            'deleted' => 'This role has been deleted.',
+
+            'unauthorized' => 'This role is higher than your own role.',
+            'add-admin' => 'You can\'t add the admin permission to a role.',
+            'remove-admin' => 'You can\'t remove the admin permission of your role.',
+            'permanent-role' => 'This role cannot be deleted.',
+            'own-role' => 'You cannot delete your role.',
+        ],
+    ],
+
+    'permissions' => [
+        'create-comments' => 'Comment a post',
+        'delete-other-comments' => 'Delete a post comment from another user',
+        'maintenance-access' => 'Access the website during a maintenance',
+        'admin-access' => 'Access to the admin dashboard',
+        'admin-logs' => 'View and manage site logs',
+        'admin-images' => 'View and manage images',
+        'admin-navbar' => 'View and manage navbar',
+        'admin-pages' => 'View and manage pages',
+        'admin-posts' => 'View and manage posts',
+        'admin-settings' => 'View and manage settings',
+        'admin-users' => 'View and manage users',
+        'admin-themes' => 'View and manage themes',
+        'admin-plugins' => 'View and manage plugins',
+    ],
+
+    'bans' => [
+        'title' => 'Bans',
+
+        'fields' => [
+            'banned-by' => 'Banned by',
+            'reason' => 'Reason',
+        ],
+
+        'removed' => 'Removed the :date by :user',
+    ],
+
+    'posts' => [
+        'title' => 'Posts',
+        'title-edit' => 'Edit post :post',
+        'title-create' => 'Create post',
+
+        'published-info' => 'This post will not be visible publicly until this date.',
+
+        'fields' => [
+            'published-at' => 'Published at',
+        ],
+
+        'pin' => 'Pin this post',
+
+        'status' => [
+            'created' => 'The post has been created.',
+            'updated' => 'This post has been modified.',
+            'deleted' => 'This post has been deleted.',
+        ],
+
+        'info' => [
+            'pinned' => 'Pinned',
+        ],
+    ],
+
+    'pages' => [
+        'title' => 'Pages',
+        'title-edit' => 'Edit page #:page',
+        'title-create' => 'Create page',
+
+        'enable' => 'Enable the page',
+
+        'status' => [
+            'created' => 'The page has been created.',
+            'updated' => 'This page has been updated.',
+            'deleted' => 'This page has been deleted.',
+        ],
+    ],
+
+    'images' => [
+        'title' => 'Images',
+        'title-edit' => 'Edit image :image',
+        'title-create' => 'Upload image',
+
+        'status' => [
+            'created' => 'The image has been created.',
+            'updated' => 'This image has been updated.',
+            'deleted' => 'This image has been deleted.',
+        ],
+    ],
+
+    'extensions' => [
+        'buy' => 'Buy for :price',
+    ],
+
+    'plugins' => [
+        'title' => 'Plugins',
+
+        'installed' => 'Installed plugins',
+        'available' => 'Available plugins',
+
+        'azuriom-requirement' => 'This plugin is not compatible with your Azuriom version.',
+        'game-requirement' => 'This plugin is not compatible with the game :game.',
+        'plugin-requirement' => 'The plugin ":plugin" is missing or its version is not compatible with this plugin.',
+
+        'status' => [
+            'reloaded' => 'The plugins have been reloaded.',
+            'enabled' => 'The plugin has been enabled.',
+            'disabled' => 'The plugin has been disabled.',
+            'updated' => 'The plugin has been updated.',
+            'installed' => 'The plugin has been installed.',
+            'deleted' => 'The plugin has been deleted.',
+
+            'error-delete' => 'The plugin must be disabled before it can be deleted.',
+        ],
+    ],
+
+    'themes' => [
+        'title' => 'Themes',
+
+        'current' => [
+            'title' => 'Current theme',
+            'author' => 'Author: :author',
+            'version' => 'Version: :version',
+        ],
+        'installed' => 'Installed themes',
+        'available' => 'Available themes',
+        'no-enabled' => 'You don\'t have any themes enabled.',
+
+        'actions' => [
+            'edit-config' => 'Edit config',
+            'disable' => 'Disable theme',
+        ],
+
+        'status' => [
+            'reloaded' => 'The themes have been reloaded.',
+            'no-config' => 'This theme doesn\'t have config.',
+            'config-updated' => 'The theme config has been updated.',
+            'invalid' => 'This theme is invalid (the theme folder name must be the theme id).',
+            'updated' => 'The theme has been updated.',
+            'installed' => 'The theme has been installed.',
+            'deleted' => 'The theme has been deleted.',
+
+            'error-delete' => 'You can\'t delete the current theme.',
+        ],
+    ],
+
+    'update' => [
+        'title' => 'Update',
+
+        'subtitle-update' => 'Update available',
+        'subtitle-no-update' => 'No updates available',
+
+        'update' => 'The version <code>:last-version</code> of Azuriom is available and you are on version <code>:version</code>.',
+        'download' => 'The latest version of Azuriom is ready for download.',
+        'install' => 'The latest version of Azuriom has been downloaded and is ready to be installed.',
+
+        'backup-info' => 'Before updating Azuriom, you should make a backup of your site!',
+
+        'up-to-date' => 'You are running the latest version of Azuriom: <code>:version</code>.',
+
+        'status' => [
+            'download-success' => 'The latest version has been downloaded, you can now install it.',
+            'install-success' => 'The update has been installed successfully.',
+
+            'up-to-date' => 'You are using the latest version of Azuriom.',
+            'error-fetch' => 'An error occurred while fetching updates: :error',
+            'error-download' => 'An error occurred while downloading: :error',
+            'error-install' => 'An error occurred while installing: :error',
+        ],
+
+        'actions' => [
+            'check' => 'Check updates',
+            'install' => 'Install',
+            'download' => 'Download',
+        ],
+    ],
+
+    'logs' => [
+        'title' => 'Logs',
+
+        'actions' => [
+            'clear' => 'Clear old logs (15d+)',
+        ],
+
+        'status' => [
+            'cleared' => 'The old logs has been deleted.',
+        ],
+
+        'pages' => [
+            'created' => 'Created page #:id',
+            'updated' => 'Updated page #:id',
+            'deleted' => 'Deleted page #:id',
+        ],
+
+        'posts' => [
+            'created' => 'Created post #:id',
+            'updated' => 'Updated post #:id',
+            'deleted' => 'Deleted post #:id',
+        ],
+
+        'images' => [
+            'created' => 'Created image #:id',
+            'updated' => 'Updated image #:id',
+            'deleted' => 'Deleted image #:id',
+        ],
+
+        'roles' => [
+            'created' => 'Created role #:id',
+            'updated' => 'Updated role #:id',
+            'deleted' => 'Deleted role #:id',
+        ],
+
+        'servers' => [
+            'created' => 'Created server #:id',
+            'updated' => 'Updated server #:id',
+            'deleted' => 'Deleted server #:id',
+        ],
+
+        'users' => [
+            'updated' => 'Updated user #:id',
+            'deleted' => 'Deleted user #:id',
+            'transfer' => 'Send money :money to user #:id',
+        ],
+
+        'settings' => [
+            'updated' => 'Updated settings',
+        ],
+
+        'updates' => [
+            'installed' => 'Installed Azuriom update',
+        ],
+
+        'plugins' => [
+            'enabled' => 'Enabled plugin',
+            'disabled' => 'Disabled plugin',
+        ],
+
+        'themes' => [
+            'changed' => 'Changed theme',
+        ],
+    ],
+
+    'errors' => [
+        'back' => 'Back to Dashboard',
+        '404' => 'Page Not Found',
+        'info' => 'It looks like you found a glitch in the matrix...',
+    ],
+];
