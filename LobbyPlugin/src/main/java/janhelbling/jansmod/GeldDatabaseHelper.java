@@ -76,7 +76,7 @@ public class GeldDatabaseHelper {
         resultSet.next();
         float geld = resultSet.getFloat("saldo");
         geld -= money;
-        if(geld > 1) {
+        if(geld > 0) {
             this.stmt.execute("UPDATE geld SET saldo=\"" + String.valueOf(geld) + "\" WHERE playerid=\"" + this.sqlisecure(this.sender.getServer().getPlayer(this.sender.getName()).getUniqueId().toString()) + "\";");
             return true;
         }
@@ -96,8 +96,8 @@ public class GeldDatabaseHelper {
         resultSet.next();
         float geld = resultSet.getFloat("bank");
         geld -= money;
-        if(geld > 1) {
-            this.stmt.execute("UPDATE geld SET bank=\"" + String.valueOf(geld) + "\" WHERE playerid=\"" + this.sqlisecure(this.sender.getServer().getPlayer(this.sender.getName()).getUniqueId().toString()) + "\";");
+        if(geld > 0) {
+            this.stmt.execute("UPDATE geld SET bank =\"" + String.valueOf(geld) + "\" WHERE playerid=\"" + this.sqlisecure(this.sender.getServer().getPlayer(this.sender.getName()).getUniqueId().toString()) + "\";");
             return true;
         }
         return false;

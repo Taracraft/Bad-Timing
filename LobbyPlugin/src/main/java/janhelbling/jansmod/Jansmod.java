@@ -154,7 +154,7 @@ class MeinInventoryClickListener implements Listener {
                                 geldDatabaseHelper.addBankGeld(b);
                                 event.getView().getPlayer().sendMessage(String.valueOf(b) + " auf das Konto eingezahlt!");
                                 event.getView().getPlayer().sendMessage("Konto-Saldo: " + String.valueOf(geldDatabaseHelper.getBankGeld()));
-                            } else {
+                               } else {
                                 event.getView().getPlayer().sendMessage("Nicht genug Geld!");
                             }
                         } catch (SQLException e) {
