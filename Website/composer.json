@@ -1,0 +1,81 @@
+{
+    "name": "azuriom/azuriom",
+    "type": "project",
+    "description": "Azuriom is an open-source game CMS based on Laravel.",
+    "keywords": ["cms", "azuriom", "laravel"],
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "php": "^7.3|^8.0",
+        "ext-json": "*",
+        "ext-zip": "*",
+        "bacon/bacon-qr-code": "^2.0",
+        "composer/semver": "^3.2",
+        "fruitcake/laravel-cors": "^2.0",
+        "funkjedi/composer-include-files": "^1.1",
+        "google/recaptcha": "^1.2",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/framework": "^8.54",
+        "laravel/socialite": "^5.1",
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.1",
+        "pragmarx/google2fa": "^8.0",
+        "symfony/filesystem": "^5.1",
+        "textalk/websocket": "^1.5",
+        "thedudeguy/rcon": "^1.0",
+        "truckersmp/steam-socialite": "^1.3",
+        "xpaw/php-source-query-class": "^1.0"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.5",
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Azuriom\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "include_files": [
+            "app/base_helpers.php"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
