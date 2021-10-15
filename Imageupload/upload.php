@@ -76,8 +76,8 @@ if($upload == 'true'){
                      // kompletter Pfad
                      $compl = "https://bad-timing.eu/Imageupload/images"."/".$file;
                      echo '<br></br>';
-                     echo "<img src=\"".$compl."\" height=\"250\" width=\"250\"></img><br/>";
-                     echo "<center><h1>".$file."</h1></center>";
+                     echo "<img src=\"".$compl."\"></img><br/>";
+                     echo "<center><h1>images/".$file."</h1></center>";
                      }
             }
         }

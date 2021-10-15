@@ -25,13 +25,34 @@ if (!isset($_SESSION['loggedin'])) {
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
 		</nav>
-		<div class="content">
-			<h2>Image-Upload</h2>
-			<p>Willkommen zurück, <?=$_SESSION['name']?>!</p>
-			<form action="upload.php" method="post" enctype="multipart/form-data">
-			<input type="file" name="datei"><br>
-			<input type="submit" value="Hochladen">
-			</form>
-		</div>
 	</body>
 </html>
+<?
+echo '<br><b>Auflistung!:</br></b>';
+ echo '<br></br>';
+ $ordner = "/var/www/vhosts/bad-timing.eu/httpdocs/Imageupload/images";
+ $verzeichnis = opendir($ordner); 
+        while ($file = readdir ($verzeichnis)) 
+        {
+        	
+         if($file != "." && $file != "..") 
+            {
+             if(is_dir($ordner."/".$file)) 
+                {
+                 echo "/".$file."<br/>";
+                    } 
+                     else 
+                    {
+                     // kompletter Pfad
+                     $compl = "https://bad-timing.eu/Imageupload/images"."/".$file;
+                     echo '<br></br>';
+                     echo "<img src=\"".$compl."\"></img><br/>";
+                     echo "<center><h1>images/".$file."</h1></center>";
+                     }
+            }
+        }
+    echo "</select>";
+
+
+
+?>

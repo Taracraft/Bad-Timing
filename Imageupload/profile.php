@@ -32,6 +32,8 @@ $stmt->close();
 		<nav class="navtop">
 			<div>
 				<h1>MC-Image-Upload</h1>
+                                <a href="home.php"><i class="fas fa-user-circle"></i>Upload der Images</a>
+				<a href="auflistung.php"><i class="fas fa-user-circle"></i>Auflistung der Images</a>
 				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
 				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
 			</div>
