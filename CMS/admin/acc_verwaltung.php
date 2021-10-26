@@ -10,9 +10,8 @@ include("../../cms/style/template/header.php");
 ?>
 <div class="content">
 <h2>Admin-Bereich</h2>
-<p>Benutzer hinzufügen</p>
-<p>Benutzer Löschen</p>
-<p>Benutzer Editieren</p>
+<p><a href="../../cms/admin/acc_add.php"><i class="fas fa-user-circle"></i>Benutzer hinzuf&uuml;gen</a></p>
+<p><a href="../../cms/admin/acc_list.php"><i class="fas fa-user-circle"></i>Benutzer Editieren/L&ouml;schen</a></p>
 </div>
 <?
 include("../../cms/style/template/footer.php");
