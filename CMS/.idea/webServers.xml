@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4a969142-2fe8-46fe-a789-251b68481b4a" name="Bad-Timing" url="http://www.bad-timing.eu">
+        <fileTransfer rootFolder="/var/www/vhosts/bad-timing.eu" accessType="SFTP" host="bad-timing.eu" port="44" sshConfigId="cd86a71e-9ef6-4bc9-9500-316caf1eeef5" sshConfig="btssh_plesk@bad-timing.eu:44">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" muteSftpMessages="true" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
