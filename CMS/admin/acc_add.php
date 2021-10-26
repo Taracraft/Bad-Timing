@@ -3,17 +3,74 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
+	header('Location: ../../cms/index.html');
 	exit;
 }
 include("../../cms/style/template/header.php");
-include("config/db.php");
+include("../../cms/config/db.php");
+	
+$showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME); 
+$option = [ "cost" => 15 ];
+$pwhash = password_hash($password, PASSWORD_BCRYPT, $option);
 
+if(isset($_GET['register'])) {
+    $error = false;
+    $username =$_POST['username'];
+    $email = $_POST['email'];
+    $passwort = $_POST['password'];
+    $passwort2 = $_POST['password2'];
+    
+    if(!filter_var($username)== 0) {
+        echo 'Bitte ein Username eingeben<br>';
+        $error = true;
+    }     
+
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
+        $error = true;
+    }     
+    if(strlen($passwort) == 0) {
+        echo 'Bitte ein Passwort angeben<br>';
+        $error = true;
+    }
+    if($passwort != $passwort2) {
+        echo 'Die Passwörter müssen übereinstimmen<br>';
+        $error = true;
+    }
+    
+    //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
+    if(!$error) { 
+        $statement = $con->prepare("SELECT * FROM accounts WHERE email = :email");
+        $result = $con->execute([":email" => $email]);
+        $user = $con->fetch();
+        
+        if($user !== false) {
+            echo 'Diese E-Mail-Adresse ist bereits vergeben<br>';
+            $error = true;
+        }    
+    }
+        
+    //Keine Fehler, wir können den Nutzer registrieren
+    if(!$error) {    
+        $passwort_hash = password_hash($passwort, PASSWORD_BCRYPT, $option);
+    	$stmt = $con->prepare("INSERT INTO accounts (username, email, passwort) VALUES (:username, :email, :passwort)");    
+        $result = $con->execute(array('username' => $username, 'email' => $email, 'passwort' => $passwort_hash));
+        
+        if($result) {        
+            echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+            $showFormular = false;
+        } else {
+            echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
+        }
+    } 
+}
+if($showFormular) {
+} //Ende von if($showFormular)
 ?>
-
-?>		<div class="login">
+<div class="login">
 			<h1>Login</h1>
-			<form action="../../cms/admin/acc_add.php" method="post">
+			<form action="?register=1" method="post">
 				<label for="username">
 					<i class="fas fa-user"></i>
 				</label>
@@ -29,27 +86,17 @@ include("config/db.php");
 					<i class="fas fa-lock"></i>
 				</label>
 				<input type="password" name="password" placeholder="Password" id="password" erforderlich>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password2" placeholder="Password" id="password" erforderlich>
+
 				<input type="submit" value="Login">
 			</form>
-		<?
-if ( !isset($_POST['username'], $_POST['password']) ) {
-	// Could not get the data that should have been sent.
-	exit('Bitte Benutzername und Password Felder ausfüllen!');
-$option = [ "cost" => 15 ];
-$pwhash = password_hash($password, PASSWORD_BCRYPT, $option);
+</div>
+<?
 
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-// Check connection
-if ($con->connect_error) {
-  die("Connection failed: " . $con->connect_error);
-}
 
-$sql = INSERT INTO accounts (id+1, username, password, email){
-	VALUES (id+1, $username, $pwhash, $email);}
-$sqld=$sql->execute();
-$sqld->store_result();
-
-echo 'Benutzer erfolgreich angelegt!';
 
 include("../../cms/style/template/footer.php");
 ?>
