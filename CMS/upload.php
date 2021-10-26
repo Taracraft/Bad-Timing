@@ -13,7 +13,7 @@ include("style/template/header.php");
 
 		<div class="content">
 			<h2>Image-Upload</h2>
-			<form action="inc/upload_funktion.php" method="post" enctype="multipart/form-data">
+			<form action="../../funktionen/upload_funktion.php" method="post" enctype="multipart/form-data">
 			<input type="file" name="datei"><br>
 			<input type="submit" value="Hochladen">
 			</form>
