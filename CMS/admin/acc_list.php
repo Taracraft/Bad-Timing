@@ -35,3 +35,33 @@ if ($result->num_rows > 0) {
 <?
 include("../../cms/style/template/footer.php");
 ?>
+<?php
+/*
+if (isset($_GET['id']) && is_numeric($_GET['id']))
+{
+    $link = mysqli_connect("localhost", "user", "password", "db");
+    if (mysqli_connect_errno())
+        die("Connect failed: " . mysqli_connect_error());
+    $query = "Delete from `tabelle` where `id`=" . $_GET['id'];
+
+    $result = mysqli_query($link, $query)
+    or die ("MySQL-Error: " . mysqli_error($link));
+
+    echo "Eintrag mit ID " . $_GET['id'] . " gelöscht";
+}
+else
+    echo "Keine oder falsche Daten";
+?>
+<?php
+$link = mysqli_connect("localhost", "user", "password", "db");
+if (mysqli_connect_errno())
+    die("Connect failed: " . mysqli_connect_error());
+$query = "Select `id`, `name` from `tabelle`";
+
+$result = mysqli_query($link, $query)
+or die ("MySQL-Error: " . mysqli_error($link));
+
+while ($row = mysqli_fetch_assoc($result))
+    echo $row['name'] . "<a href='delete.php?id=" . $row['id'] . "'>Löschen</a><br>\n";
+*/
+?>
