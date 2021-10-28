@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="Bad-Timing" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="Bad-Timing" uploadOnCheckin="4a969142-2fe8-46fe-a789-251b68481b4a" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="Bad-Timing">
         <serverdata>
@@ -10,5 +10,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="Bad-Timing" />
   </component>
 </project>
