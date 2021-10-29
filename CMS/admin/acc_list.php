@@ -22,20 +22,28 @@ if ($con->connect_error) {
 $sql = "SELECT id, username, password, email FROM accounts";
 $result = $con->query($sql);
 if ($result->num_rows > 0) {
-    echo "<table><tr><th>ID</th><th>Username</th><th>Passwort</th><th>E-Mail-Adresse</th></tr>";
+    echo "<div class='contents'>";
+    echo "<table><tr><th>ID</th><th>Username</th><th>Passwort</th><th>E-Mail-Adresse</th></tr></table></div>";
     // output data of each row
     while ($row = $result->fetch_assoc()) {
-        echo "<br></br>";
-        echo "<th>" . $row['id'] . "</th>";
-        echo "<th>" . $row['username'] . "</th>";
-        echo "<th>" . $row['password'] . "</th>";
-        echo "<th>" . $row['email'] . "</th>";
+        echo "<div class='contents'>";
+        echo "<th>" . $row['id']. "\t" . "</th>";
+        echo "<th><a href=useredit.php?var=$row[id]' 
+            onClick='window.open(\"useredit.php\",\"Fenster\",\"width=310,height=400,left=0,top=0\"); return false;
+            '>$row[username] \t</a></th>";
+        echo "<th><a href=pwedit.php?var=$row[id]'
+            onClick='window.open(\"useredit.php\",\"Fenster\",\"width=310,height=400,left=0,top=0\"); return false;
+            '>$row[password] \t</a></th>";
+        echo "<th><a href=mailedit.php?var=$row[id]'
+            onClick='window.open(\"mailedit.php\",\"Fenster\",\"width=310,height=400,left=0,top=0\"); return false;
+            '>$row[email] \t</a></th>";
         echo "<br>";
         echo "</br>";
         echo "</table>";
-
+        echo "</div>";
     }
 }
+
 
 ?>
 </div>

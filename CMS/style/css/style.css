@@ -194,3 +194,7 @@ body {
 	background-color: #2868c7;
 	transition: background-color 0.2s;
 }
+#userlist-zeilen {
+	width: 1000px;
+	margin: 0 auto;
+}
