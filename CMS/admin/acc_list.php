@@ -16,26 +16,34 @@ include("../../cms/style/template/header.php");
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 // Check connection
 if ($con->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+  die("Connection failed: " . $con->connect_error);
 }
 
 $sql = "SELECT id, username, password, email FROM accounts";
 $result = $con->query($sql);
-
 if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["id"]. " - Name: " . $row["username"]. " " . $row["password"]. "email: " . $row["email"]. "<br>";
-  }
-} else {
-  echo "0 results";
+    echo "<table><tr><th>ID</th><th>Username</th><th>Passwort</th><th>E-Mail-Adresse</th></tr>";
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+        echo "<tbody>";
+        echo "<tr>";
+        echo "<th>" . $row['id'] . "</th>";
+        echo "<th>" . $row['username'] . "</th>";
+        echo "<th>" . $row['password'] . "</th>";
+        echo "<th>" . $row['email'] . "</th>";
+        echo "<br>";
+        echo "</tr>";
+        echo "</tbody>";
+        echo "</table>";
+
+    }
 }
+
 ?>
 </div>
 <?
 include("../../cms/style/template/footer.php");
-?>
-<?php
+
 /*
 if (isset($_GET['id']) && is_numeric($_GET['id']))
 {
@@ -63,5 +71,8 @@ or die ("MySQL-Error: " . mysqli_error($link));
 
 while ($row = mysqli_fetch_assoc($result))
     echo $row['name'] . "<a href='delete.php?id=" . $row['id'] . "'>Löschen</a><br>\n";
+
+<p> <?php echo str_replace('?', '<br/> ●', $description); ?> </p>
+
 */
 ?>
