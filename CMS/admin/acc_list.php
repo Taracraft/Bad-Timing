@@ -33,6 +33,7 @@ if ($result->num_rows > 0) {
         echo "<th>" . $row['email'] . "</th>";
         echo "<br>";
         echo "</tr>";
+        echo "</br>";
         echo "</tbody>";
         echo "</table>";
 
