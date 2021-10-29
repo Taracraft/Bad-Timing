@@ -25,16 +25,13 @@ if ($result->num_rows > 0) {
     echo "<table><tr><th>ID</th><th>Username</th><th>Passwort</th><th>E-Mail-Adresse</th></tr>";
     // output data of each row
     while ($row = $result->fetch_assoc()) {
-        echo "<tbody>";
-        echo "<tr>";
+        echo "<br></br>";
         echo "<th>" . $row['id'] . "</th>";
         echo "<th>" . $row['username'] . "</th>";
         echo "<th>" . $row['password'] . "</th>";
         echo "<th>" . $row['email'] . "</th>";
         echo "<br>";
-        echo "</tr>";
         echo "</br>";
-        echo "</tbody>";
         echo "</table>";
 
     }
