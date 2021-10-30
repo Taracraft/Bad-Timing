@@ -6,8 +6,8 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: ../../cms/index.html');
 	exit;
 }
-include("../../cms/style/template/header.php");
-include("../../cms/style/template/nav.php");
+include("style/template/header.php");
+include("style/template/nav.php");
 ?>
 <div class="content">
 <h2>Home Bereich</h2>

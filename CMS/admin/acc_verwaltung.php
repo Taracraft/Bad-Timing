@@ -7,6 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 include("../../cms/style/template/header.php");
+include("../../cms/style/template/nav.php");
 ?>
 <div class="content">
 <h2>Admin-Bereich</h2>

@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <?
 include("style/template/header.php");
-include("../../cms/style/template/nav.php");
+include("style/template/nav.php");
 ?>
 
 		<div class="content">
