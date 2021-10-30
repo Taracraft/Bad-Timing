@@ -9,6 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <?
 include("style/template/header.php");
+include("../../cms/style/template/nav.php");
 ?>
 <?
 echo '<br><b>Auflistung!:</br></b>';

@@ -28,7 +28,7 @@ if ($stmt = $con->prepare('UPDATE accounts SET activation_code = ? WHERE email =
 $newcode = 'activated';
 $stmt->bind_param('sss', $newcode, $_GET['email'], $_GET['code']);
 $stmt->execute();
-echo 'Dein Account wurde Aktiviert! Du kannst dich nun  <a href="index.html">Einloggen</a>!';
+echo 'Dein Account wurde Aktiviert! Du kannst dich nun  <a href="../../index.html">Einloggen</a>!';
 }
 } else {
 echo 'Dieser Account wurde bereits Aktiviert oder exestiert nicht!';

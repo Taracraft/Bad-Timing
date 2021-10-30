@@ -8,6 +8,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 include("../../cms/config/db.php");
 include("../../cms/style/template/header.php");
+include("../../cms/style/template/nav.php");
 ?>
 <div class="content">
 <h2>Benutzer-Liste</h2>

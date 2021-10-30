@@ -8,6 +8,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 include("../../cms/config/db.php");
 include("../../cms/style/template/header.php");
+include("../../cms/style/template/nav.php");
 ?>
 <div class="login">
     <h1>Hinzuf&uuml;gen</h1>

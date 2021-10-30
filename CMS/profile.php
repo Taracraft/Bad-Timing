@@ -20,6 +20,7 @@ $stmt->bind_result($password, $email);
 $stmt->fetch();
 $stmt->close();
 include("style/template/header.php");
+include("../../cms/style/template/nav.php");
 ?>
 
 		<div class="content">

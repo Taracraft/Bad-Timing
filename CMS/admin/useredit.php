@@ -9,6 +9,19 @@ if (!isset($_SESSION['loggedin'])) {
 include("../../cms/config/db.php");
 include("../../cms/style/template/header.php");
 ?>
+<?
+
+// Create connection
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+// Check connection
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+}
+
+$sql = "SELECT username, FROM accounts";
+$result = $con->query($sql);
+?>
+
     <div class="login">
         <h1>Hinzuf&uuml;gen</h1>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
@@ -16,7 +29,7 @@ include("../../cms/style/template/header.php");
                 <i class="fas fa-user"></i>
             </label>
             <input type="text" name="username" placeholder="Benutzername" id="username" required>
-            <input type="submit" value="Hinzuf&uuml;gen">
+            <input type="submit" value="Speichern">
         </form>
     </div>
 
