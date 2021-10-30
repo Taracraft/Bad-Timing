@@ -3,7 +3,7 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
+	header('Location: ../../cms/index.html');
 	exit;
 }
 ?>
@@ -13,19 +13,19 @@ $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
 $extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
  
  
-//Überprüfung der Dateiendung
+//ï¿½berprï¿½fung der Dateiendung
 $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
 if(!in_array($extension, $allowed_extensions)) {
- die("Ungültige Dateiendung. Nur png, jpg, jpeg und gif-Dateien sind erlaubt");
+ die("Ungï¿½ltige Dateiendung. Nur png, jpg, jpeg und gif-Dateien sind erlaubt");
 }
  
-//Überprüfung der Dateigröße
+//ï¿½berprï¿½fung der Dateigrï¿½ï¿½e
 $max_size = 500*1024; //500 KB
 if($_FILES['datei']['size'] > $max_size) {
- die("Bitte keine Dateien größer 500kb hochladen");
+ die("Bitte keine Dateien grï¿½ï¿½er 500kb hochladen");
 }
  
-//Überprüfung dass das Bild keine Fehler enthält
+//ï¿½berprï¿½fung dass das Bild keine Fehler enthï¿½lt
 if(function_exists('exif_imagetype')) { //Die exif_imagetype-Funktion erfordert die exif-Erweiterung auf dem Server
  $allowed_types = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
  $detected_type = exif_imagetype($_FILES['datei']['tmp_name']);
@@ -38,7 +38,7 @@ if(function_exists('exif_imagetype')) { //Die exif_imagetype-Funktion erfordert 
 $new_path = $upload_folder.$filename.'.'.$extension;
  
 //Neuer Dateiname falls die Datei bereits existiert
-if(file_exists($new_path)) { //Falls Datei existiert, hänge eine Zahl an den Dateinamen
+if(file_exists($new_path)) { //Falls Datei existiert, hï¿½nge eine Zahl an den Dateinamen
  $id = 1;
  do {
  $new_path = $upload_folder.$filename.'_'.$id.'.'.$extension;
