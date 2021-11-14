@@ -5,6 +5,7 @@ import datetime
 import logging
 
 from discord import Member
+from discord.ext.commands import MissingPermissions, bot, has_permissions
 
 intents = discord.Intents.all()
 intents.members = True
@@ -84,6 +85,8 @@ async def on_message(message):
                     role = discord.utils.get(g.roles, name="Spieler")
                     await message.author.add_roles(role)
                     await message.channel.send(f'{message.author} wurde zu {role} hinzugefügt')
+            else:
+                await message.channel.send('Benutzung: !spieler <NAME>')
 
         if message.content.lower().startswith("!supporter"):
             args = message.content.split(' ')
@@ -94,6 +97,8 @@ async def on_message(message):
                     role = discord.utils.get(g.roles, name="Supporter")
                     await message.author.add_roles(role)
                     await message.channel.send(f'{member.name} wurde zu {role} hinzugefügt')
+            else:
+                await message.channel.send('Benutzung: !supporter <NAME>')
 
         if message.content.lower().startswith("!builder"):
             args = message.content.split(' ')
@@ -104,6 +109,8 @@ async def on_message(message):
                     role = discord.utils.get(g.roles, name="Builder")
                     await member.add_roles(role)
                     await message.channel.send(f'{member.name} wurde zu {role} hinzugefügt')
+            else:
+                await message.channel.send('Benutzung !builder <NAME>')
 
         if message.content.lower().startswith("!developer"):
             args = message.content.split(' ')
@@ -114,6 +121,8 @@ async def on_message(message):
                     role = discord.utils.get(g.roles, name="Developer")
                     await message.author.add_roles(role)
                     await message.channel.send(f'{message.author} wurde zu {role} hinzugefügt')
+            else:
+                await message.channel.send('Benutzung: !developer <NAME>')
 
         if message.content.lower().startswith("!admin"):
             args = message.content.split(' ')
@@ -124,8 +133,10 @@ async def on_message(message):
                     role = discord.utils.get(g.roles, name="Admin")
                     await message.author.add_roles(role)
                     await message.channel.send(f'{message.author} wurde zu {role} hinzugefügt')
+            else:
+                await message.channel.send('Benutzung: !admin <NAME>')
 
-        if message.content.lower().startswith("!head-Builder"):
+        if message.content.lower().startswith("!head-builder"):
             args = message.content.split(' ')
             if len(args) == 2:
                 member: Member = discord.utils.find(lambda m: args[1] in m.name,
@@ -134,6 +145,8 @@ async def on_message(message):
                     role = discord.utils.get(g.roles, name="Head-Builder")
                     await message.author.add_roles(role)
                     await message.channel.send(f'{message.author} wurde zu {role} hinzugefügt')
+            else:
+                await message.channel.send('Benutzung: !head-builder <NAME>')
 
         if message.content.lower().startswith("!userinfo"):
             args = message.content.split(' ')
@@ -158,6 +171,8 @@ async def on_message(message):
                     embed.set_footer(text='by https://www.Bad-Timing.eu')
                     mess = await message.channel.send(embed=embed)
                     await mess.add_reaction(':100:')
+            else:
+                await message.channel.send('Benutzung: !userinfo <NAME>')
 
         if message.content.lower().startswith("!kick"):
             @bot.command(name="!kick", pass_context=True)
@@ -170,9 +185,6 @@ async def on_message(message):
                 if isinstance(error, MissingPermissions):
                     text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
                     await bot.send_message(ctx.message.channel, text)
-"""
-@client.event
 
-"""
 
 client.run('OTA3MTY1ODIyNzcyOTg1ODg5.YYjOAg.R2yVF4zI81nSQGhX_NNJREuj2q8')
