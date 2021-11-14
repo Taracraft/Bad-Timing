@@ -21,10 +21,17 @@ if ($con->connect_error) {
 $sql = "SELECT username, FROM accounts";
 $result = $con->query($sql);
 ?>
+<?
+if (!empty($r)) {
+    while ($row = $result->fetch($r))
+    ?>
 
-    <div class="login">
-        <h1>Hinzuf&uuml;gen</h1>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
+
+        <div class="login">
+            <h1>Hinzuf&uuml;gen</h1>
+            <form action="<?php
+}
+echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
             <label for="username">
                 <i class="fas fa-user"></i>
             </label>
