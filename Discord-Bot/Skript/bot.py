@@ -3,6 +3,8 @@
 # https://developers.google.com/sheets/api/quickstart/python
 #
 from __future__ import print_function
+
+import json
 import os.path
 
 import columns as columns
@@ -15,7 +17,7 @@ import asyncio
 import discord
 import datetime
 import logging
-from discord import Member
+from discord import Member, channel, message
 from discord.ext.commands import MissingPermissions, bot, has_permissions
 
 intents = discord.Intents.all()
@@ -266,19 +268,26 @@ def main():
         for row in values:
             # Print columns A and E, which correspond to indices 0 and 4.
             print('%s' % (row[1]))
+
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_3).execute()
     values = result.get('values', [])
-
     if not values:
         print('No data found.')
     else:
-        print('Status:')
         for row in values:
-            if Tabelle_3 == False:
-                print(row[1])
+            @client.event
+            async def on_ready():
+                embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                      content='%s % row',
+                                      color=0x22a7f0)
 
+                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                embed.set_footer(text="by https://www.Bad-Timing.eu")
+                global g
+                channel = client.get_channel(901942693750509578)
+                await channel.send(embed=embed)
 
 
     sheet = service.spreadsheets()
