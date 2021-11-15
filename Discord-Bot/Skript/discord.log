@@ -1,8 +1,3 @@
-2021-11-15 23:01:00,447:INFO:discord.client: logging in using static token
-2021-11-15 23:01:00,888:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
-2021-11-15 23:01:01,059:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-dj54",{"micros":52985,"calls":["discord-sessions-blue-prd-2-43",{"micros":51797,"calls":["start_session",{"micros":32884,"calls":["api-prd-main-5bzz",{"micros":26995,"calls":["get_user",{"micros":5286},"add_authorized_ip",{"micros":1364},"get_guilds",{"micros":3006},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":3612,"calls":[]}]}]}] (Session ID: 33eb00b946bef2ee748837e2bfcaea7b).
-2021-11-15 23:01:59,116:INFO:discord.client: Received signal to terminate bot and event loop.
-2021-11-15 23:01:59,116:INFO:discord.client: Cleaning up tasks.
-2021-11-15 23:01:59,116:INFO:discord.client: Cleaning up after 1 tasks.
-2021-11-15 23:01:59,117:INFO:discord.client: All tasks finished cancelling.
-2021-11-15 23:01:59,117:INFO:discord.client: Closing the event loop.
+2021-11-15 23:16:45,714:INFO:discord.client: logging in using static token
+2021-11-15 23:16:46,418:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-11-15 23:16:46,814:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-f4bs",{"micros":55046,"calls":["discord-sessions-blue-prd-2-70",{"micros":53996,"calls":["start_session",{"micros":39370,"calls":["api-prd-main-zvwk",{"micros":29767,"calls":["get_user",{"micros":3701},"add_authorized_ip",{"micros":3512},"get_guilds",{"micros":5570},"coros_wait",{"micros":0}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":1,"calls":[]}]}]}] (Session ID: ba8865fba5409e24c68f789be07ef454).

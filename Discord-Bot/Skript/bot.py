@@ -242,149 +242,152 @@ def main():
             token.write(creds.to_json())
 
     service = build('sheets', 'v4', credentials=creds)
+    def Formularantworten1():
+        # Call the Sheets API           Tabelle=Formularantworten1
+        sheet = service.spreadsheets()
+        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                    range=Tabelle_1).execute()
+        values = result.get('values', [])
 
-    # Call the Sheets API           Tabelle=Formularantworten1
-    sheet = service.spreadsheets()
-    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                range=Tabelle_1).execute()
-    values = result.get('values', [])
+        if not values:
+            print('No data found.')
+        else:
+            @client.event
+            async def on_ready():
+                for row in values:
+                    if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                        continue
+                    embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                          description='{}: {}'.format(row[1], row[2]),
+                                          color=0x22a7f0)
 
-    if not values:
-        print('No data found.')
-    else:
-        @client.event
-        async def on_ready():
-            for row in values:
-                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
-                    continue
-                embed = discord.Embed(title='Folgende Daten gefunden: ',
-                                      description='{}: {}'.format(row[1], row[2]),
-                                      color=0x22a7f0)
+                    embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                    embed.set_footer(text="by https://www.Bad-Timing.eu")
+                    global g
+                    channel = client.get_channel(906899213588254761)
+                    await channel.send(embed=embed)
+    def Titelblatt():
+        sheet = service.spreadsheets()          #Tabelle=Titelblatt
+        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                    range=Tabelle_2).execute()
+        values = result.get('values', [])
 
-                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
-                embed.set_footer(text="by https://www.Bad-Timing.eu")
-                global g
-                channel = client.get_channel(906899213588254761)
-                await channel.send(embed=embed)
-    sheet = service.spreadsheets()          #Tabelle=Titelblatt
-    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                range=Tabelle_2).execute()
-    values = result.get('values', [])
+        if not values:
+            print('No data found.')
+        else:
 
-    if not values:
-        print('No data found.')
-    else:
+            @client.event
+            async def on_ready():
+                for row in values:
+                    if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                        continue
+                    embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                          description='{}: {}'.format(row[1], row[2]),
+                                          color=0x22a7f0)
 
-        @client.event
-        async def on_ready():
-            for row in values:
-                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
-                    continue
-                embed = discord.Embed(title='Folgende Daten gefunden: ',
-                                      description='{}: {}'.format(row[1], row[2]),
-                                      color=0x22a7f0)
+                    embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                    embed.set_footer(text="by https://www.Bad-Timing.eu")
+                    global g
+                    channel = client.get_channel(906899134689214484)
+                    await channel.send(embed=embed)
+    def TodoAllgemein():
+        sheet = service.spreadsheets()              #Tabelle=Todo(Allgemein)
+        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                    range=Tabelle_3).execute()
+        values = result.get('values', [])
+        if not values:
+            print('No data found.')
+        else:
+            @client.event
+            async def on_ready():
+                for row in values:
+                    if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                        continue
+                    embed = discord.Embed(title='Folgende Daten gefunden: ',
+                            description='{}: {}'.format(row[1],row[2]),
+                                          color=0x22a7f0)
 
-                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
-                embed.set_footer(text="by https://www.Bad-Timing.eu")
-                global g
-                channel = client.get_channel(906899134689214484)
-                await channel.send(embed=embed)
-
-    sheet = service.spreadsheets()              #Tabelle=Todo(Allgemein)
-    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                range=Tabelle_3).execute()
-    values = result.get('values', [])
-    if not values:
-        print('No data found.')
-    else:
-        @client.event
-        async def on_ready():
-            for row in values:
-                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
-                    continue
-                embed = discord.Embed(title='Folgende Daten gefunden: ',
-                        description='{}: {}'.format(row[1],row[2]),
-                                      color=0x22a7f0)
-
-                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
-                embed.set_footer(text="by https://www.Bad-Timing.eu")
-                global g
-                channel = client.get_channel(906898823044014130)
-                await channel.send(embed=embed)
+                    embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                    embed.set_footer(text="by https://www.Bad-Timing.eu")
+                    global g
+                    channel = client.get_channel(906898823044014130)
+                    await channel.send(embed=embed)
 
 
+    def todobauen():
+        sheet = service.spreadsheets()              #Tabelle=Todo(Bauen)
+        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                    range=Tabelle_4).execute()
+        values = result.get('values', [])
 
-    sheet = service.spreadsheets()              #Tabelle=Todo(Bauen)
-    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                range=Tabelle_4).execute()
-    values = result.get('values', [])
+        if not values:
+            print('No data found.')
+        else:
+            @client.event
+            async def on_ready():
+                for row in values:
+                    if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                        continue
+                    embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                          description='{}: {}'.format(row[1], row[2]),
+                                          color=0x22a7f0)
 
-    if not values:
-        print('No data found.')
-    else:
-        @client.event
-        async def on_ready():
-            for row in values:
-                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
-                    continue
-                embed = discord.Embed(title='Folgende Daten gefunden: ',
-                                      description='{}: {}'.format(row[1], row[2]),
-                                      color=0x22a7f0)
+                    embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                    embed.set_footer(text="by https://www.Bad-Timing.eu")
+                    global g
+                    channel = client.get_channel(906898916639920148)
+                    await channel.send(embed=embed)
+    def todoinfobauen():
+        sheet = service.spreadsheets()              #Tabelle=Todo(Info-Bauen)
+        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                    range=Tabelle_5).execute()
+        values = result.get('values', [])
 
-                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
-                embed.set_footer(text="by https://www.Bad-Timing.eu")
-                global g
-                channel = client.get_channel(906898916639920148)
-                await channel.send(embed=embed)
-    sheet = service.spreadsheets()              #Tabelle=Todo(Info-Bauen)
-    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                range=Tabelle_5).execute()
-    values = result.get('values', [])
+        if not values:
+            print('No data found.')
+        else:
 
-    if not values:
-        print('No data found.')
-    else:
+            @client.event
+            async def on_ready():
+                for row in values:
+                    if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                        continue
+                    embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                          description='{}: {}'.format(row[1], row[2]),
+                                          color=0x22a7f0)
 
-        @client.event
-        async def on_ready():
-            for row in values:
-                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
-                    continue
-                embed = discord.Embed(title='Folgende Daten gefunden: ',
-                                      description='{}: {}'.format(row[1], row[2]),
-                                      color=0x22a7f0)
+                    embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                    embed.set_footer(text="by https://www.Bad-Timing.eu")
+                    global g
+                    channel = client.get_channel(906899000047861790)
+                    await channel.send(embed=embed)
+    def todoentwickeln():
+        sheet = service.spreadsheets()              #Tabelle=Todo(Entwickeln)
+        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                    range=Tabelle_6).execute()
+        values = result.get('values', [])
 
-                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
-                embed.set_footer(text="by https://www.Bad-Timing.eu")
-                global g
-                channel = client.get_channel(906899000047861790)
-                await channel.send(embed=embed)
-    sheet = service.spreadsheets()              #Tabelle=Todo(Entwickeln)
-    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                range=Tabelle_6).execute()
-    values = result.get('values', [])
+        if not values:
+            print('No data found.')
+        else:
 
-    if not values:
-        print('No data found.')
-    else:
+            @client.event
+            async def on_ready():
+                for row in values:
+                    if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                        continue
+                    embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                          description='{}: {}'.format(row[1], row[2]),
+                                          color=0x22a7f0)
 
-        @client.event
-        async def on_ready():
-            for row in values:
-                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
-                    continue
-                embed = discord.Embed(title='Folgende Daten gefunden: ',
-                                      description='{}: {}'.format(row[1], row[2]),
-                                      color=0x22a7f0)
-
-                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
-                embed.set_footer(text="by https://www.Bad-Timing.eu")
-                global g
-                channel = client.get_channel(906899062006116372)
-                await channel.send(embed=embed)
+                    embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                    embed.set_footer(text="by https://www.Bad-Timing.eu")
+                    global g
+                    channel = client.get_channel(906899062006116372)
+                    await channel.send(embed=embed)
 
 
 if __name__ == '__main__':
     main()
-
+main()
 client.run('OTA3MTY1ODIyNzcyOTg1ODg5.YYjOAg.R2yVF4zI81nSQGhX_NNJREuj2q8')
