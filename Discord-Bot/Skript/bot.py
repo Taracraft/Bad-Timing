@@ -337,6 +337,7 @@ def main():
                     global g
                     channel = client.get_channel(906898916639920148)
                     await channel.send(embed=embed)
+
     def todoinfobauen():
         sheet = service.spreadsheets()              #Tabelle=Todo(Info-Bauen)
         result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
@@ -361,6 +362,7 @@ def main():
                     global g
                     channel = client.get_channel(906899000047861790)
                     await channel.send(embed=embed)
+
     def todoentwickeln():
         sheet = service.spreadsheets()              #Tabelle=Todo(Entwickeln)
         result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
@@ -385,9 +387,15 @@ def main():
                     global g
                     channel = client.get_channel(906899062006116372)
                     await channel.send(embed=embed)
-
+    Formularantworten1()
+    Titelblatt()
+    TodoAllgemein()
+    todobauen()
+    todoinfobauen()
+    todoentwickeln()
 
 if __name__ == '__main__':
     main()
-main()
+
+
 client.run('OTA3MTY1ODIyNzcyOTg1ODg5.YYjOAg.R2yVF4zI81nSQGhX_NNJREuj2q8')
