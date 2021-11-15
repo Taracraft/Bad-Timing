@@ -42,7 +42,6 @@ async def status_task():
         await asyncio.sleep(5)
 
 
-g = None
 
 
 @client.event
