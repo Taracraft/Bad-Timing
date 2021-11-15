@@ -279,7 +279,7 @@ def main():
     else:
         for row in values:
             @client.event
-            async def on_ready(row):
+            async def on_ready():
                 embed = discord.Embed(title='Folgende Daten gefunden: ',
                                       ergebnis=('%s' % (row[1])),
                                       color=0x22a7f0)
