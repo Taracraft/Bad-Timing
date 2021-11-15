@@ -62,7 +62,7 @@ async def on_member_join(member: discord.Member):
     channel = client.get_channel(812581364799897621)
     if member.guild.id == 759212028744695808:
         await member.add_roles(role)
-        await channel.send("**Hey! {member.name}**\n Willkommen auf dem Discord Server von Bad-Timing! \n Viel Spaß!")
+        await channel.send(f'**Hey! {member.name}**\n Willkommen auf dem Discord Server von Bad-Timing! \n Viel Spaß!')
 
 
 @client.event
@@ -210,12 +210,12 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1dwI3YjMYSsyr3PbkYN5LXKP-cAkXpbLsSmpo776beRE'
-Tabelle_1 = ("Formularantworten1!A1:C12")
-Tabelle_2 = ("Titelblatt!A1:C12")
-Tabelle_3 = ("To-Do(Allgemein)!A1:C12")
-Tabelle_4 = ("To-Do(Bauen)!A1:C12")
-Tabelle_5 = ("Info-Bauen!A1:C12")
-Tabelle_6 = ("To-Do(Entwickeln)!A1:C12")
+Tabelle_1 = ("Formularantworten1!A1:B12")
+Tabelle_2 = ("Titelblatt!A1:C5")
+Tabelle_3 = ("To-Do(Allgemein)!A1:D12")
+Tabelle_4 = ("To-Do(Bauen)!A1:C50")
+Tabelle_5 = ("Info-Bauen!A1:B12")
+Tabelle_6 = ("To-Do(Entwickeln)!A1:D12")
 
 def main():
     """Shows basic usage of the Sheets API.
@@ -245,6 +245,69 @@ def main():
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_1).execute()
+    values = result.get('values', [])
+
+    if not values:
+        print('No data found.')
+    else:
+        print('Status:')
+        for row in values:
+            # Print columns A and E, which correspond to indices 0 and 4.
+            print('%s' % (row[1]))
+    sheet = service.spreadsheets()
+    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                range=Tabelle_2).execute()
+    values = result.get('values', [])
+
+    if not values:
+        print('No data found.')
+    else:
+        print('Status:')
+        for row in values:
+            # Print columns A and E, which correspond to indices 0 and 4.
+            print('%s' % (row[1]))
+    sheet = service.spreadsheets()
+    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                range=Tabelle_3).execute()
+    values = result.get('values', [])
+
+    if not values:
+        print('No data found.')
+    else:
+        print('Status:')
+        for row in values:
+            if Tabelle_3 == False:
+                print(row[1])
+
+
+
+    sheet = service.spreadsheets()
+    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                range=Tabelle_4).execute()
+    values = result.get('values', [])
+
+    if not values:
+        print('No data found.')
+    else:
+        print('Status:')
+        for row in values:
+            # Print columns A and E, which correspond to indices 0 and 4.
+            print('%s' % (row[1]))
+    sheet = service.spreadsheets()
+    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                range=Tabelle_5).execute()
+    values = result.get('values', [])
+
+    if not values:
+        print('No data found.')
+    else:
+        print('Status:')
+        for row in values:
+            # Print columns A and E, which correspond to indices 0 and 4.
+            print('%s' % (row[1]))
+    sheet = service.spreadsheets()
+    result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                range=Tabelle_6).execute()
     values = result.get('values', [])
 
     if not values:
