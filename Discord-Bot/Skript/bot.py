@@ -7,7 +7,7 @@ from __future__ import print_function
 import json
 import os.path
 
-import columns as columns
+#import columns as columns
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -276,11 +276,13 @@ def main():
     if not values:
         print('No data found.')
     else:
-        for row in values:
-            @client.event
-            async def on_ready():
+        @client.event
+        async def on_ready():
+            for row in values:
+                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                    continue
                 embed = discord.Embed(title='Folgende Daten gefunden: ',
-                                      ergebnis=('%s' % (row[1])),
+                        description='{}: {}'.format(row[1],row[2]),
                                       color=0x22a7f0)
 
                 embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
