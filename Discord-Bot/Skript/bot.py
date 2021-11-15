@@ -42,7 +42,6 @@ async def status_task():
         await asyncio.sleep(5)
 
 
-g = None
 
 
 @client.event
@@ -289,6 +288,8 @@ def main():
                 global g
                 channel = client.get_channel(901942693750509578)
                 await channel.send(embed=embed)
+
+
 
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
