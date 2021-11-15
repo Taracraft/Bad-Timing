@@ -243,7 +243,7 @@ def main():
 
     service = build('sheets', 'v4', credentials=creds)
 
-    # Call the Sheets API
+    # Call the Sheets API           Tabelle=Formularantworten1
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_1).execute()
@@ -266,7 +266,7 @@ def main():
                 global g
                 channel = client.get_channel(906899213588254761)
                 await channel.send(embed=embed)
-    sheet = service.spreadsheets()
+    sheet = service.spreadsheets()          #Tabelle=Titelblatt
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_2).execute()
     values = result.get('values', [])
@@ -290,7 +290,7 @@ def main():
                 channel = client.get_channel(906899134689214484)
                 await channel.send(embed=embed)
 
-    sheet = service.spreadsheets()
+    sheet = service.spreadsheets()              #Tabelle=Todo(Allgemein)
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_3).execute()
     values = result.get('values', [])
@@ -314,7 +314,7 @@ def main():
 
 
 
-    sheet = service.spreadsheets()
+    sheet = service.spreadsheets()              #Tabelle=Todo(Bauen)
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_4).execute()
     values = result.get('values', [])
@@ -336,7 +336,7 @@ def main():
                 global g
                 channel = client.get_channel(906898916639920148)
                 await channel.send(embed=embed)
-    sheet = service.spreadsheets()
+    sheet = service.spreadsheets()              #Tabelle=Todo(Info-Bauen)
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_5).execute()
     values = result.get('values', [])
@@ -359,7 +359,7 @@ def main():
                 global g
                 channel = client.get_channel(906899000047861790)
                 await channel.send(embed=embed)
-    sheet = service.spreadsheets()
+    sheet = service.spreadsheets()              #Tabelle=Todo(Entwickeln)
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_6).execute()
     values = result.get('values', [])
