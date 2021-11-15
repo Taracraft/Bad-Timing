@@ -62,7 +62,7 @@ async def on_member_join(member: discord.Member):
     channel = client.get_channel(812581364799897621)
     if member.guild.id == 759212028744695808:
         await member.add_roles(role)
-        await channel.send("**Hey! %s**\n Willkommen auf dem %s Discord Server von Bad-Timing%s! \n Viel Spaß!")
+        await channel.send("**Hey! {member.name}**\n Willkommen auf dem Discord Server von Bad-Timing! \n Viel Spaß!")
 
 
 @client.event
@@ -210,7 +210,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1dwI3YjMYSsyr3PbkYN5LXKP-cAkXpbLsSmpo776beRE'
-SAMPLE_RANGE_NAME = ("To-Do(Allgemein)!A1:B12")
+SAMPLE_RANGE_NAME = ("To-Do(Allgemein)!A1:C12")
 
 
 def main():
@@ -246,10 +246,9 @@ def main():
     if not values:
         print('No data found.')
     else:
-        print('Name, Major:')
+        print('Status:')
         for row in values:
             # Print columns A and E, which correspond to indices 0 and 4.
-            print(len(row))
             print('%s' % (row[1]))
 
 
