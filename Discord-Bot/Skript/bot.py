@@ -210,8 +210,11 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1dwI3YjMYSsyr3PbkYN5LXKP-cAkXpbLsSmpo776beRE'
-SAMPLE_RANGE_NAME = ("To-Do(Allgemein)!A1:C12")
-
+Tabelle_1 = ("To-Do(Allgemein)!A1:C12")
+Tabelle_2 = ("To-Do(Allgemein)!A1:C12")
+Tabelle_3 = ("To-Do(Allgemein)!A1:C12")
+Tabelle_4 = ("To-Do(Allgemein)!A1:C12")
+Tabelle_5 = ("To-Do(Allgemein)!A1:C12")
 
 def main():
     """Shows basic usage of the Sheets API.
@@ -240,7 +243,7 @@ def main():
     # Call the Sheets API
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                range=SAMPLE_RANGE_NAME).execute()
+                                range=Tabelle_1).execute()
     values = result.get('values', [])
 
     if not values:
