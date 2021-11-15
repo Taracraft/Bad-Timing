@@ -219,6 +219,7 @@ Tabelle_4 = ("To-Do(Bauen)!A1:C50")
 Tabelle_5 = ("Info-Bauen!A1:B12")
 Tabelle_6 = ("To-Do(Entwickeln)!A1:D12")
 
+
 def main():
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
@@ -278,9 +279,9 @@ def main():
     else:
         for row in values:
             @client.event
-            async def on_ready():
+            async def on_ready(row):
                 embed = discord.Embed(title='Folgende Daten gefunden: ',
-                                      content='%s % row',
+                                      ergebnis=('%s' % (row[1])),
                                       color=0x22a7f0)
 
                 embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
@@ -288,7 +289,6 @@ def main():
                 global g
                 channel = client.get_channel(901942693750509578)
                 await channel.send(embed=embed)
-
 
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
