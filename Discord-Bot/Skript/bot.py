@@ -42,21 +42,6 @@ async def status_task():
         await asyncio.sleep(5)
 
 
-
-
-@client.event
-async def on_ready():
-    global g
-    print("Bot is ready!")
-    print("Logged in as: " + client.user.name)
-    print("Bot ID: " + str(client.user.id))
-    g = client.get_guild(759212028744695808)
-    for guild in client.guilds:
-        print("Connected to server: {}".format(guild))
-    print("------")
-    client.loop.create_task(status_task())
-
-
 @client.event
 async def on_member_join(member: discord.Member):
     role = discord.utils.get(member.guild.roles, name="Spieler")
@@ -211,12 +196,12 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1dwI3YjMYSsyr3PbkYN5LXKP-cAkXpbLsSmpo776beRE'
-Tabelle_1 = ("Formularantworten1!A1:B12")
-Tabelle_2 = ("Titelblatt!A1:C5")
-Tabelle_3 = ("To-Do(Allgemein)!A2:D12")
-Tabelle_4 = ("To-Do(Bauen)!A1:C50")
-Tabelle_5 = ("Info-Bauen!A1:B12")
-Tabelle_6 = ("To-Do(Entwickeln)!A1:D12")
+Tabelle_1 = ("Formularantworten1!A1:B100")
+Tabelle_2 = ("Titelblatt!A1:C100")
+Tabelle_3 = ("To-Do(Allgemein)!A2:D100")
+Tabelle_4 = ("To-Do(Bauen)!A1:C100")
+Tabelle_5 = ("Info-Bauen!A1:B100")
+Tabelle_6 = ("To-Do(Entwickeln)!A1:D100")
 
 
 def main():
@@ -225,6 +210,16 @@ def main():
     """
     @client.event
     async def on_ready():
+        global g
+        print("Bot is ready!")
+        print("Logged in as: " + client.user.name)
+        print("Bot ID: " + str(client.user.id))
+        g = client.get_guild(759212028744695808)
+        for guild in client.guilds:
+            print("Connected to server: {}".format(guild))
+        print("------")
+        client.loop.create_task(status_task())
+
         creds = None
         # The file token.json stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
