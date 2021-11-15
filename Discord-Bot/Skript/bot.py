@@ -252,10 +252,20 @@ def main():
     if not values:
         print('No data found.')
     else:
-        print('Status:')
-        for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s' % (row[1]))
+        @client.event
+        async def on_ready():
+            for row in values:
+                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                    continue
+                embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                      description='{}: {}'.format(row[1], row[2]),
+                                      color=0x22a7f0)
+
+                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                embed.set_footer(text="by https://www.Bad-Timing.eu")
+                global g
+                channel = client.get_channel(906899213588254761)
+                await channel.send(embed=embed)
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_2).execute()
@@ -264,10 +274,21 @@ def main():
     if not values:
         print('No data found.')
     else:
-        print('Status:')
-        for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s' % (row[1]))
+
+        @client.event
+        async def on_ready():
+            for row in values:
+                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                    continue
+                embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                      description='{}: {}'.format(row[1], row[2]),
+                                      color=0x22a7f0)
+
+                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                embed.set_footer(text="by https://www.Bad-Timing.eu")
+                global g
+                channel = client.get_channel(906899134689214484)
+                await channel.send(embed=embed)
 
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
@@ -288,7 +309,7 @@ def main():
                 embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
                 embed.set_footer(text="by https://www.Bad-Timing.eu")
                 global g
-                channel = client.get_channel(901942693750509578)
+                channel = client.get_channel(906898823044014130)
                 await channel.send(embed=embed)
 
 
@@ -301,10 +322,20 @@ def main():
     if not values:
         print('No data found.')
     else:
-        print('Status:')
-        for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s' % (row[1]))
+        @client.event
+        async def on_ready():
+            for row in values:
+                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                    continue
+                embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                      description='{}: {}'.format(row[1], row[2]),
+                                      color=0x22a7f0)
+
+                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                embed.set_footer(text="by https://www.Bad-Timing.eu")
+                global g
+                channel = client.get_channel(906898916639920148)
+                await channel.send(embed=embed)
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_5).execute()
@@ -313,10 +344,21 @@ def main():
     if not values:
         print('No data found.')
     else:
-        print('Status:')
-        for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s' % (row[1]))
+
+        @client.event
+        async def on_ready():
+            for row in values:
+                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                    continue
+                embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                      description='{}: {}'.format(row[1], row[2]),
+                                      color=0x22a7f0)
+
+                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                embed.set_footer(text="by https://www.Bad-Timing.eu")
+                global g
+                channel = client.get_channel(906899000047861790)
+                await channel.send(embed=embed)
     sheet = service.spreadsheets()
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=Tabelle_6).execute()
@@ -325,10 +367,21 @@ def main():
     if not values:
         print('No data found.')
     else:
-        print('Status:')
-        for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s' % (row[1]))
+
+        @client.event
+        async def on_ready():
+            for row in values:
+                if not row or row[0] != 'FALSE' or len(row[1]) == 0:
+                    continue
+                embed = discord.Embed(title='Folgende Daten gefunden: ',
+                                      description='{}: {}'.format(row[1], row[2]),
+                                      color=0x22a7f0)
+
+                embed.set_thumbnail(url="https://cdn.discordapp.com/embed/avatars/0.png")
+                embed.set_footer(text="by https://www.Bad-Timing.eu")
+                global g
+                channel = client.get_channel(906899062006116372)
+                await channel.send(embed=embed)
 
 
 if __name__ == '__main__':
