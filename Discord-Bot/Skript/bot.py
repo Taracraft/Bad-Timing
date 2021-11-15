@@ -4,6 +4,8 @@
 #
 from __future__ import print_function
 import os.path
+
+import columns as columns
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -208,7 +210,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1dwI3YjMYSsyr3PbkYN5LXKP-cAkXpbLsSmpo776beRE'
-SAMPLE_RANGE_NAME = 'Formularantworten1!A1:B2'
+SAMPLE_RANGE_NAME = ("To-Do(Allgemein)!A1:B12")
 
 
 def main():
@@ -247,7 +249,8 @@ def main():
         print('Name, Major:')
         for row in values:
             # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s, %s' % (row[0], row[4]))
+            print(len(row))
+            print('%s' % (row[1]))
 
 
 if __name__ == '__main__':
