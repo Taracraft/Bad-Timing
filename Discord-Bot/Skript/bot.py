@@ -8,6 +8,7 @@ import json
 import os.path
 
 #import columns as columns
+from discord.abc import Messageable
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -241,6 +242,14 @@ def main():
         service = build('sheets', 'v4', credentials=creds)
         
         # Call the Sheets API           Tabelle=Formularantworten1
+    #    channels = [906899134689214484, 906898823044014130, 906898916639920148, 906899000047861790, 906899062006116372, 906899213588254761]
+     #   for channel in channels:
+     #       c= guild.get_channel(channel)
+      #      msg = c.get_messages()
+      #      await message.delete(msg)
+
+
+#
         sheet = service.spreadsheets()
         result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                     range=Tabelle_1).execute()
