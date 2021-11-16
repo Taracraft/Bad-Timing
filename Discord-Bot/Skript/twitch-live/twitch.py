@@ -1,4 +1,3 @@
-
 import json
 from datetime import datetime
 
@@ -17,9 +16,11 @@ def get_app_access_token():
     response = requests.post("https://id.twitch.tv/oauth2/token", params=params)
     acess_token = response.json()['access_token']
     return acess_token
+
+
 # alle 60 tage ausführen Heute 16.11.2021 Nächstesmal 16.01.2021
-#access_token = get_app_access_token()
-#print(access_token)
+# access_token = get_app_access_token()
+# print(access_token)
 
 def get_users(login_names):
     params = {
@@ -30,6 +31,7 @@ def get_users(login_names):
         "Client-Id": config["client_id"]
     }
     responce = requests.get("https://api.twitch.tv/helix/users", params=params, headers=headers)
+
     return {entry["login"]: entry["id"] for entry in responce.json()["data"]}
 
 
@@ -42,15 +44,16 @@ def get_streams(users):
         "Client-Id": config["client_id"]
     }
 
-
     responce = requests.get("https://api.twitch.tv/helix/streams", params=params, headers=headers)
     return {entry["user_login"]: entry for entry in responce.json()["data"]}
 
+
 online_users = {}
+
 
 def get_notications():
     users = get_users(config["watchlist"])
-    streams= get_streams(users)
+    streams = get_streams(users)
 
     notifications = []
     for user_name in config["watchlist"]:
@@ -69,5 +72,4 @@ def get_notications():
                 notifications.append(streams[user_name])
 
                 online_users[user_name] = started_at
-
     return notifications
