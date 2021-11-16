@@ -92,11 +92,6 @@ async def on_message(message):
                     await message.channel.send(f'{message.author} wurde zu {role} hinzugefügt')
             else:
                 await message.channel.send('Benutzung: !spieler <NAME>')
-#delete
-        if message.content.startswith('!clear'):
-            tmp = await message.channel.send('Clearing messages...')
-            async for msg in channel.history(message.channel):
-                await client.delete_message(msg)
 
         if message.content.lower().startswith("!supporter"):
             args = message.content.split(' ')
@@ -196,6 +191,8 @@ async def on_message(message):
                     text = "Sorry {}, you do not have permissions to do that!".format(ctx.message.author)
                     await bot.send_message(ctx.message.channel, text)
 
+def is_not_pinned(mess):
+    return not mess.pinned
 
 # google-sheet
 
@@ -204,12 +201,13 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1dwI3YjMYSsyr3PbkYN5LXKP-cAkXpbLsSmpo776beRE'
-Tabelle_1 = ("Formularantworten1!A1:B100")
+Tabelle_1 = ("Formularantworten1!A1:C100")
 Tabelle_2 = ("Titelblatt!A1:C100")
 Tabelle_3 = ("To-Do(Allgemein)!A2:D100")
 Tabelle_4 = ("To-Do(Bauen)!A1:C100")
 Tabelle_5 = ("Info-Bauen!A1:B100")
 Tabelle_6 = ("To-Do(Entwickeln)!A1:D100")
+
 
 
 def main():
@@ -228,6 +226,19 @@ def main():
         print("------")
         client.loop.create_task(status_task())
 
+        # delete
+        arr = [client.get_channel(906898916639920148),
+               client.get_channel(906899134689214484),
+               client.get_channel(906898823044014130),
+               client.get_channel(906899000047861790),
+               client.get_channel(906899062006116372),
+               client.get_channel(906899213588254761)]
+
+        for channel in arr:
+            print('Clearing messages...')
+            await channel.purge(limit=1000)
+        else:
+            print(channel, 'Keine Einträge gefunden')
         creds = None
         # The file token.json stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
