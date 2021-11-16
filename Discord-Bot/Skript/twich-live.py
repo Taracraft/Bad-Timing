@@ -1,11 +1,12 @@
+import asyncio
 import os
 import json
 import discord
 import requests
+from discord import client
 from discord.ext import tasks, commands
 from twitchAPI.twitch import Twitch
 from discord.utils import get
-
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='$', intents=intents)
 
@@ -21,6 +22,7 @@ API_HEADERS = {
     'Client-ID': client_id,
     'Accept': 'application/vnd.twitchtv.v5+json',
 }
+
 
 
 # Returns true if online, false if not.
@@ -124,5 +126,13 @@ async def add_twitch(ctx, twitch_name):
     await ctx.send(f"Added {twitch_name} for {ctx.author} to the notifications list.")
 
 
-print('Server Running')
+@bot.event
+async def on_ready():
+    print("Bot is ready!")
+    print("------")
+
+
+
+
+
 bot.run(TOKEN)
