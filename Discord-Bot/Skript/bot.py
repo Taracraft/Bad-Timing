@@ -55,6 +55,8 @@ async def on_member_join(member: discord.Member):
 @client.event
 async def on_message(message):
     global g
+
+
     if not message.content.startswith("!"):
         guild = message.guild
         log_channel = client.get_channel(901942693750509578)
@@ -90,6 +92,11 @@ async def on_message(message):
                     await message.channel.send(f'{message.author} wurde zu {role} hinzugefügt')
             else:
                 await message.channel.send('Benutzung: !spieler <NAME>')
+#delete
+        if message.content.startswith('!clear'):
+            tmp = await message.channel.send('Clearing messages...')
+            async for msg in channel.history(message.channel):
+                await client.delete_message(msg)
 
         if message.content.lower().startswith("!supporter"):
             args = message.content.split(' ')
@@ -242,11 +249,8 @@ def main():
         service = build('sheets', 'v4', credentials=creds)
         
         # Call the Sheets API           Tabelle=Formularantworten1
-    #    channels = [906899134689214484, 906898823044014130, 906898916639920148, 906899000047861790, 906899062006116372, 906899213588254761]
-     #   for channel in channels:
-     #       c= guild.get_channel(channel)
-      #      msg = c.get_messages()
-      #      await message.delete(msg)
+
+
 
 
 #
