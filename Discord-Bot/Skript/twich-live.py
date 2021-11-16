@@ -9,14 +9,14 @@ from discord.utils import get
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='$', intents=intents)
 
-TOKEN = os.getenv('TESTINGMF_DISCORD_TOKEN')
+TOKEN = ('OTEwMTIxNjc1MjQ3NDYwMzky.YZOO3A.zw8q1q4ZqYvh9ac_SUbHwdsuDWI')
 
 # Authentication with Twitch API.
-client_id = "tqanfnani3tygk9a9esl8conhnaz6wj"
-client_secret = "tqanfnani3tygk9a9esl8conhnaz6wj"
+client_id = "c9i0ft3nh3o7xfzpibaka32iayhm17"
+client_secret = "gweang8ctjtiy7a4nfkc6ebginpku7"
 twitch = Twitch(client_id, client_secret)
 twitch.authenticate_app([])
-TWITCH_STREAM_API_ENDPOINT_V5 = "https://api.twitch.tv/kraken/streams/{}"
+TWITCH_STREAM_API_ENDPOINT_V5 = "https://api.twitch.tv/helix/streams/{}"
 API_HEADERS = {
     'Client-ID': client_id,
     'Accept': 'application/vnd.twitchtv.v5+json',
@@ -55,9 +55,9 @@ async def on_ready():
         # Makes sure the json isn't empty before continuing.
         if streamers is not None:
             # Gets the guild, 'twitch streams' channel, and streaming role.
-            guild = bot.get_guild(1234567890)
-            channel = bot.get_channel(1234567890)
-            role = get(guild.roles, id=1234567890)
+            guild = bot.get_guild(759212028744695808)
+            channel = bot.get_channel(910123877802311720)
+            role = get(guild.roles, id=910124374751838208)
             # Loops through the json and gets the key,value which in this case is the user_id and twitch_name of
             # every item in the json.
             for user_id, twitch_name in streamers.items():
@@ -71,7 +71,7 @@ async def on_ready():
                     # Checks to see if the live message has already been sent.
                     async for message in channel.history(limit=200):
                         # If it has, break the loop (do nothing).
-                        if str(user.mention) in message.content and "is now streaming" in message.content:
+                        if str(user.mention) in message.content and "ist jetzt Live!" in message.content:
                             break
                         # If it hasn't, assign them the streaming role and send the message.
                         else:
@@ -85,7 +85,7 @@ async def on_ready():
                             await channel.send(
                                 f":red_circle: **LIVE**\n{user.mention} is now streaming on Twitch!"
                                 f"\nhttps://www.twitch.tv/{twitch_name}")
-                            print(f"{user} started streaming. Sending a notification.")
+                            print(f"{user} startet Stream. Schicke eine Benachrichtigung.")
                             break
                 # If they aren't live do this:
                 else:
@@ -98,7 +98,7 @@ async def on_ready():
                     # Checks to see if the live notification was sent.
                     async for message in channel.history(limit=200):
                         # If it was, delete it.
-                        if str(user.mention) in message.content and "is now streaming" in message.content:
+                        if str(user.mention) in message.content and "ist jetzt Live!" in message.content:
                             await message.delete()
 
     # Start your loop.
