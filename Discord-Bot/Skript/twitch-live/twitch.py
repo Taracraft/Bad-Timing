@@ -47,8 +47,6 @@ def get_streams(users):
 
     response = requests.get("https://api.twitch.tv/helix/streams", params=params, headers=headers)
     return {entry["user_login"]: entry for entry in response.json()["data"]}
-
-
 online_users = {}
 
 
@@ -70,3 +68,5 @@ def get_notifications():
                 online_users[user_name] = started_at
 
     return notifications
+
+
