@@ -25,14 +25,14 @@ def get_users(login_names):
     params = {
         "login": login_names
     }
-
     headers = {
         "Authorization": "Bearer {}".format(config["access_token"]),
         "Client-Id": config["client_id"]
     }
-
-    response = requests.get("https://api.twitch.tv/helix/users", params=params, headers=headers)
-    return {entry["login"]: entry["id"] for entry in response.json()["data"]}
+    responce = requests.get("https://api.twitch.tv/helix/users", params=params, headers=headers)
+    print(responce.status_code)
+    print(responce.text)
+    return {entry["login"]: entry["id"] for entry in responce.json()["data"]}
 
 
 def get_streams(users):
@@ -46,6 +46,8 @@ def get_streams(users):
     }
 
     response = requests.get("https://api.twitch.tv/helix/streams", params=params, headers=headers)
+    print(response.status_code)
+    print(response.text)
     return {entry["user_login"]: entry for entry in response.json()["data"]}
 online_users = {}
 
@@ -53,20 +55,23 @@ online_users = {}
 def get_notifications():
     users = get_users(config["watchlist"])
     streams = get_streams(users)
-
+    print(users)
+    print(streams)
     notifications = []
     for user_name in config["watchlist"]:
         if user_name not in online_users:
             online_users[user_name] = datetime.utcnow()
+            print(online_users)
 
         if user_name not in streams:
             online_users[user_name] = None
+            print(online_users)
         else:
             started_at = datetime.strptime(streams[user_name]["started_at"], "%Y-%m-%dT%H:%M:%SZ")
             if online_users[user_name] is None or started_at > online_users[user_name]:
                 notifications.append(streams[user_name])
                 online_users[user_name] = started_at
-
+                print(online_users)
     return notifications
 
 

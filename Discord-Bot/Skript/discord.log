@@ -1,10 +1,58 @@
-2021-11-17 17:49:37,748:INFO:discord.client: logging in using static token
-2021-11-17 17:49:38,229:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
-2021-11-17 17:49:38,426:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-0spf",{"micros":81887,"calls":["discord-sessions-green-prd-2-62",{"micros":80640,"calls":["start_session",{"micros":41051,"calls":["api-prd-main-hcpn",{"micros":36871,"calls":["get_user",{"micros":7737},"add_authorized_ip",{"micros":1961},"get_guilds",{"micros":6050},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":2,"calls":[]},"presence_connect",{"micros":25061,"calls":[]}]}]}] (Session ID: a1953a5c82864cdc84516bf2bf94a770).
-2021-11-17 19:37:32,453:INFO:discord.gateway: Websocket closed with 1001, attempting a reconnect.
-2021-11-17 19:37:32,456:INFO:discord.client: Got a request to RESUME the websocket.
-2021-11-17 19:37:32,785:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
-2021-11-17 19:37:32,905:INFO:discord.gateway: Shard ID None has successfully RESUMED session a1953a5c82864cdc84516bf2bf94a770 under trace ["gateway-prd-main-ck2q",{"micros":647,"calls":["discord-sessions-green-prd-2-62",{"micros":23}]}].
-2021-11-17 21:30:05,194:INFO:discord.client: Got a request to RESUME the websocket.
-2021-11-17 21:30:05,532:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
-2021-11-17 21:30:05,645:INFO:discord.gateway: Shard ID None has successfully RESUMED session a1953a5c82864cdc84516bf2bf94a770 under trace ["gateway-prd-main-z6j9",{"micros":1880,"calls":["discord-sessions-green-prd-2-62",{"micros":52}]}].
+2021-11-18 17:45:05,842:INFO:discord.client: logging in using static token
+2021-11-18 17:45:06,394:INFO:discord.gateway: Shard ID None has sent the IDENTIFY payload.
+2021-11-18 17:45:06,632:INFO:discord.gateway: Shard ID None has connected to Gateway: ["gateway-prd-main-t7ln",{"micros":112468,"calls":["discord-sessions-green-prd-2-40",{"micros":111523,"calls":["start_session",{"micros":54189,"calls":["api-prd-main-cnf7",{"micros":50675,"calls":["get_user",{"micros":3234},"add_authorized_ip",{"micros":1973},"get_guilds",{"micros":7964},"coros_wait",{"micros":1}]}]},"guilds_connect",{"micros":1,"calls":[]},"presence_connect",{"micros":43620,"calls":[]}]}]}] (Session ID: b21c9675b09dd4197f91c0e1a8136fa5).
+2021-11-18 18:37:12,110:INFO:discord.gateway: Websocket closed with 1006, attempting a reconnect.
+2021-11-18 18:37:12,113:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-18 18:37:12,399:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-18 18:37:12,523:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-0c1x",{"micros":2037,"calls":["discord-sessions-green-prd-2-40",{"micros":22}]}].
+2021-11-18 20:39:56,447:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-18 20:39:56,744:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-18 20:39:56,869:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-zmlr",{"micros":825,"calls":["discord-sessions-green-prd-2-40",{"micros":52}]}].
+2021-11-18 21:13:31,746:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-18 21:13:32,044:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-18 21:13:32,162:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-drcs",{"micros":742,"calls":["discord-sessions-green-prd-2-40",{"micros":15}]}].
+2021-11-18 23:34:10,407:INFO:discord.gateway: Websocket closed with 1001, attempting a reconnect.
+2021-11-18 23:34:10,408:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-18 23:34:11,922:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-18 23:34:12,046:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-b4ws",{"micros":480,"calls":["discord-sessions-green-prd-2-40",{"micros":16}]}].
+2021-11-19 03:20:41,854:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 03:20:42,147:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 03:20:42,263:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-7g6p",{"micros":693,"calls":["discord-sessions-green-prd-2-40",{"micros":14}]}].
+2021-11-19 05:04:56,425:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 05:04:56,716:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 05:04:56,832:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-cs38",{"micros":487,"calls":["discord-sessions-green-prd-2-40",{"micros":15}]}].
+2021-11-19 06:38:08,687:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 06:38:08,958:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 06:38:09,068:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-gbj6",{"micros":520,"calls":["discord-sessions-green-prd-2-40",{"micros":17}]}].
+2021-11-19 09:49:51,198:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 09:49:51,495:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 09:49:51,617:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-8w06",{"micros":472,"calls":["discord-sessions-green-prd-2-40",{"micros":16}]}].
+2021-11-19 12:03:01,188:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 12:03:01,491:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 12:03:01,611:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-87xg",{"micros":499,"calls":["discord-sessions-green-prd-2-40",{"micros":16}]}].
+2021-11-19 14:03:23,392:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 14:03:23,689:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 14:03:23,805:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-397n",{"micros":527,"calls":["discord-sessions-green-prd-2-40",{"micros":16}]}].
+2021-11-19 15:02:25,169:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 15:02:25,478:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 15:02:25,610:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-gj35",{"micros":4146,"calls":["discord-sessions-green-prd-2-40",{"micros":16}]}].
+2021-11-19 15:57:10,659:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 15:57:10,958:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 15:57:11,079:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-nkgj",{"micros":602,"calls":["discord-sessions-green-prd-2-40",{"micros":18}]}].
+2021-11-19 17:53:36,864:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 17:53:37,174:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 17:53:37,295:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-87xg",{"micros":681,"calls":["discord-sessions-green-prd-2-40",{"micros":19}]}].
+2021-11-19 20:24:55,064:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-19 20:24:55,368:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-19 20:24:55,493:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-m2g5",{"micros":3977,"calls":["discord-sessions-green-prd-2-40",{"micros":17}]}].
+2021-11-20 00:16:59,595:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-20 00:16:59,857:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-20 00:16:59,967:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-3stg",{"micros":528,"calls":["discord-sessions-green-prd-2-40",{"micros":23}]}].
+2021-11-20 00:40:38,402:INFO:discord.client: Got a request to RESUME the websocket.
+2021-11-20 00:40:38,676:INFO:discord.gateway: Shard ID None has sent the RESUME payload.
+2021-11-20 00:40:38,789:INFO:discord.gateway: Shard ID None has successfully RESUMED session b21c9675b09dd4197f91c0e1a8136fa5 under trace ["gateway-prd-main-l2bv",{"micros":513,"calls":["discord-sessions-green-prd-2-40",{"micros":18}]}].
+2021-11-20 01:00:04,536:INFO:discord.client: Received signal to terminate bot and event loop.
+2021-11-20 01:00:04,536:INFO:discord.client: Cleaning up tasks.
+2021-11-20 01:00:04,537:INFO:discord.client: Cleaning up after 2 tasks.
+2021-11-20 01:00:04,539:INFO:discord.client: All tasks finished cancelling.
+2021-11-20 01:00:04,540:INFO:discord.client: Closing the event loop.

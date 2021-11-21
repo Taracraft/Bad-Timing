@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="949f55c3-ea55-4394-919e-b379aa33f334" name="Changes" comment="Fixxxed Bug in JansMod">
-      <change beforePath="$PROJECT_DIR$/../CMS/admin/useredit.php" beforeDir="false" afterPath="$PROJECT_DIR$/../CMS/admin/useredit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_17_1_R0_1_SNAPSHOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_17_1_R0_1_SNAPSHOT.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jansmod-0.2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/jansmod-0.2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-jansmod-0.2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-jansmod-0.2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Discord-Bot/Skript/discord.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Discord-Bot/Skript/discord.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Discord-Bot/Skript/token.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Discord-Bot/Skript/token.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
