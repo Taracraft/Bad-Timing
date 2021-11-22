@@ -242,6 +242,7 @@ def main():
                client.get_channel(906899062006116372),
                client.get_channel(906899213588254761)]
 
+
         for channel in arr:
             print('Clearing messages...')
             await channel.purge(limit=1000)
