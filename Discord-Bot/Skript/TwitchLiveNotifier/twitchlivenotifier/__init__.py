@@ -27,6 +27,11 @@ def channel_clear():
 
         else:
             print(channel, 'Keine Einträge gefunden')
+            config()
+            get_lock()
+            authorize()
+            main()
+
 
 twitch_client_id = ''
 twitch_secret_key = ''
@@ -288,8 +293,3 @@ def main():
 if __name__ == "__main__":
     channel_clear()
     client.run('OTEwMTIxNjc1MjQ3NDYwMzky.YZOO3A.HqoFzMTM2c9EPO8FUniQDFu1NfY')
-    time.sleep(60)
-    config()
-    get_lock()
-    authorize()
-    main()
