@@ -284,8 +284,7 @@ def main():
                     print("Successfully called Discord API. Waiting 5 seconds to terminate...")
                     time.sleep(5)
                     while discord_request.status_code == 204:
-                        if len(twitch_json['data']) == 0:
-                            time.sleep(5)
+                        if len(twitch_json['data']) != 1:
                             print("nicht Online")
                             channel_clear()
                 else:
