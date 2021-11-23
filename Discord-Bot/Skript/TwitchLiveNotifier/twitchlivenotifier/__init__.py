@@ -283,6 +283,11 @@ def main():
                 if discord_request.status_code == 204:
                     print("Successfully called Discord API. Waiting 5 seconds to terminate...")
                     time.sleep(5)
+                    while discord_request.status_code == 204:
+                        if discord_request.status_code == 0:
+                            main()
+                        else:
+                            print("Fehler")
                 else:
                     print("Failed to call Discord API. Waiting 5 seconds to retry...")
                     time.sleep(5)
