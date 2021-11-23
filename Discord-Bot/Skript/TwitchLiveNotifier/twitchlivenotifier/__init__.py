@@ -285,9 +285,7 @@ def main():
                     time.sleep(5)
                     while discord_request.status_code == 204:
                         if discord_request.status_code == 0:
-                            main()
-                        else:
-                            print("Fehler")
+                            channel_clear()
                 else:
                     print("Failed to call Discord API. Waiting 5 seconds to retry...")
                     time.sleep(5)
