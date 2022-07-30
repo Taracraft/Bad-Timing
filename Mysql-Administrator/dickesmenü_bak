@@ -1,0 +1,91 @@
+#!/bin/bash
+
+INSTALL=`which dialog`
+
+if [ ! -f "$INSTALL" ]; then
+        echo -n "Um $DATEI nutzen zu können, wird \"dialog\" aus den Paketquellen benötigt!\"dialog\" jetzt installiert? [ ja/nein ] "
+        read frage
+
+        if [ "$frage" = "ja" ]; then
+                echo "installiere ..."
+                sudo aptitude install -y dialog
+        else
+                echo "Abbruch"
+                exit 0;
+        fi;
+fi;
+
+
+
+if [ -f /root/.my.cnf ]; then
+        echo "Datei Exestiert";	
+else
+	echo "Please enter root user MySQL password!";
+        read -p dbuser;
+	echo "Note: password will be hidden when typing";
+	read -s passwd;
+        echo -e "[client]" >> /root/.my.cnf;
+	echo -e "user=$dbuser\npasswd=$passwd" >> /root/.my.cnf;
+        exit;
+fi
+
+
+DIALOG_CANCEL=1
+		DIALOG_ESC=255
+		HEIGHT=0
+		WIDTH=0
+
+		display_result() {
+		dialog --title "$1" \
+	    	--no-collapse \
+		--msgbox "$result" 0 0
+		}
+
+		while true; do
+		exec 3>&1
+  		selection=$(dialog \
+    		--backtitle "Mysql Administrator" \
+    		--title "Menu" \
+    		--clear \
+    		--cancel-label "Raus" \
+    		--menu "Bitte Waehlen:" $HEIGHT $WIDTH 4 \
+    		"1" "Benutzer auflisten" \
+    		"2" "Datenbanken auflisten" \
+    		"3" "Datenbank erstellen und Benutzer" \
+		"4" "Benutzer loeschen" \
+		"5" "Datenbank loeschen" \
+    		2>&1 1>&3)
+  		exit_status=$?
+  		exec 3>&-
+  		case $exit_status in
+    		$DIALOG_CANCEL)
+      		clear
+      		echo "Programm Beenden."
+      		exit
+      		;;
+    		$DIALOG_ESC)
+      		clear
+      		echo "Programm abgebrochen." >&2
+      		exit 1
+      		;;
+  		esac
+  		case $selection in
+    		1 )
+      		result=$(echo "Hostname: $HOSTNAME"; uptime)
+      		display_result "System Information"
+      		;;
+    		2 )
+      		result=$(df -h)
+      		display_result "Disk Space"
+      		;;
+    		3 )
+      		if [[ $(id -u) -eq 0 ]]; then
+        	result=$(du -sh /home/* 2> /dev/null)
+        	display_result "Home Space Utilization (All Users)"
+      		else
+        	result=$(du -sh $HOME 2> /dev/null)
+        	display_result "Home Space Utilization ($USER)"
+      		fi
+      		;;
+  		esac
+		done            
