@@ -1,0 +1,809 @@
+[33mcommit fa396abaf8c060ec1a3db9db653e5bc89110eee2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 23 14:18:20 2021 +0100
+
+    schleife hinzugefügt damit das skript weiter überprüft falls der stream offline geht.
+
+[33mcommit b0c0237fce8175b1fc14de8334d0641c3dc62a3f[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 23 14:15:43 2021 +0100
+
+    schleife hinzugefügt damit das skript weiter überprüft falls der stream offline geht.
+
+[33mcommit 52e4533a51387b2d21e7c483960c2911f69bba41[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 23 14:01:18 2021 +0100
+
+    schleife hinzugefügt damit das skript weiter überprüft falls der stream offline geht.
+
+[33mcommit 57e6c40d45c9ad146e2deb33a52959e761ab9023[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 23 13:34:04 2021 +0100
+
+    schleife hinzugefügt damit das skript weiter überprüft falls der stream offline geht.
+
+[33mcommit baeae3d3b87f7a5c35e53a3da71d3f118bceef7e[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 23 13:28:56 2021 +0100
+
+    schleife hinzugefügt damit das skrpit weiter überprüft.
+
+[33mcommit f0303abd46c9629d814c63c66edea691fdb919b0[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 22 23:03:56 2021 +0100
+
+    log hinzugefügt+ twich notify
+
+[33mcommit 0d043735af8a39ab2f9030c4d37950c1d21c07aa[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 22 23:01:48 2021 +0100
+
+    log hinzugefügt+ twich notify
+
+[33mcommit 9e90f73bacaa641206d03a9efdb3df3cb80c4522[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 22 23:00:54 2021 +0100
+
+    log hinzugefügt+ twich notify
+
+[33mcommit 73349595c5a5e60c81d038c8b81f8a96c85aef71[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 22 22:58:44 2021 +0100
+
+    log hinzugefügt+ twich notify
+
+[33mcommit fcba18058448cfae7cea73384a283416715d7f86[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 22 05:10:30 2021 +0100
+
+    log hinzugefügt+ twich notify
+
+[33mcommit b7e45dc75e231acb5ba1dbf76ab8177892754aa8[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 22 05:03:19 2021 +0100
+
+    log hinzugefügt+ twich notify
+
+[33mcommit a36a5212f043bf77bea065303c05cd9f85d36961[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 22 02:51:55 2021 +0100
+
+    log hinzugefügt
+
+[33mcommit 38905ee95397c1f10959b391e7bb3303036b06e3[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sun Nov 21 05:21:15 2021 +0100
+
+    test
+
+[33mcommit 72058f09dd093d0e40e57c0b41b765fe87565ba9[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Thu Nov 18 00:54:26 2021 +0100
+
+    fehler behoben im upload
+
+[33mcommit ed524a99f21cf84fb86e7588729851fa3db963b5[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Thu Nov 18 00:30:45 2021 +0100
+
+    test
+
+[33mcommit 6de7c148d3ef1ab4e5612f993d177419bd3004f5[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Wed Nov 17 01:16:36 2021 +0100
+
+    1:1 kopie aus dem repo https://github.com/vojay-dev/vojaynotify
+
+[33mcommit 5fee42d23789a7fd56cccb2f8d545bba89a586fa[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Wed Nov 17 01:07:24 2021 +0100
+
+    twich-live-bot erstellt
+
+[33mcommit 8ec61a8b6308844edbf31a067cc4d19b06fcb963[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 23:47:29 2021 +0100
+
+    twich-live-bot erstellt
+
+[33mcommit e0aaeeaeb6898455227227dee6af260b9f3222ae[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 17:48:57 2021 +0100
+
+    twich-live-bot erstellt
+
+[33mcommit cf0013ac2522a6cf68e6c3f264a51b97815ff1da[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 13:52:11 2021 +0100
+
+    twich-live-bot erster test
+
+[33mcommit d1140c704b0cdfc918f406c8e1926edfea760e5f[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 13:51:30 2021 +0100
+
+    twich-live-bot erster test
+
+[33mcommit a7a6a961d9f9116861807df25bbd27f98d98dbc3[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 13:21:22 2021 +0100
+
+    twich-live-bot erster test
+
+[33mcommit 47e1e775a8056e825b4c39a48dcfa32d45560424[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 12:38:47 2021 +0100
+
+    twich-live-bot erster test
+
+[33mcommit 7bf8dca1827ecd39791ae174e51569cabad66059[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 12:38:39 2021 +0100
+
+    twich-live-bot erster test
+
+[33mcommit 390dd07df34674ffb9e193482225712af8ac02e5[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 12:00:25 2021 +0100
+
+    funktion messa gechannel fertiggestellt und twich-live-bot grund skript hinzugefügt
+
+[33mcommit 8c7818beaf353a5adba4c6f27f63705a18edd3db[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 01:14:47 2021 +0100
+
+    funktion messa ge channel probiert
+
+[33mcommit 1d22fc5cc379b9857699c8c6e14aa903edbb986e[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Nov 16 01:07:54 2021 +0100
+
+    funktion messa ge channel probiert
+
+[33mcommit 9cd4ea010139ecbd52d72c87d22dbdebc65b8e61[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 23:48:54 2021 +0100
+
+    gogle in funktionen gepackt
+
+[33mcommit c0b706fa3d61cc4d9ec06afe13d21eacdc5b5327[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Mon Nov 15 23:43:12 2021 +0100
+
+    fix
+
+[33mcommit 5dab7130de575784c45a45bef568878cfd2f58c1[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 23:20:58 2021 +0100
+
+    gogle in funktionen gepackt
+
+[33mcommit bd599f6b2f01e52dd06debe06bb1530b43ace893[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 23:17:31 2021 +0100
+
+    gogle in funktionen gepackt
+
+[33mcommit 1f9c284ad5fd9ea5b8e3f1e8e608af3776597151[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 23:12:30 2021 +0100
+
+    gogle channel update
+
+[33mcommit d762c005a9e06f054a3b57431d6de2564102212a[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 23:01:53 2021 +0100
+
+    gogle channel update
+
+[33mcommit 97e3c2c30cabc8bc37826de542c110302f0dee65[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 22:48:31 2021 +0100
+
+    gogle channel update
+
+[33mcommit f14a2d0e65e91953f11d9678bba07c40b09c2c4c[m
+Merge: f3382ac b79f9ef
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 22:40:07 2021 +0100
+
+    Merge branch 'main' of https://github.com/Taracraft/Bad-Timing
+
+[33mcommit b79f9efa7ba8ba1b857245e563e1ea89a294aa06[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Mon Nov 15 22:33:48 2021 +0100
+
+    test
+
+[33mcommit 5e382e25a43af3c5378c59b458c484654b4b2b29[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Mon Nov 15 22:10:06 2021 +0100
+
+    added requirements.txt, use it with pip3 install -r requirements.txt
+
+[33mcommit f3382ace186ad669b64e543ca287d5b89f771ab7[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 20:59:09 2021 +0100
+
+    erster text von google zu python in discord-json objekt mit embed an discord channel gesendet
+
+[33mcommit 08ebabe6790678a8a04c153f06fab067010368ad[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 20:59:09 2021 +0100
+
+    erster text von google zu python in discord-json objekt mit embed an discord channel gesendet
+
+[33mcommit 9a9e87da9e92f23620280fe2c4a60cf3335298e3[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 20:55:47 2021 +0100
+
+    erster text von google zu python in discord-json objekt mit embed an discord channel gesendet
+
+[33mcommit 7dc05312a9e52b0627f230a3cc2c288a7e1291f1[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 20:42:26 2021 +0100
+
+    erster text von google zu python in discord-json objekt mit embed an discord channel gesendet
+
+[33mcommit 2bb5d927c147beef92e8bcdb1a2b0b697fab84d5[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 20:17:32 2021 +0100
+
+    erster text von google zu python in discord-json objekt mit embed an discord channel gesendet
+
+[33mcommit a965e5e4e3fe9f3358e978e829688b72655df973[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 18:40:20 2021 +0100
+
+    On_member_join Text geändert, Versuch Schleife Tabelle-3
+
+[33mcommit 5df29cebee44c787696d141c1327216d81ba57d1[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 12:45:07 2021 +0100
+
+    Google Variabeln für alle 5 Tabellen aktualisiert.
+
+[33mcommit dd4cd5313ee9c14a4b148ea2a1ad1b5bf153d75a[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 12:44:59 2021 +0100
+
+    Google Variabeln für alle 5 Tabellen aktualisiert.
+
+[33mcommit 440ef40c9b4db2fede6bfdd889e268607fd8038e[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 12:42:53 2021 +0100
+
+    Google Variabeln für alle 5 Tabellen hinzugefügt.
+
+[33mcommit 7611b2a9c674e8e3eba0fa0d2a350a3b359ae349[m
+Merge: 5630ded 8ce5ddf
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 12:30:54 2021 +0100
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 5630ded1b1bc93c3f0e1b7c64c982c230895c07c[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 08:16:23 2021 +0100
+
+    Member_Join Nachricht verbessert.
+
+[33mcommit 8ce5ddfd9f62bebc2f2ab2d15b678ad84f0d5abc[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 08:16:23 2021 +0100
+
+    erfolgreicher google test
+
+[33mcommit 8a2d747bacbcefa699b2053d44083d9f93fb67b7[m
+Merge: f35c7e2 deb98dc
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 08:01:42 2021 +0100
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit f35c7e2e83bdbeeb6b5fe7136de7297930d8d658[m
+Merge: a6a4bac fcdf7d1
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 07:37:38 2021 +0100
+
+    erfolgreicher google test
+
+[33mcommit deb98dc3a48f89322e1ef2ec010c405ef15ac312[m
+Merge: a6a4bac fcdf7d1
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Nov 15 07:37:38 2021 +0100
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit a6a4bacc4f9dddab03235ee02c450cbdaeda74cb[m
+Merge: bf63d62 8c7bda6
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sun Nov 14 20:03:55 2021 +0100
+
+    google integration mit google sheets noch fehler
+
+[33mcommit fcdf7d1a20e253fd748b8f649ac189f4c550588d[m
+Merge: bf63d62 8c7bda6
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sun Nov 14 20:03:55 2021 +0100
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit bf63d62866b3667c1edc0eb15c498490f97600c3[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sun Nov 14 19:19:54 2021 +0100
+
+    imports hinzugefügt  und kommentare gelöscht
+
+[33mcommit 8c7bda6d12af0ae28cc1ba4d85108c0e9e08352a[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sun Nov 14 19:19:54 2021 +0100
+
+    Fix in headbuilder command, usage hinzugefügt
+
+[33mcommit 6fac8d1d77615c96bdf53d11005f592399a71fa5[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sun Nov 14 13:29:07 2021 +0100
+
+    Anpassung
+
+[33mcommit dad1d068aeb87831e805719024a6791cd21852f6[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sun Nov 14 13:12:13 2021 +0100
+
+    Discord-Bot
+
+[33mcommit d52e6ced3a3e88baf1ff24ceb867a8939290ff8c[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sun Nov 14 13:08:26 2021 +0100
+
+    changes
+
+[33mcommit ee032b219b8f8892cbc9650cc0dcf1376fca8557[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sat Oct 30 14:20:56 2021 +0200
+
+    Navigation in Template gepackt.
+    include("../../cms/style/template/nav.php");
+
+[33mcommit 23eb994fa04178e7e0c36e0f1f7d9b58e51cc9b1[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sat Oct 30 14:16:56 2021 +0200
+
+    Navigation in Template gepackt.
+    include("../../cms/style/template/nav.php");
+
+[33mcommit bacefe05559944d362f47e8362ae239c03de815c[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sat Oct 30 10:43:58 2021 +0200
+
+    header('Location: ../../cms/index.html');
+    geändert
+
+[33mcommit 62e0c49ca2ce7b469f3a2a5dab73de91afd22de5[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sat Oct 30 09:35:58 2021 +0200
+
+    anlage der Edit-Files
+
+[33mcommit feb12ea525dab462819f9aff89bb976157ce054c[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sat Oct 30 09:13:15 2021 +0200
+
+    anlage der Edit-Files
+
+[33mcommit f852e208ecf1b765334ed15fe159559c3ed3d071[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Sat Oct 30 00:23:53 2021 +0200
+
+    Benutzerlist fertig und anlage der Edit-Files
+
+[33mcommit 6c533cebe5d3d918df784ccdfd91c3e4558cd8d1[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Fri Oct 29 07:19:15 2021 +0200
+
+    Design Anpassung
+
+[33mcommit 9c2d94637e2e768dbc78e91b26847a0264cab3a2[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Fri Oct 29 07:15:48 2021 +0200
+
+    Design Anpassung
+
+[33mcommit d4c3e343fe1b4b5a79e0bf4c4dd2750f912c6d16[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Fri Oct 29 07:12:30 2021 +0200
+
+    Design Anpassung
+
+[33mcommit d5b7e4eb0e680025f4212b7944160a5bc632fa1d[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Fri Oct 29 00:07:59 2021 +0200
+
+    Vorbereitung für User Löschen
+
+[33mcommit ebf161a2892babecf69039e4e2a228023653b6f8[m
+Merge: 6fcda88 7ad6716
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Thu Oct 28 23:52:09 2021 +0200
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       CMS/admin/acc_add.php
+
+[33mcommit 6fcda886d0fb735c2b1c3f7d812b347ce807f1fd[m
+Author: Taracraft <info@bad-timing.eu>
+Date:   Tue Oct 26 19:39:48 2021 +0200
+
+    Update acc_add.php
+    
+    Regestrierung ertweitert
+
+[33mcommit 7ad67164d02a1e9d7554a797c4436a00a20a7b1b[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Oct 26 19:39:48 2021 +0200
+
+    Update acc_add.php
+    
+    Regestrierung ertweitert
+
+[33mcommit a239872ca991e17d506ef12195c16083864bd72c[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Oct 26 18:14:01 2021 +0200
+
+    admin list user /adduser hinzugefügt
+    
+    admin list user /adduser hinzugefügt
+
+[33mcommit 98eae8dca8a4126c344f124f2f249b7dd7ff6686[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Oct 26 17:05:09 2021 +0200
+
+    anpassung
+    
+    user list hinzugefügt, pdad anpassung
+
+[33mcommit e01565db975cee5c950107331726d7d760992bd0[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Tue Oct 26 14:20:21 2021 +0200
+
+    Delete Imageupload directory
+    
+    durch cms ersetzt
+
+[33mcommit 8565308378f328d6361e1cb99b146a69b39e9a0d[m
+Author: Taracraft <info@bad-timing.eu>
+Date:   Tue Oct 26 14:16:11 2021 +0200
+
+    Navigation änderung, Sytle geändert, Template hinzugefügt, Benutzerverwaltung Beta hinzugefügt, Vorbereitung für erstellen der Benutzer im Admin Bereich, Home geändert, Bugfixx behoben
+
+[33mcommit 6b170c21f941f16d909b90677843ba13e9039f30[m
+Author: Taracraft <info@bad-timing.eu>
+Date:   Fri Oct 15 05:26:49 2021 +0200
+
+    Nav erweitert
+
+[33mcommit 866a2864adab6af4ac779682ba933a473b8acf8f[m
+Author: Taracraft <info@bad-timing.eu>
+Date:   Fri Oct 15 04:09:10 2021 +0200
+
+    Initial Commit
+
+[33mcommit 3f40596930100442e5c9674eaaa7d9943e5265d1[m
+Merge: 072c6f9 1404ec3
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sun Oct 3 20:59:31 2021 +0200
+
+    Merge remote-tracking branch 'origin/main' into main
+
+[33mcommit 072c6f930eaaca491ff59c3d493109812eadf514[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sun Oct 3 20:58:57 2021 +0200
+
+    Some modifications
+
+[33mcommit 1404ec301db42e9bbe30b6b83f9b6e3b9414bd95[m
+Author: Taracraft <info@bad-timing.eu>
+Date:   Sun Oct 3 12:26:25 2021 +0200
+
+    Webseite hinzugefügt
+
+[33mcommit e8e4256c708a875705c6daa95d047f554ff6a201[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sun Oct 3 11:39:58 2021 +0200
+
+    Fixxxed Bug in JansMod
+
+[33mcommit bf24ce7ece3f5dc298bcd53746ff685515c4572a[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Fri Oct 1 17:16:48 2021 +0200
+
+    removed mariadb-lib
+
+[33mcommit a111b473d5431f55b7732dd9a66fe40915d3655f[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Fri Oct 1 11:39:42 2021 +0200
+
+    GeldPlugin
+
+[33mcommit 54fdd5a5457c600d75738f6c340f6999ac9f9470[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 29 09:44:29 2021 +0200
+
+    Code-optimazion
+
+[33mcommit 1c0dc0b47798add69aad8487bf9c515621852db8[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 29 09:23:31 2021 +0200
+
+    cleanedup code
+
+[33mcommit 413800c8d63c23c0ec9833d0ae906ee9469fd921[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 29 09:17:46 2021 +0200
+
+    Updated Fehlermeldungen bei OP-Rechten angezeigt, ansonsten geloggt
+
+[33mcommit 5c91dd8f2d7404904d670569209713ce7f3cafb3[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 29 00:49:12 2021 +0200
+
+    Switched exceptionmessage to logging
+
+[33mcommit 186fa13c84f968022351530fe55fa50b8a4cd105[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 29 00:46:47 2021 +0200
+
+    removed unused commands
+
+[33mcommit 5f575d2a1d003d49d1b555d19fb0c657e5739f84[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 29 00:00:05 2021 +0200
+
+    Startskript entfernt
+
+[33mcommit 59b0abf05cf311ade750eb8617b2b5feabd4a4e2[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Sep 27 13:16:23 2021 +0200
+
+    Create SECURITY.md
+
+[33mcommit 6e7af29349091f6fc7148f635cc8e5f60b5e5308[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Sep 27 13:05:02 2021 +0200
+
+    Delete python-app.yml
+
+[33mcommit e4a2ad4bf0e9f616e6ea497b6c9440ea64189272[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sun Sep 26 19:12:28 2021 +0200
+
+    Removed setwarp
+
+[33mcommit 282bce8052f73573c6a56ebf86297201fb1ab337[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sun Sep 26 19:11:24 2021 +0200
+
+    Removed setwarp
+
+[33mcommit 7508853128a5e84f7a04cb49b484130e32a672b3[m
+Author: Thomas Faßbender <info@bad-timing.eu>
+Date:   Sun Sep 26 16:11:16 2021 +0200
+
+    DB Fix
+    
+    Mariadb in Mysql geändert
+
+[33mcommit 2e1f820ed26ce73de9b3cfaacf04830626f52775[m
+Author: BuildTools <unconfigured@null.spigotmc.org>
+Date:   Sun Sep 26 15:14:54 2021 +0200
+
+    Startskript 1.17 hinzugefügt
+
+[33mcommit 2ecef9739372cee1ff9379680f4bdc99267f3697[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sun Sep 26 14:55:48 2021 +0200
+
+    Check bugfix?
+
+[33mcommit 0674611cef7af15aeb32bee871a404cf186a0fd7[m
+Author: Thomas Faßbender <info@bad-timing.eu>
+Date:   Sun Sep 26 14:08:37 2021 +0200
+
+    DB in Mariadb
+    
+    Login, Datenbank Treiber gewechselt.
+
+[33mcommit 54b71347f710594484576ef1925ff10eb058f807[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sat Sep 25 14:59:18 2021 +0200
+
+    Gibt usage bei eingeben eines unvolständigen Kommandos
+
+[33mcommit 3c2ed14389f1a044bd3d0593b34a5954ff0d7f68[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sat Sep 25 14:23:36 2021 +0200
+
+    Updated warp Commands
+
+[33mcommit 28cdffe274bad3af8327f9b9b629f27d6251fc52[m
+Merge: 985c6be bbd4527
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sat Sep 25 11:43:44 2021 +0200
+
+    Merge branch 'main' of https://github.com/Taracraft/Bad-Timing into main
+
+[33mcommit 985c6be5356846bc4a20335f15d3dbdb6c9c0bf6[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sat Sep 25 11:43:04 2021 +0200
+
+    Zurück Button hinzugefügt
+
+[33mcommit bbd4527cdad19bfd42cb2c6eee2711d2f342e411[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sat Sep 25 01:20:24 2021 +0200
+
+    Update README.md
+
+[33mcommit 921e7089de351d7ea30f1a10f7dc7584d9db471a[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sat Sep 25 01:17:15 2021 +0200
+
+    added files
+
+[33mcommit a0be49bce8567e734ac4ffe53d34c26f183833ff[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sat Sep 25 00:44:48 2021 +0200
+
+    removed .gitignore
+
+[33mcommit 4c8c1b5b215722aaa1fcdd7bbbf15b8fe1b3d713[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Sat Sep 25 00:40:54 2021 +0200
+
+    Switched from Python 2 Java
+
+[33mcommit 57430f94425e068942752d827bbc03b93ab1ccde[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Thu Sep 23 03:42:12 2021 +0200
+
+    Better Menu
+
+[33mcommit e762700af40adb7404168055cc0a86a30d31b8c3[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 22 21:49:17 2021 +0200
+
+    Test gefixt
+
+[33mcommit db18d74ca2927f7e5ae38a13641cf37bc8d4245f[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 22 18:53:24 2021 +0200
+
+    Update README.md
+
+[33mcommit 6c1101cd21c1a77b7df09112ec0d1c4b766db047[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 22 18:36:32 2021 +0200
+
+    Codeschnippsel MySQL-Verbindung in Jython
+
+[33mcommit eda671e8e8d0fb46f9b21ca3a56fec6aa870b912[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 22 16:46:37 2021 +0200
+
+    Fix ModulePath und abfragen ob werte erfolgreich geladen wurden
+
+[33mcommit 1753f5d11fe0bbcbb54db2f3286744f20456e31d[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 22 12:03:25 2021 +0200
+
+    Exception behandelt
+
+[33mcommit e21b9efd7aafcd07955348837752afacb57263f6[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 22 11:24:28 2021 +0200
+
+    Usage ergänzt
+
+[33mcommit 39c737a86818623b8bbdc90c220c16fe2d801b3a[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 22 10:07:10 2021 +0200
+
+    vorbereitung für Cryptos
+
+[33mcommit c8d0aeb3b3b77a54cfee031bf5ccfc32d26ab6c8[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Wed Sep 22 00:53:30 2021 +0200
+
+    API um den aktuellen Preis der Kryptowaehrungen abzufragen
+
+[33mcommit d2376834691fb81c27f0528b618548424d65fe80[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Tue Sep 21 16:49:56 2021 +0200
+
+    dummer fix
+
+[33mcommit e9e2026af7ff09642bc679bb10a99da8a772a6cd[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Tue Sep 21 16:35:46 2021 +0200
+
+    check ob command == /navigation ist
+
+[33mcommit 8d3c5f4cc85d7ac109d58c9033d7d9d9d06db107[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Tue Sep 21 16:17:04 2021 +0200
+
+    Bugfix...
+
+[33mcommit 61d150e2162f776ff1acd17cff7952fdf09b9410[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Tue Sep 21 16:13:10 2021 +0200
+
+    optimierung
+
+[33mcommit 6292842047f7c96317381f327d8dbe964164bfd9[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Tue Sep 21 15:10:01 2021 +0200
+
+    checkt nun ab ob User bereits ein Kompass hat
+
+[33mcommit c0d357cc1097739c26e4dd839cc12f53e0920aac[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Tue Sep 21 14:58:39 2021 +0200
+
+    ein paar fixxes
+
+[33mcommit 2005e2484966c697219845f79f751185e09729f3[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Tue Sep 21 12:47:16 2021 +0200
+
+    Return wert vergessen
+
+[33mcommit 5e71f0afbf6896be14f3c4b6c4f8762120635c23[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Tue Sep 21 12:45:44 2021 +0200
+
+    Vorbereitet für/navigation
+
+[33mcommit fdf21d09b4df40991ef7d6cfd4db0e36e67e956c[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Tue Sep 21 12:43:47 2021 +0200
+
+    Vorbereitet für /navigation
+
+[33mcommit 9273aed038ff22696f12a1ea6bd8f83b2c5ad373[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Mon Sep 20 22:12:14 2021 +0200
+
+    test
+
+[33mcommit 33fc8261ca1564380b2754773d7a4b2c48b003b7[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Mon Sep 20 18:49:05 2021 +0200
+
+    warp nach Lobby hinzugefügt
+
+[33mcommit 39e39714e59a6df53aeac7631b4521ba912ab546[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Mon Sep 20 17:56:51 2021 +0200
+
+    now it works
+
+[33mcommit d5ad26167216b366a472337f5e6fc3c9ed6e56aa[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Mon Sep 20 17:24:03 2021 +0200
+
+    cleanedup Code
+
+[33mcommit f460ef1c31d385b68607cceeb3a888c488ccfd8b[m
+Author: Jan Helbling <jh@jan-helbling.ch>
+Date:   Mon Sep 20 17:20:06 2021 +0200
+
+    LobbyGui-Plugin erstellt
+
+[33mcommit 425f17e31d412a31e05b6a18a3d8769342f76093[m
+Author: Taracraft <90864484+Taracraft@users.noreply.github.com>
+Date:   Thu Sep 16 20:12:58 2021 +0200
+
+    Initial commit
