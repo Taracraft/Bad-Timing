@@ -1,0 +1,162 @@
+#!/bin/bash
+
+INSTALL=`which dialog`
+INSTALLA=`which aptitude`
+
+if [ ! -f "$INSTALLA" ]; then
+        echo -n "Um $DATEI nutzen zu können, wird \"aptitude\" aus den Paketquellen benötigt!\"aptitude\" jetzt installiert? [ ja/nein ] "
+        read frage
+
+        if [ "$frage" = "ja" ]; then
+                echo "installiere ..."
+                sudo apt install aptitude -y
+        else
+                echo "Abbruch"
+                exit 0;
+        fi;
+fi;
+
+
+if [ ! -f "$INSTALL" ]; then
+        echo -n "Um $DATEI nutzen zu können, wird \"dialog\" aus den Paketquellen benötigt!\"dialog\" jetzt installiert? [ ja/nein ] "
+        read frage
+
+        if [ "$frage" = "ja" ]; then
+                echo "installiere ..."
+                sudo aptitude install -y dialog
+        else
+                echo "Abbruch"
+                exit 0;
+        fi;
+fi;
+
+if [ -f /root/.my.cnf ]; then
+        echo "Datei Exestiert";
+else
+ echo "Bitte gebe den MySQL User ein ein!";
+ read -p dbuser;
+ echo "Mysql Password eingeben"
+ echo "Hinweis: Das Password wird unsichtbar eingegeben!"
+ read -s passwd;
+        echo -e "[client]" >> /root/.my.cnf;
+ echo -e "user=$dbuser\npassword=$passwd" >> /root/.my.cnf;
+        exit;
+fi
+
+
+DIALOG_CANCEL=1
+  DIALOG_ESC=255
+  HEIGHT=0
+  WIDTH=0
+
+  display_result() {
+  dialog --title "$1" \
+      --no-collapse \
+  --msgbox "$result" 0 0
+  }
+  input() {
+  dialog --title "$1" \
+      --no-collapse \
+  --textbox  "$input" 0 0
+  }
+
+  while true; do
+  exec 3>&1
+    selection=$(dialog \
+      --backtitle "Mysql Administrator von Thomas Fassbender" \
+      --title "Menu" \
+      --clear \
+      --cancel-label "Raus" \
+      --menu "Bitte Waehlen:" $HEIGHT $WIDTH 4 \
+      "1" "Benutzer auflisten" \
+      "2" "Datenbanken auflisten" \
+      "3" "Datenbank erstellen und Benutzer" \
+      "4" "Benutzer loeschen" \
+      "5" "Datenbank loeschen" \
+      2>&1 1>&3)
+    exit_status=$?
+    exec 3>&-
+    case $exit_status in
+      $DIALOG_CANCEL)
+        clear
+        echo "Programm Beenden."
+        exit
+        ;;
+      $DIALOG_ESC)
+        clear
+        echo "Programm abgebrochen." >&2
+        exit 1
+        ;;
+    esac
+    case $selection in
+      1 )
+        result=$(mysql -e "SELECT user FROM mysql.user; /*\!40100 DEFAULT CHARACTER SET utf8 */;")
+                display_result "Datenbank Benutzer"
+        ;;
+      2 )
+        result=$(mysql -e "SHOW DATABASES; /*\!40100 DEFAULT CHARACTER SET utf8 */;")
+        display_result "Datenbanken"
+        ;;
+      3 )
+         echo "Datenbank name eingeben!"
+      read dbname
+
+      echo "Erstelle neue MySQL Datenbank..."
+      mysql -e "CREATE DATABASE ${dbname} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+      echo "Datenbank erfolgreich erstellt!"
+
+      echo "Datenbank Benutzer eingeben!"
+      read username
+
+      echo "Password fuer Datenbank Benutzer Eingeben!"
+      echo "Hinweis: Das Password wird unsichtbar eingegeben!"
+      read -s userpass
+
+      echo "Erstelle neuen Benutzer..."
+      mysql -e "CREATE USER ${username}@localhost IDENTIFIED BY '${userpass}';"
+      echo "Benutzer erfolgreich erzeugt!"
+
+      echo "Gebe alle Rechte von Datenbank: ${dbname} zu Benutzer: ${username}!"
+      mysql -e "GRANT ALL PRIVILEGES ON ${dbname}.* TO '${username}'@'localhost';"
+      mysql -e "FLUSH PRIVILEGES;"
+             ;;
+
+  4 )
+             mysql -e "SELECT user FROM mysql.user; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+             echo "Welcher Benutzer soll geloescht werden: ";
+             read user
+             echo "Moechten Sie fortfahren? (Ja/Nein)? ";
+             read antwort
+             case $antwort in
+                 ja|Ja)
+                     echo "Ja";
+                     mysql -e "REVOKE ALL PRIVILEGES, GRANT OPTION FROM '$user'@'localhost'; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+                     echo "Dem Benutzer $user wurden alle Rechte entzogen";
+                     mysql -e "DROP USER '$user'@'localhost'; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+                     echo "Benutzer $user wurde geloescht";
+                 ;;
+                 nein/Nein)
+                     echo "Nein";
+      ;;
+             esac
+        ;;
+  5 )
+             mysql -e "SHOW DATABASES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+             echo "Welche Datenbank soll geloescht werden: ";
+             read db
+             echo "Moechten Sie fortfahren? (Ja/Nein)? ";
+             read antwort
+             case $antwort in
+                 ja|Ja)
+                     echo "Ja";
+                     mysql -e "DROP DATABASE $db /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+                     echo "Datenbank $db wurde geloescht";
+                 ;;
+                 nein|Nein)
+                     echo "Nein";
+                     exit
+                 ;;
+             esac
+        ;;
+    esac
+  done
