@@ -1,6 +1,21 @@
 #!/bin/bash
 
 INSTALL=`which dialog`
+INSTALLA=`which aptitude`
+
+if [ ! -f "$INSTALLA" ]; then
+        echo -n "Um $DATEI nutzen zu koennen, wird \"aptitude\" aus den Paketquellen benötigt!\"aptitude\" jetzt installiert? [ ja/nein ] "
+        read frage
+
+        if [ "$frage" = "ja" ]; then
+                echo "installiere ..."
+                sudo apt install aptitude -y
+        else
+                echo "Abbruch"
+                exit 0;
+        fi;
+fi;
+
 
 if [ ! -f "$INSTALL" ]; then
         echo -n "Um $DATEI nutzen zu können, wird \"dialog\" aus den Paketquellen benötigt!\"dialog\" jetzt installiert? [ ja/nein ] "
