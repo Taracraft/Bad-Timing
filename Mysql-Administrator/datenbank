@@ -33,9 +33,9 @@ fi;
 if [ -f /root/.my.cnf ]; then
         echo "Datei Exestiert";
 else
- echo "Bitte gebe den MySQL User ein ein!";
+ echo "Bitte gebe den MySQL User ein ein!: ";
  read -p dbuser;
- echo "Mysql Password eingeben"
+ echo "Mysql Password eingeben: "
  echo "Hinweis: Das Password wird unsichtbar eingegeben!"
  read -s passwd;
         echo -e "[client]" >> /root/.my.cnf;
