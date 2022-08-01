@@ -64,7 +64,7 @@ DIALOG_CANCEL=1
 		while true; do
 		exec 3>&1
   		selection=$(dialog \
-    		--backtitle "Mysql Administrator von Thomas Fassbender" \
+    		--backtitle "Mysql Administrator von Thomas Fassbender - Sebastian Mallach" \
     		--title "Menu" \
     		--clear \
     		--cancel-label "Raus" \
