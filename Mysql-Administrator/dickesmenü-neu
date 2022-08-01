@@ -40,7 +40,7 @@ else
 	echo "Hinweis: Das Password wird unsichtbar eingegeben!"
 	read -s passwd;
         echo -e "[client]" >> /root/.my.cnf;
-	echo -e "user=$dbuser\npasswd=$passwd" >> /root/.my.cnf;
+	echo -e "user=$dbuser\npassword=$passwd" >> /root/.my.cnf;
         exit;
 fi
 
@@ -164,16 +164,15 @@ DIALOG_CANCEL=1
                  ;;
            	 esac
       		;;
- 6 )
+        6 )
 	         mysql -e "SHOW DATABASES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
              echo "Waehlen sie die Datenbank aus: ";
              read dbw
 			 mysql -e "use $dbw;"
 			 echo "Gibt den Namen der Tabelle ein: ";
              read tabellennamen
-			 mysql -e "CREATE TABLE {$tabellennamen} (`id` INT NOT NULL AUTO_INCREMENT,`name` VARCHAR(50) NULL DEFAULT '',`value` VARCHAR(50) NULL DEFAULT '',PRIMARY KEY (id))COLLATE='utf8_bin';);"
-			 echo Tabelle "$tabellennamen" wurde erstellt!";
-			 
+			 mysql -e "CREATE TABLE {$tabellennamen} (`id` INT NOT NULL AUTO_INCREMENT,`name` VARCHAR(50) NULL DEFAULT '',`value` VARCHAR(50) NULL DEFAULT '',PRIMARY KEY (id))COLLATE='utf8_bin';)"
+			 echo "Tabelle "$tabellennamen" wurde angelegt: ";
     ;;
-  		esac
-		done            
+		esac	
+		done      
