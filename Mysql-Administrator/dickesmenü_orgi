@@ -40,7 +40,7 @@ else
 	echo "Hinweis: Das Password wird unsichtbar eingegeben!"
 	read -s passwd;
         echo -e "[client]" >> /root/.my.cnf;
-	echo -e "user=$dbuser\npasswd=$passwd" >> /root/.my.cnf;
+	echo -e "user=$dbuser\npassword=$passwd" >> /root/.my.cnf;
         exit;
 fi
 
