@@ -82,7 +82,8 @@ DIALOG_CANCEL=1
     		$DIALOG_CANCEL)
       		clear
       		echo "Programm Beenden."
-      		exit
+      	
+		exit
       		;;
     		$DIALOG_ESC)
       		clear
@@ -171,7 +172,7 @@ DIALOG_CANCEL=1
 			 echo "Gibt den Namen der Tabelle ein: ";
              read tabellennamen
 			 mysql -e "CREATE TABLE {$tabellennamen} (`id` INT NOT NULL AUTO_INCREMENT,`name` VARCHAR(50) NULL DEFAULT '',`value` VARCHAR(50) NULL DEFAULT '',PRIMARY KEY (id))COLLATE='utf8_bin';);"
-			 echo "$tabellennamen wurde erstellt!";
+			 echo Tabelle "$tabellennamen" wurde erstellt!";
 			 
     ;;
   		esac
