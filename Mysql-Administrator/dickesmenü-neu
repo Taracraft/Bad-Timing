@@ -179,7 +179,7 @@ DIALOG_CANCEL=1
              read sp3
 			 #
 			 
-			 mysql -D $dbw -e " CREATE TABLE `test123`.`test` ( `$sp1` VARCHAR(255) NULL DEFAULT NULL , `$sp2` VARCHAR(255) NULL DEFAULT NULL , `$sp3` VARCHAR(255) NULL DEFAULT NULL ) ENGINE = InnoDB;"
+			 mysql -D $dbw -e " CREATE TABLE $tabellennamen ( `$sp1` VARCHAR(255) NULL DEFAULT NULL , `$sp2` VARCHAR(255) NULL DEFAULT NULL , `$sp3` VARCHAR(255) NULL DEFAULT NULL ) ENGINE = InnoDB;"
 );
 			 echo "Tabelle "$tabellennamen" wurde angelegt! ";
     ;;
