@@ -168,10 +168,9 @@ DIALOG_CANCEL=1
 	         mysql -e "SHOW DATABASES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
              echo "Waehlen sie die Datenbank aus: ";
              read dbw
-			 mysql -e "use $dbw;"
 			 echo "Gibt den Namen der Tabelle ein: ";
              read tabellennamen
-			 mysql -e "CREATE TABLE {$tabellennamen} (`id` INT NOT NULL AUTO_INCREMENT,`name` VARCHAR(50) NULL DEFAULT '',`value` VARCHAR(50) NULL DEFAULT '',PRIMARY KEY (id))COLLATE='utf8_bin';)"
+			 mysql -D $dbw -e "CREATE TABLE IF NOT EXISTS $tabellennamen(id VARCHAR(255) NOT NULL,username VARCHAR(255) NOT NULL,password VARCHAR(255) NOT NULL,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,last_login TIMESTAMP)"
 			 echo "Tabelle "$tabellennamen" wurde angelegt! ";
     ;;
 		esac	
