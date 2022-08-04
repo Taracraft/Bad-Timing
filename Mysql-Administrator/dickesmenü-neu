@@ -75,6 +75,8 @@ DIALOG_CANCEL=1
 		    "4" "Benutzer loeschen" \
 		    "5" "Datenbank loeschen" \
 			"6" "Tabelle erstellen" \
+			"7"	"Tabellen anzeigen" \
+			"8" "Tabelle Loeschen" \
     		2>&1 1>&3)
   		exit_status=$?
   		exec 3>&-
@@ -168,8 +170,9 @@ DIALOG_CANCEL=1
 	         mysql -e "SHOW DATABASES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
              echo "Waehlen sie die Datenbank aus: ";
              read dbw
-			 echo "Gibt den Namen der Tabelle ein: ";
-             read tabellennamen
+			 mysql -D $dbw -e "SHOW TABLES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+			 echo "Gibt den Namen der Tabelle ein: ";             
+			 read tabellennamen
 			 #Spalten Namen
 			 echo "Gib den Namen fur Spalte 1 ein";
              read sp1
@@ -180,6 +183,24 @@ DIALOG_CANCEL=1
 			 #
 			 #Syntax!! mysql -D $dbw -e "CREATE TABLE $tabellennamen($sp1 VARCHAR(50),$sp2 VARCHAR(35))";
 			 mysql -D $dbw -e "CREATE TABLE $tabellennamen($sp1 VARCHAR(50),$sp2 VARCHAR(35),$sp3 VARCHAR(35))";
-    ;;
+     		      ;;
+        7 ) ### Funktioniert Noch nicht!
+	         mysql -e "SHOW DATABASES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+             echo "Waehlen sie die Datenbank aus: ";
+			 read dbw
+			 mysql -D $dbw -e "SHOW TABLES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+			 echo "Tabellen Anzeigen!"
+             ;;	    
+		8) 
+			 mysql -e "SHOW DATABASES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+             echo "Waehlen sie die Datenbank aus: ";
+			 read dbw
+			 mysql -D $dbw -e "SHOW TABLES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+			 echo "Waehlen sie die Tabelle aus:"
+             read tabellennamen
+			 mysql -D $dbw -e "drop table $tabellennamen; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+	;;		
+			
+	
 		esac	
 		done      
