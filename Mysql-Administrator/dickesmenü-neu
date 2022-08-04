@@ -200,54 +200,6 @@ DIALOG_CANCEL=1
 			 echo "Waehlen sie die Tabelle aus:"
              read tabellennamen
 			 mysql -D $dbw -e "drop table $tabellennamen; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
-			 
-			   ;;	    
-		9) 
-			 function advancedMenu() {
-             ADVSEL=$(whiptail --title "Advanced Menu" --fb --menu "Choose an option" 15 60 4 \
-			"1" "Benutzer Anzeigen" \
-			"2" "Option 2" \
-            "3" "Option 3" 3>&1 1>&2 2>&3)
-            case $ADVSEL in
-        1)
-            echo "Option 1"
-			result=$(mysql -e "SELECT user FROM mysql.user; /*\!40100 DEFAULT CHARACTER SET utf8 */;")
-                display_result "Datenbank Benutzer"
-		;;
-        2)
-            echo "Option 2"
-            whiptail --title "Option 1" --msgbox "You chose option 2. Exit status $?" 8 45
-			
-			function advancedMenu() {
-             ADVSEL=$(whiptail --title "Advanced Menu" --fb --menu "Choose an option" 15 60 4 \
-			"1" "Benutzer Erstellen" \
-			"2" "Option 2" \
-            "3" "Option 3" 3>&1 1>&2 2>&3)
-            case $ADVSEL in
-        1)
-            echo "Option 1"
-			result=$(mysql -e "SELECT user FROM mysql.user; /*\!40100 DEFAULT CHARACTER SET utf8 */;")
-                display_result "Datenbank Benutzer"
-		;;
-        2)
-            echo "Option 2"
-            whiptail --title "Option 1" --msgbox "You chose option 2. Exit status $?" 8 45
-        ;;
-        3)
-            echo "Option 3"
-            whiptail --title "Option 1" --msgbox "You chose option 3. Exit status $?" 8 45
-          ;;
-          esac
-         }
-        advancedMenu
-        ;;
-        3)
-            echo "Option 3"
-            whiptail --title "Option 1" --msgbox "You chose option 3. Exit status $?" 8 45
-          ;;
-          esac
-         }
-        advancedMenu
 	;;		
 			
 	
