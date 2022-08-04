@@ -1,0 +1,95 @@
+#!/bin/bash
+function advancedMenu() {
+    ADVSEL=$(whiptail --title "Advanced Menu" --fb --menu "Choose an option" 15 60 4 \
+        "1" "Benutzer" \
+        "2" "Datenbank" \
+        "3" "Tabellen" 3>&1 1>&2 2>&3)
+    case $ADVSEL in
+        1)
+            echo "Option 1"
+            
+				function advancedMenu() {
+				ADVSEL=$(whiptail --title "Advanced Menu" --fb --menu "Choose an option" 15 60 4 \
+				"1" "Benutzer auflisten" \
+				"2" "Datenbank erstellen und Benutzer" \
+				"3" "Benutzer loeschen" 3>&1 1>&2 2>&3)
+				case $ADVSEL in
+        1)
+            echo "Option 1"
+            result=$(mysql -e "SELECT user FROM mysql.user; /*\!40100 DEFAULT CHARACTER SET utf8 */;")
+                display_result "Datenbank Benutzer"
+        ;;
+        2)
+            echo "Option 2"
+            clear
+        	echo "Datenbank name eingeben!"
+	    	read dbname
+    
+	    	echo "Erstelle neue MySQL Datenbank..."
+	    	mysql -e "CREATE DATABASE ${dbname} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+	    	echo "Datenbank erfolgreich erstellt!"
+	
+	    	echo "Datenbank Benutzer eingeben!"
+	    	read username
+ 
+	    	echo "Password fuer Datenbank Benutzer Eingeben!"
+	    	echo "Hinweis: Das Password wird unsichtbar eingegeben!"
+	    	read -s userpass
+    
+	    	echo "Erstelle neuen Benutzer..."
+	    	mysql -e "CREATE USER ${username}@localhost IDENTIFIED BY '${userpass}';"
+	    	echo "Benutzer erfolgreich erzeugt!"
+
+	    	echo "Gebe alle Rechte von Datenbank: ${dbname} zu Benutzer: ${username}!"
+	    	mysql -e "GRANT ALL PRIVILEGES ON ${dbname}.* TO '${username}'@'localhost';"
+	    	mysql -e "FLUSH PRIVILEGES;"
+        ;;
+        3)
+            echo "Option 3"
+			clear
+				mysql -e "SELECT user FROM mysql.user; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+            	echo "Welcher Benutzer soll geloescht werden: ";
+            	read user
+            	echo "Moechten Sie fortfahren? (Ja/Nein)? ";
+            	read antwort
+            	case $antwort in
+                 ja|Ja)
+                     echo "Ja";
+                     mysql -e "REVOKE ALL PRIVILEGES, GRANT OPTION FROM '$user'@'localhost'; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+                     echo "Dem Benutzer $user wurden alle Rechte entzogen";
+                     mysql -e "DROP USER '$user'@'localhost'; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+                     echo "Benutzer $user wurde geloescht";
+                 ;;
+                 nein/Nein)
+                     echo "Nein";
+            
+             ;;
+           esac
+            }
+            advancedMenu
+			
+			
+			
+        ;;
+        2)
+            echo "Option 2"
+            whiptail --title "Option 1" --msgbox "You chose option 2. Exit status $?" 8 45
+        ;;
+        3)
+            echo "Option 3"
+            whiptail --title "Option 1" --msgbox "You chose option 3. Exit status $?" 8 45
+        ;;
+    esac
+}
+advancedMenu
+
+
+	#		1" "Benutzer auflisten" \
+    #		"2" "Datenbanken auflisten" \
+    #		"3" "Datenbank erstellen und Benutzer" \
+	#	    "4" "Benutzer loeschen" \
+	#	    "5" "Datenbank loeschen" \
+	#		"6" "Tabelle erstellen" \
+	#		"7"	"Tabellen anzeigen" \
+	#		"8" "Tabelle Loeschen" \
+    #        "9" "Submenu im Submenu"    	\
