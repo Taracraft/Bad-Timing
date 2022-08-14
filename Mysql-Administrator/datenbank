@@ -73,6 +73,7 @@ DIALOG_CANCEL=1
       "3" "Datenbank erstellen und Benutzer" \
       "4" "Benutzer loeschen" \
       "5" "Datenbank loeschen" \
+      "6" "Backup wiederherstellen" \
       2>&1 1>&3)
     exit_status=$?
     exec 3>&-
@@ -158,5 +159,28 @@ DIALOG_CANCEL=1
                  ;;
              esac
         ;;
+   6 )
+               	source=/home/git/Bad-Timing/Mysql-Administrator/
+                mysql -e "SHOW DATABASES; /*\!40100 DEFAULT CHARACTER SET utf8 */;"
+                echo "Datenbank name eingeben!"
+      		read dbdumpname
+	     	FILE=$(dialog --title "Browse" --stdout --title "Please choose a file" --fselect $source 14 48)
+                echo $FILE
+                echo $dbdumpname
+             	echo "Moechten Sie fortfahren? (Ja/Nein)? ";
+             	read antwort
+             	case $antwort in
+                ja|Ja)
+                     echo "Ja";
+                     mysql -e source $FILE $dbdumpname
+                     echo "Backup $dump wurde wiederhergestellt!";
+                 	;;
+                 nein|Nein)
+                     echo "Nein";
+                     exit
+                 ;;
+             esac
+
+             ;;
     esac
   done
