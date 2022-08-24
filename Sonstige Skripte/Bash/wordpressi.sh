@@ -1,5 +1,5 @@
 #!/bin/bash
-##Ich übernehme Keine Haftung für Schäden am System oder An der Hardware.
+##Ich uebernehme Keine Haftung für Schaeden am System oder An der Hardware.
 phpi=`which php php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php-bcmath php-mysql php-json`
 apache=`which apache2`
 mysqls=`which mysql-server`
