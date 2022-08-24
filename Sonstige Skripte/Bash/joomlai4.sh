@@ -83,10 +83,10 @@ echo "Datenbank erstellen"
  echo "joomla Download"
  sleep 2
  rm /var/www/html/index.html
- wget https://github.com/joomlagerman/joomla/releases/download/3.10.9v1/Joomla_3.10.9-Stable-Full_Package_German.tar.gz
- cp  "Joomla_3.10.9-Stable-Full_Package_German.tar.gz" /var/www/html/
+ wget https://downloads.joomla.org/cms/joomla4/4-2-0/Joomla_4.2.0-Stable-Full_Package.zip
+ cp  "https://downloads.joomla.org/cms/joomla4/4-2-0/Joomla_4.2.0-Stable-Full_Package.zip" /var/www/html/
  cd /var/www/html
- tar -xvzf /var/www/html/Joomla_3.10.9-Stable-Full_Package_German.tar.gz
+ unzip https://downloads.joomla.org/cms/joomla4/4-2-0/Joomla_4.2.0-Stable-Full_Package.zip
   chown www-data:www-data -R /var/www/html
  chmod 777 -R /var/www/html 
  sleep 1
