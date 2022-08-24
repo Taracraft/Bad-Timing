@@ -1,4 +1,5 @@
 #!/bin/bash
+##Ich übernehme Keine Haftung für Schäden am System oder An der Hardware.
 phpi=`which php php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php-bcmath php-mysql php-json`
 apache=`which apache2`
 mysqls=`which mysql-server`
@@ -7,6 +8,7 @@ notwenp=`which sudo mc nano`
 echo -e "\e[01;32;32m System update ueberpruefung...\e[0m"
 sleep 1
 apt-get update
+
 apt-get -y upgrade
 apt-get -y autoremove
 apt-get -y autoclean
