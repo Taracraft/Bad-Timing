@@ -17,20 +17,38 @@ apt-get -y upgrade
 apt-get -y autoremove
 apt-get -y autoclean
 sleep 1
-echo "Notwendige Programme Werden installiert"
-apt-get -y install sudo
-apt-get -y install mc
-apt-get -y install nano
-sleep 1
-echo "Apache 2 Wird installiert"
+if [ ! -f "$notwenp" ]; then
+apt-get -y install sudo mc nano
+else		
+echo -e "\e[01;32;32m sudo mc nano ist bereits installiert!\e[0m"
+sleep 2
+fi
+
+if [ ! -f "$apache" ]; then
 apt-get -y install apache2
-sleep 1
-echo "MySql Server Wird installiert"
+else 
+echo -e "\e[01;32;32m Apache2 ist bereits installiert!\e[0m"
+sleep 2
+fi
+
+if [ ! -f "$mysqls" ]; then
 apt-get -y install mysql-server
+else
+echo -e "\e[01;32;32m MySQL Server ist bereits installiert!\e[0m"
+sleep 2
+fi
+
+echo -e "\e[01;32;32m Notwendige PHP Packete werden installiert\e[0m"
 sleep 1
-echo "Notwendige PHP Packete werden installiert"
-apt install -y php php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php-bcmath php-mysql php-json
+if [ ! -f "$phpi" ]; then
+apt-get -y install php php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php-bcmath php-mysql php-json
+else
+echo -e "\e[01;32;32m PHP, PHP-Erweiterungen sind bereits installiert!\e[0m"
+sleep 2
+fi
 systemctl restart apache2
+sleep 1
+echo -e "\e[01;32;32m Datenbank erstellen\e[0m"
 sleep 1
 echo "Datenbank erstellen"
 
