@@ -3,6 +3,8 @@
 ##############################################################################
 joomlav=4-0-0 		# Die - Zeichen Müssten so bleiben , oder . Funkttionieren nicht!
 phpv=8.0			# Das . Zeichen Muss so bleiben - oder , Funkttioniert nicht!
+#[Empfohlene PHP Version (7.5) und (8.x) Version 5.x Wird NICHT Empfohlen [Outdatet!]]
+
 ##############################################################################
 #//Update System//#
 echo -e "\e[01;32;32m System update ueberpruefung...\e[0m"
