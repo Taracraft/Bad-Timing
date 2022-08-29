@@ -1,7 +1,10 @@
 #!/bin/bash
 ##Ich uebernehme Keine Haftung für Schaeden am System oder An der Hardware.
+##############################################################################
+joomlav=4-0-0 		# Die - Zeichen Müssten so bleiben , oder . Funkttionieren nicht!
+phpv=8.0			# Das . Zeichen Muss so bleiben - oder , Funkttioniert nicht!
+##############################################################################
 #//Update System//#
-
 echo -e "\e[01;32;32m System update ueberpruefung...\e[0m"
 sleep 1
 apt-get update
@@ -24,7 +27,7 @@ sleep 2
 fi
 
 if [ ! -f "$mysqls" ]; then
-apt-get -y install mysql-server
+apt-get -y install mysql-server mysql-client
 else
 echo -e "\e[01;32;32m MySQL Server ist bereits installiert!\e[0m"
 sleep 2
@@ -33,7 +36,7 @@ fi
 echo -e "\e[01;32;32m Notwendige PHP Packete werden installiert\e[0m"
 sleep 1
 if [ ! -f "$phpi" ]; then
-apt-get -y install php php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php-bcmath php-mysql php-json
+apt-get -y install php$phpv php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php-bcmath php-mysql php-json libapache2-mod-php$phpv
 else
 echo -e "\e[01;32;32m PHP, PHP-Erweiterungen sind bereits installiert!\e[0m"
 sleep 2
@@ -83,12 +86,13 @@ echo "Datenbank erstellen"
  echo "joomla Download"
  sleep 2
  rm /var/www/html/index.html
- wget https://downloads.joomla.org/cms/joomla4/4-2-0/Joomla_4.2.0-Stable-Full_Package.zip
- cp  "https://downloads.joomla.org/cms/joomla4/4-2-0/Joomla_4.2.0-Stable-Full_Package.zip" /var/www/html/
+ if [ ! -f "Joomla_$joomlav-Stable-Full_Package.tar.gz" ]
+ then wget https://downloads.joomla.org/cms/joomla4/$joomlav/Joomla_$joomlav-Stable-Full_Package.tar.gz
+ fi
+ cp  "Joomla_$joomlav-Stable-Full_Package.tar.gz" /var/www/html/
  cd /var/www/html
- unzip https://downloads.joomla.org/cms/joomla4/4-2-0/Joomla_4.2.0-Stable-Full_Package.zip
-  chown www-data:www-data -R /var/www/html
- chmod 777 -R /var/www/html 
+ tar -zxvf "Joomla_$joomlav-Stable-Full_Package.tar.gz"
+ chown -R www-data:www-data /var/www/html/
  sleep 1
  echo
  echo "Username & Password & Datenbanknamen Bitte Aufschreiben"
