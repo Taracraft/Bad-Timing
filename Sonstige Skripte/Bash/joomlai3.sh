@@ -1,5 +1,9 @@
 #!/bin/bash
 ##Ich uebernehme Keine Haftung für Schaeden am System oder An der Hardware.
+##############################################################################
+joomlav=3-10-11 	# Die - Zeichen Müssten so bleiben , oder . Funkttionieren nicht!
+phpv=8.0			# Das . Zeichen Muss so bleiben - oder , Funkttioniert nicht!
+##############################################################################
 #//Update System//#
 
 echo -e "\e[01;32;32m System update ueberpruefung...\e[0m"
@@ -33,7 +37,7 @@ fi
 echo -e "\e[01;32;32m Notwendige PHP Packete werden installiert\e[0m"
 sleep 1
 if [ ! -f "$phpi" ]; then
-apt-get -y install php php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php-bcmath php-mysql php-json
+apt-get -y install php$phpv php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php-bcmath php-mysql php-json libapache2-mod-php$phpv
 else
 echo -e "\e[01;32;32m PHP, PHP-Erweiterungen sind bereits installiert!\e[0m"
 sleep 2
@@ -83,12 +87,13 @@ echo "Datenbank erstellen"
  echo "joomla Download"
  sleep 2
  rm /var/www/html/index.html
- wget https://github.com/joomlagerman/joomla/releases/download/3.10.9v1/Joomla_3.10.9-Stable-Full_Package_German.tar.gz
- cp  "Joomla_3.10.9-Stable-Full_Package_German.tar.gz" /var/www/html/
+ if [ ! -f "Joomla_$joomlav-Stable-Full_Package.tar.gz" ]
+ then wget https://downloads.joomla.org/de/cms/joomla3/$joomlav/Joomla_$joomlav-Stable-Full_Package.tar.gz
+ fi
+ cp  "Joomla_$joomlav-Stable-Full_Package.tar.gz" /var/www/html/
  cd /var/www/html
- tar -xvzf /var/www/html/Joomla_3.10.9-Stable-Full_Package_German.tar.gz
-  chown www-data:www-data -R /var/www/html
- chmod 777 -R /var/www/html 
+ tar -zxvf "Joomla_$joomlav-Stable-Full_Package.tar.gz"
+ chown -R www-data:www-data /var/www/html/
  sleep 1
  echo
  echo "Username & Password & Datenbanknamen Bitte Aufschreiben"
