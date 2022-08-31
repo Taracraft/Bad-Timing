@@ -7,6 +7,8 @@ if (!isset($_SESSION['loggedin'])) {
 	exit;
 }
 ?>
+<script src="funktion.js" language=JavaScript"></script>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]);?>
 <?php
 $upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/cms/images/'; //Das Upload-Verzeichnis
 $upload_folder_www = 'https://bad-timing.eu/cms/images/'; //Das HTTP-Verzeichnis
@@ -30,19 +32,19 @@ if ($upload_folder===false)
 
 if ($wwwschreibbar ='true')
     {
-    //�berpr�fung der Dateiendung
+    // berpr fung der Dateiendung
     $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
     if(!in_array($extension, $allowed_extensions)) {
-    die("Ung�ltige Dateiendung. Nur png, jpg, jpeg und gif-Dateien sind erlaubt");
+    die("Ung ltige Dateiendung. Nur png, jpg, jpeg und gif-Dateien sind erlaubt");
     }
     
-    //�berpr�fung der Dateigr��e
+    // berpr fung der Dateigr  e
     $max_size = 500*1024; //500 KB
     if($_FILES['datei']['size'] > $max_size) {
-    die("Bitte keine Dateien gr��er 500kb hochladen");
+    die("Bitte keine Dateien gr  er 500kb hochladen");
     }
     
-    //�berpr�fung dass das Bild keine Fehler enth�lt
+    // berpr fung dass das Bild keine Fehler enth lt
     if(function_exists('exif_imagetype')) { //Die exif_imagetype-Funktion erfordert die exif-Erweiterung auf dem Server
     $allowed_types = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
     $detected_type = exif_imagetype($_FILES['datei']['tmp_name']);
@@ -55,7 +57,7 @@ if ($wwwschreibbar ='true')
     $new_path = $upload_folder.$filename.'.'.$extension;
     
     //Neuer Dateiname falls die Datei bereits existiert
-    if(file_exists($new_path)) { //Falls Datei existiert, h�nge eine Zahl an den Dateinamen
+    if(file_exists($new_path)) { //Falls Datei existiert, h nge eine Zahl an den Dateinamen
     $id = 1;
     do {
     $new_path = $upload_folder.$filename.'_'.$id.'.'.$extension;
@@ -91,23 +93,20 @@ if ($wwwschreibbar ='true')
                         else 
                         {
                         // kompletter Pfad
-                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">;
-                        $compl = "https://bad-timing.eu/cms/images/"."/".$file."<input type=\"checkbox\" name=\"loeschen\" value=\"Ja\">";
-                        if(isset($_POST["loeschen"])){
-                            echo $_POST["cb1"] . " wurde ausgewählt <br>";
-                            }
+                        $compl = "https://bad-timing.eu/cms/images/"."/".$file;
                         echo '<br></br>';
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<center><h1>images/".$file."</h1></center>";
-                        }
+                        echo "<input type=\"checkbox\" name=\"loeschen\" value=\"Ja\" onclick=\"myFunction()\">";
                 }
             }
-        echo "</select>";
-
-
+        
+    echo "<p>";
+    echo "<input type=\"submit\" value=\"Versenden\">";    
 
     }else{
             echo" Verzeichnis nicht schreibbar oder Exestiert nicht";
         }
     }
  ?>
+ </form>

@@ -40,3 +40,6 @@ echo '<br><b>Auflistung!:</br></b>';
 
 include("style/template/footer.php");
 ?>
+
+echo '<form action="'.$_SERVER['$PHP_SELF'].'" method="POST">';
+"<input type=\"checkbox\" name=\"loeschen\" value=\"Ja\">"
