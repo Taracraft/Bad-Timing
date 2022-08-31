@@ -8,8 +8,8 @@ if (!isset($_SESSION['loggedin'])) {
 }
 ?>
 <?php
-$upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/Imageupload/upload/'; //Das Upload-Verzeichnis
-//Überprüfung ob die Pfade Lesbar /Schreibbar sind.
+$upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/cms/images'; //Das Upload-Verzeichnis
+//Überprüfung ob der WWW-Pfad Lesbar /Schreibbar sind.
 if ($upload_folder===false)
     {
     echo "Der Ordner existiert garnicht";
@@ -21,14 +21,14 @@ if ($upload_folder===false)
         } else
         {
         echo "no way, dude";
-        $schreibbar=false;
+        $wwwschreibbar=false;
         }
     } 
 
 $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
 $extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
  
-if ($schreibbar===true)
+if ($wwwschreibbar===true)
 {
     //�berpr�fung der Dateiendung
     $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
@@ -66,7 +66,7 @@ if ($schreibbar===true)
     //Alles okay, verschiebe Datei an neuen Pfad
     move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
     $src = "/home/Lobby_1.17/plugins/Images/images/";  // source folder or file
-    $dest = "/var/www/vhosts/bad-timing.eu/httpdocs/Imageupload";   // destination folder or file        
+    $dest = "/var/www/vhosts/bad-timing.eu/httpdocs/cms/images";   // destination folder or file        
 
     shell_exec("cp -r $src $dest");
 
