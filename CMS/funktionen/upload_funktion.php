@@ -91,7 +91,11 @@ if ($wwwschreibbar ='true')
                         else 
                         {
                         // kompletter Pfad
-                        $compl = "https://bad-timing.eu/cms/images/"."/".$file."<input type=\"checkbox\" name=\"auswahl\" value=\"Ja\">";
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">;
+                        $compl = "https://bad-timing.eu/cms/images/"."/".$file."<input type=\"checkbox\" name=\"loeschen\" value=\"Ja\">";
+                        if(isset($_POST["loeschen"])){
+                            echo $_POST["cb1"] . " wurde ausgewählt <br>";
+                            }
                         echo '<br></br>';
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<center><h1>images/".$file."</h1></center>";
