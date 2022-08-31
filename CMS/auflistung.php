@@ -14,7 +14,7 @@ include("style/template/nav.php");
 <?
 echo '<br><b>Auflistung!:</br></b>';
  echo '<br></br>';
- $ordner = "/var/www/vhosts/bad-timing.eu/httpdocs/Imageupload/images";
+ $ordner = "/var/www/vhosts/bad-timing.eu/httpdocs/cms/images";
  $verzeichnis = opendir($ordner); 
         while ($file = readdir ($verzeichnis)) 
         {
