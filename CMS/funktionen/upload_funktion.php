@@ -9,6 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <?php
 $upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/cms/images'; //Das Upload-Verzeichnis
+$upload_folder_www = 'https://bad-timing.eu/cms/images'; //Das HTTP-Verzeichnis
 //Überprüfung ob der WWW-Pfad Lesbar /Schreibbar sind.
 if ($upload_folder===false)
     {
@@ -70,7 +71,7 @@ if ($wwwschreibbar ='true')
     shell_exec("cp -r $src $dest");
 
     echo "<H2>Copy files completed!</H2>"; //output when done
-    echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a>';
+    echo 'Bild erfolgreich hochgeladen: <a href="'.$upload_folder_www.$filename.'_'.$id.'.'.$extension'">'.$new_path.'</a>';
     $upload = true;
     if($upload == 'true'){
     echo '<br></br>';
