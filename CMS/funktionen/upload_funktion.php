@@ -28,8 +28,8 @@ if ($upload_folder===false)
 $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
 $extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
  
-if ($wwwschreibbar==true)
-{
+if ($wwwschreibbar == 'true'){
+
     //�berpr�fung der Dateiendung
     $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
     if(!in_array($extension, $allowed_extensions)) {
