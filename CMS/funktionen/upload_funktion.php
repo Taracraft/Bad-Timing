@@ -71,7 +71,7 @@ if ($wwwschreibbar ='true')
     shell_exec("cp -r $src $dest");
 
     echo "<H2>Copy files completed!</H2>"; //output when done
-    echo 'Bild erfolgreich hochgeladen: <a href="'.$upload_folder_www.$filename.'_'.$id.'.'.$extension'">'.$new_path.'</a>';
+    echo "Bild erfolgreich hochgeladen: <a href=\".$upload_folder_www.$filename.'_'.$id.'.'.$extension'>'.$new_path.'</a>";
     $upload = true;
     if($upload == 'true'){
     echo '<br></br>';
