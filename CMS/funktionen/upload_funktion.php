@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <?
 include("../style/template/header.php");
-include("style/template/nav.php");
+include("../style/template/nav.php");
 ?>
 <?php
 $upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/cms/images/'; //Das Upload-Verzeichnis
