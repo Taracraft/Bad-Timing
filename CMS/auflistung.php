@@ -35,10 +35,5 @@ echo '<br><b>Auflistung!:</br></b>';
                      echo "<button onclick=\"bilderdelete()\">Delete</button>";
              }
          }}
-     
- echo "<p>";
- echo "<input type=\"submit\" value=\"Versenden\">";
-
-
 include("style/template/footer.php");
 ?>

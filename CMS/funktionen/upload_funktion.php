@@ -103,10 +103,6 @@ if ($wwwschreibbar ='true')
                         echo "<center><h1>images/".$file."</h1></center>";
                         echo "<button onclick=\"bilderdelete()\">Delete</button>";                }
             }}
-        
-    echo "<p>";
-    echo "<input type=\"submit\" value=\"Versenden\">";    
-
     }else{
             echo" Verzeichnis nicht schreibbar oder Exestiert nicht";
         }
