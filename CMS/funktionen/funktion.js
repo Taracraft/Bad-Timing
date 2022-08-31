@@ -1,14 +1,8 @@
-function delete() {
-    // Get the checkbox
-    var checkBox = document.getElementById("delete");
-    // Get the output text
-    var text = document.getElementById("text");
-  
-    // If the checkbox is checked, display the output text
-    if (checkBox.checked == true){
-      text.style.display = "block";
+function bilderdelete() {
+    let confirmAction = confirm("Are you sure to execute this action?");
+    if (confirmAction) {
+      alert("Action successfully executed");
     } else {
-      text.style.display = "none";
+      alert("Action canceled");
     }
   }
-

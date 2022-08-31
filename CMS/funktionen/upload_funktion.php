@@ -99,8 +99,7 @@ if ($wwwschreibbar ='true')
                         echo '<br></br>';
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<center><h1>images/".$file."</h1></center>";
-                        echo "<input type=\"checkbox\" name=\"loeschen\" id=\"delete\" onclick=\"delete()\">";
-                        echo "<p id=\"text\" style=\"display:none\">Wollen sie die Datei wirklich L&oumlschen;!</p>";
+                        echo "<button onclick=\"bilderdelete()\">Delete</button>";
                 }
             }}
         
