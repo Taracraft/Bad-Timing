@@ -18,6 +18,8 @@ if ($upload_folder===false)
     if (is_writeable($upload_folder))
         {
         echo "ok, koennte in den Ordner schreiben";
+        $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
+        $extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
         } else
         {
         echo "no way, dude";
@@ -25,11 +27,8 @@ if ($upload_folder===false)
         }
     } 
 
-$filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
-$extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
- 
-if ($wwwschreibbar == 'true'){
-
+if ($wwwschreibbar ='true')
+    {
     //�berpr�fung der Dateiendung
     $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
     if(!in_array($extension, $allowed_extensions)) {
@@ -77,7 +76,7 @@ if ($wwwschreibbar == 'true'){
     echo '<br></br>';
     echo '<br><b>Auflistung!:</br></b>';
     echo '<br></br>';
-    $ordner = "/var/www/vhosts/bad-timing.eu/httpdocs/Imageupload/images";
+    $ordner = "/var/www/vhosts/bad-timing.eu/httpdocs/cms/images";
     $verzeichnis = opendir($ordner); 
             while ($file = readdir ($verzeichnis)) 
             {
@@ -91,7 +90,7 @@ if ($wwwschreibbar == 'true'){
                         else 
                         {
                         // kompletter Pfad
-                        $compl = "https://bad-timing.eu/Imageupload/images"."/".$file;
+                        $compl = "https://bad-timing.eu/cms/images"."/".$file;
                         echo '<br></br>';
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<center><h1>images/".$file."</h1></center>";
@@ -102,8 +101,8 @@ if ($wwwschreibbar == 'true'){
 
 
 
-    }else
-        {
-            echo' Verzeichnis nicht schreibbar oder Exestiert nicht';}
+    }else{
+            echo" Verzeichnis nicht schreibbar oder Exestiert nicht";
         }
+    }
  ?>
