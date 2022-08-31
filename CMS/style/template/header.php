@@ -6,6 +6,6 @@
 		<link href="../../cms/style/css/style.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="../../cms/style/css/style.css">
 	</head>
-	<script src="../../cms/funktionen/funktionen.js" language=JavaScript">
+	<script src="../../cms/funktionen/funktionen.js" type="text/javascript">
 		</script>
 
