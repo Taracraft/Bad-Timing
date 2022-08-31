@@ -9,6 +9,8 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <?
 include("../style/template/header.php");
+?>
+<?
 include("../style/template/nav.php");
 ?>
 <?php
@@ -54,9 +56,9 @@ if ($wwwschreibbar ='true')
     die("Nur der Upload von Bilddateien ist gestattet");
     }
     }
-    
     //Pfad zum Upload
     $new_path = $upload_folder.$filename.'.'.$extension;
+    $new_path_www = $upload_folder_www.$filename.'.'.$extension;
     
     //Neuer Dateiname falls die Datei bereits existiert
     if(file_exists($new_path)) { //Falls Datei existiert, h nge eine Zahl an den Dateinamen
@@ -75,7 +77,7 @@ if ($wwwschreibbar ='true')
     shell_exec("cp $src $dest");
 
     echo "<H2>Copy files completed!</H2>"; //output when done
-    echo "Bild erfolgreich hochgeladen: <a href=\".$upload_folder_www.$filename.'_'.$extension'>'.$new_path.'</a>";
+    echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path_www.'">'.$new_path_www.'</a>';
     $upload = true;
     if($upload == 'true'){
     echo '<br></br>';
@@ -99,8 +101,7 @@ if ($wwwschreibbar ='true')
                         echo '<br></br>';
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<center><h1>images/".$file."</h1></center>";
-                        echo "<button onclick=\"bilderdelete()\">Delete</button>";
-                }
+                        echo "<button onclick=\"bilderdelete()\">Delete</button>";                }
             }}
         
     echo "<p>";
