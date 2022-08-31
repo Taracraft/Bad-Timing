@@ -91,7 +91,7 @@ if ($wwwschreibbar ='true')
                         else 
                         {
                         // kompletter Pfad
-                        $compl = "https://bad-timing.eu/cms/images/"."/".$file;
+                        $compl = "https://bad-timing.eu/cms/images/"."/".$file."<input type=\"checkbox\" name=\"auswahl\" value=\"Ja\">";
                         echo '<br></br>';
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<center><h1>images/".$file."</h1></center>";
