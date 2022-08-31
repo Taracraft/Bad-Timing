@@ -3,3 +3,9 @@ function clickMe(){
     document.write(result);
     alert("Blala");
     }
+<div onclick="myFunction()"></div>
+<script>
+   function myFunction() {
+      alert("Hello");
+   }
+</script>

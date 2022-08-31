@@ -3,11 +3,14 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: ../../cms/index.html');
+    header('Location: ../../cms/index.html');
 	exit;
 }
 ?>
-<script src="funktion.js" language=JavaScript"></script>
+<?
+include("../style/template/header.php");
+include("../style/template/nav.php");
+?>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]);?>
 <?php
 $upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/cms/images/'; //Das Upload-Verzeichnis
@@ -97,9 +100,9 @@ if ($wwwschreibbar ='true')
                         echo '<br></br>';
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<center><h1>images/".$file."</h1></center>";
-                        echo "<input type=\"checkbox\" name=\"loeschen\" value=\"Ja\" onclick=\"myFunction()\">";
+                        echo "<input type=\"checkbox\" name=\"loeschen\" id=\"delete\" onclick=\"myFunction()\">";
                 }
-            }
+            }}
         
     echo "<p>";
     echo "<input type=\"submit\" value=\"Versenden\">";    
@@ -109,4 +112,6 @@ if ($wwwschreibbar ='true')
         }
     }
  ?>
- </form>
+<?
+include("../style/template/footer.php");
+?>
