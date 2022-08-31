@@ -9,19 +9,13 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <?php
 $upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/Imageupload/upload/'; //Das Upload-Verzeichnis
-$filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
-$extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
- 
-
 //Überprüfung ob die Pfade Lesbar /Schreibbar sind.
-$pruefpfad=$upload_folder;  // oder "/tmp" oder  "." etc.
-$pruefordner=realpath($pruefpfad);
-if ($pruefordner===false)
+if ($upload_folder===false)
     {
     echo "Der Ordner existiert garnicht";
     } else
     {
-    if (is_writeable($pruefordner))
+    if (is_writeable($upload_folder))
         {
         echo "ok, koennte in den Ordner schreiben";
         } else
@@ -30,6 +24,9 @@ if ($pruefordner===false)
         }
     } 
 
+$filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
+$extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
+ 
 
 //�berpr�fung der Dateiendung
 $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
