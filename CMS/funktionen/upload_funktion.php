@@ -12,7 +12,25 @@ $upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/Imageupload/upload/'; /
 $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
 $extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
  
- 
+
+//Überprüfung ob die Pfade Lesbar /Schreibbar sind.
+$pruefpfad=$upload_folder;  // oder "/tmp" oder  "." etc.
+$pruefordner=realpath($pruefpfad);
+if ($pruefordner===false)
+    {
+    echo "Der Ordner existiert garnicht";
+    } else
+    {
+    if (is_writeable($pruefordner))
+        {
+        echo "ok, koennte in den Ordner schreiben";
+        } else
+        {
+        echo "no way, dude";
+        }
+    } 
+
+
 //�berpr�fung der Dateiendung
 $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
 if(!in_array($extension, $allowed_extensions)) {
