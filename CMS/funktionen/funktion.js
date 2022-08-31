@@ -1,11 +1,16 @@
-function clickMe(){
-    var result ="<?php php_func(); ?>"
-    document.write(result);
-    alert("Blala");
-    }
-<div onclick="myFunction()"></div>
 <script>
-   function myFunction() {
-      alert("Hello");
-   }
+function delete() {
+    // Get the checkbox
+    var checkBox = document.getElementById("delete");
+    // Get the output text
+    var text = document.getElementById("text");
+  
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+      text.style.display = "block";
+    } else {
+      text.style.display = "none";
+    }
+  }
+include("../style/template/nav.php");
 </script>

@@ -9,9 +9,8 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <?
 include("../style/template/header.php");
-include("../style/template/nav.php");
+include("style/template/nav.php");
 ?>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]);?>
 <?php
 $upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/cms/images/'; //Das Upload-Verzeichnis
 $upload_folder_www = 'https://bad-timing.eu/cms/images/'; //Das HTTP-Verzeichnis
@@ -100,7 +99,8 @@ if ($wwwschreibbar ='true')
                         echo '<br></br>';
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<center><h1>images/".$file."</h1></center>";
-                        echo "<input type=\"checkbox\" name=\"loeschen\" id=\"delete\" onclick=\"myFunction()\">";
+                        echo "<input type=\"checkbox\" name=\"loeschen\" id=\"delete\" onclick=\"delete()\">";
+                        echo "<p id=\"text\" style=\"display:none\">Wollen sie die Datei wirklich L&oumlschen;!</p>";
                 }
             }}
         
