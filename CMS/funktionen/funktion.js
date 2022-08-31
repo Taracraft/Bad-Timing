@@ -1,4 +1,3 @@
-<script>
 function delete() {
     // Get the checkbox
     var checkBox = document.getElementById("delete");
@@ -12,5 +11,4 @@ function delete() {
       text.style.display = "none";
     }
   }
-include("../style/template/nav.php");
-</script>
+
