@@ -28,18 +28,18 @@ echo '<br><b>Auflistung!:</br></b>';
                      else 
                     {
                      // kompletter Pfad
-                     $compl = "https://bad-timing.eu/cms/images"."/".$file;
+                     $compl = "https://bad-timing.eu/cms/images/"."/".$file;
                      echo '<br></br>';
                      echo "<img src=\"".$compl."\"></img><br/>";
                      echo "<center><h1>images/".$file."</h1></center>";
-                     }
-            }
-        }
-    echo "</select>";
+                     echo "<input type=\"checkbox\" name=\"loeschen\" id=\"delete\" onclick=\"delete()\">";
+                     echo "<p id=\"text\" style=\"display:none\">Wollen sie die Datei wirklich L&oumlschen;!</p>";
+             }
+         }}
+     
+ echo "<p>";
+ echo "<input type=\"submit\" value=\"Versenden\">";
 
 
 include("style/template/footer.php");
 ?>
-
-echo '<form action="'.$_SERVER['$PHP_SELF'].'" method="POST">';
-"<input type=\"checkbox\" name=\"loeschen\" value=\"Ja\">"
