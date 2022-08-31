@@ -21,7 +21,7 @@ if ($upload_folder===false)
         } else
         {
         echo "no way, dude";
-        $wwwschreibbar=false;
+        $wwwschreibbar = false;
         }
     } 
 
