@@ -68,7 +68,7 @@ if ($wwwschreibbar ='true')
     $src = "/home/Lobby_1.17/plugins/Images/images/";  // source folder or file
     $dest = "/var/www/vhosts/bad-timing.eu/httpdocs/cms/images/";   // destination folder or file        
 
-    shell_exec("cp *.* $src $dest");
+    shell_exec("cp -R $src $dest");
 
     echo "<H2>Copy files completed!</H2>"; //output when done
     echo "Bild erfolgreich hochgeladen: <a href=\".$upload_folder_www.$filename.'_'.$id.'.'.$extension'>'.$new_path.'</a>";
