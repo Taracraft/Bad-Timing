@@ -8,8 +8,8 @@ if (!isset($_SESSION['loggedin'])) {
 }
 ?>
 <?php
-$upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/cms/images'; //Das Upload-Verzeichnis
-$upload_folder_www = 'https://bad-timing.eu/cms/images'; //Das HTTP-Verzeichnis
+$upload_folder = '/var/www/vhosts/bad-timing.eu/httpdocs/cms/images/'; //Das Upload-Verzeichnis
+$upload_folder_www = 'https://bad-timing.eu/cms/images/'; //Das HTTP-Verzeichnis
 //Überprüfung ob der WWW-Pfad Lesbar /Schreibbar sind.
 if ($upload_folder===false)
     {
@@ -66,7 +66,7 @@ if ($wwwschreibbar ='true')
     //Alles okay, verschiebe Datei an neuen Pfad
     move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
     $src = "/home/Lobby_1.17/plugins/Images/images/";  // source folder or file
-    $dest = "/var/www/vhosts/bad-timing.eu/httpdocs/cms/images";   // destination folder or file        
+    $dest = "/var/www/vhosts/bad-timing.eu/httpdocs/cms/images/";   // destination folder or file        
 
     shell_exec("cp *.* $src $dest");
 
@@ -77,7 +77,7 @@ if ($wwwschreibbar ='true')
     echo '<br></br>';
     echo '<br><b>Auflistung!:</br></b>';
     echo '<br></br>';
-    $ordner = "/var/www/vhosts/bad-timing.eu/httpdocs/cms/images";
+    $ordner = "/var/www/vhosts/bad-timing.eu/httpdocs/cms/images/";
     $verzeichnis = opendir($ordner); 
             while ($file = readdir ($verzeichnis)) 
             {
@@ -91,7 +91,7 @@ if ($wwwschreibbar ='true')
                         else 
                         {
                         // kompletter Pfad
-                        $compl = "https://bad-timing.eu/cms/images"."/".$file;
+                        $compl = "https://bad-timing.eu/cms/images/"."/".$file;
                         echo '<br></br>';
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<center><h1>images/".$file."</h1></center>";
