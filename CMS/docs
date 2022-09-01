@@ -1,0 +1,918 @@
+https://codeshack.io/secure-registration-system-php-mysql/
+This tutorial is a follow up to our previous tutorial Secure Login System with PHP and MySQL. In this tutorial, we'll be creating a secure registration form and implementing basic validation.
+
+A registration form is what your website's visitors can use to register their details, which will subsequently be stored in a MySQL database.
+
+The Advanced package includes additional features and a download link to the source code.
+
+Contents
+Getting Started
+Requirements
+What You Will Learn in this Tutorial
+File Structure & Setup
+Creating the Registration Form Design
+Creating the Database and setting-up Tables
+Registering Users with PHP & MySQL
+Validating Form Data
+Implementing Account Activation
+1. Getting Started
+There are a few steps we need to take before we create our secure registration system. We need to set-up our web server environment and make sure we have the required extensions enabled (skip if you followed the secure login system tutorial).
+
+1.1. Requirements
+If you haven't got a local web server set-up, you will need to download and install XAMPP. XAMPP is a server-side web development environment that includes the essentials for back-end web developers.
+1.2. What You Will Learn in this Tutorial
+Form Design — Design a registration form with HTML5 and CSS3.
+Prepared SQL Queries — How to prepare SQL queries to prevent SQL injection and insert new records into a MySQL database.
+Basic Validation — Validating form data that is sent to the server (username, password, and email).
+1.3. File Structure & Setup
+We now need to start our web server and create the files and directories that we're going to use for our registration system.
+
+Open XAMPP Control Panel
+Next to the Apache module click Start
+Next to the MySQL module click Start
+Navigate to XAMPPs installation folder (C:\xampp)
+Open the htdocs folder
+Create the following folders and files:
+File Structure
+\-- phplogin
+    |-- register.html
+    |-- style.css
+    |-- register.php
+    |-- activate.php (optional)
+
+Each file will contain the following:
+
+register.html — Registration form created with HTML5 and CSS3. As this file doesn't require us to use PHP, we'll save it as plain HTML.
+style.css — The stylesheet (CSS3) for our secure registration form.
+register.php — Validate form data and insert a new account into the MySQL database.
+activate.php — Activate the user's account with a unique code (email based activation).
+2. Creating the Registration Form Design
+The registration form will be used by our websites visitors. They can use it to input their account information. We'll be creating the registration form with HTML and CSS.
+
+Edit the register.html file and add the following code:
+
+HTML
+Copy
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Register</title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<div class="register">
+			<h1>Register</h1>
+			<form action="register.php" method="post" autocomplete="off">
+				<label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Username" id="username" required>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password" placeholder="Password" id="password" required>
+				<label for="email">
+					<i class="fas fa-envelope"></i>
+				</label>
+				<input type="email" name="email" placeholder="Email" id="email" required>
+				<input type="submit" value="Register">
+			</form>
+		</div>
+	</body>
+</html>
+Navigate to http://localhost/phplogin/register.html, our registration form will look like the following:
+
+http://localhost/phplogin/register.html
+Basic HTML Registration Form Layout
+Pretty basic for a registration form, now let's add some CSS, edit the style.css file and add the following:
+
+CSS
+Copy
+* {
+  	box-sizing: border-box;
+  	font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+  	font-size: 16px;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+body {
+  	background-color: #435165;
+  	margin: 0;
+}
+.register {
+  	width: 400px;
+  	background-color: #ffffff;
+  	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  	margin: 100px auto;
+}
+.register h1 {
+  	text-align: center;
+  	color: #5b6574;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0;
+  	border-bottom: 1px solid #dee0e4;
+}
+.register form {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  	padding-top: 20px;
+}
+.register form label {
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	width: 50px;
+ 	height: 50px;
+  	background-color: #3274d6;
+  	color: #ffffff;
+}
+.register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
+  	width: 310px;
+  	height: 50px;
+  	border: 1px solid #dee0e4;
+  	margin-bottom: 20px;
+  	padding: 0 15px;
+}
+.register form input[type="submit"] {
+  	width: 100%;
+  	padding: 15px;
+  	margin-top: 20px;
+  	background-color: #3274d6;
+ 	border: 0;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: #ffffff;
+  	transition: background-color 0.2s;
+}
+.register form input[type="submit"]:hover {
+	background-color: #2868c7;
+  	transition: background-color 0.2s;
+}
+We need to include our stylesheet in our register.html file, copy and paste the following code to the head section:
+
+HTML
+Copy
+<link href="style.css" rel="stylesheet" type="text/css">
+And now our registration form will look more appealing:
+
+http://localhost/phplogin/register.html
+Awesome HTML Registration Form Layout
+Let's narrow down the form so we can get a better understanding on what's going on.
+
+Form — we need to use both the action and post attributes, the action attribute will be set to the registration file. When the form is submitted, the form data will be sent to the registration file for processing. The method is to post, this will allow us to process the form data.
+Input (text/password/email) — We need to name our form fields so the server can recognize them, so if we set the value of the attribute name to the username, we can use the post variable in our registration file to get the data, like this: $_POST['username'].
+Input (submit) — On click the form data will be sent to our registration file.
+That's basically all we need to do on the client-side, next step is to set-up the database and create the registration file with PHP.
+
+3. Creating the Database and setting-up Tables
+You can skip this step if you followed the Secure Login System Tutorial.
+
+For this part, you will need to access your MySQL database, either using phpMyAdmin or your preferred MySQL database management application.
+
+If you're using phpMyAdmin then follow these instructions:
+
+Navigate to: http://localhost/phpmyadmin/
+Click the Databases tab at the top
+Under Create database, type in phplogin in the text box
+Select utf8_general_ci as the collation
+Click Create
+You can use your own database name, but for this tutorial, we'll use phplogin.
+
+What we need now is an accounts table that will store all our accounts (usernames, passwords, emails, etc).
+
+Click the database on the left side panel (phplogin) and execute the following SQL statement:
+
+SQL
+Copy
+CREATE TABLE IF NOT EXISTS `accounts` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+  	`username` varchar(50) NOT NULL,
+  	`password` varchar(255) NOT NULL,
+  	`email` varchar(100) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+On phpMyAdmin this should look like:
+
+http://localhost/phpmyadmin/
+phpMyAdmin Accounts Table
+The above SQL statement code will create the accounts table with the columns id, username, password, and email.
+
+4. Registering Users with PHP & MySQL
+Now we need to create the registration file that will process the form fields, check for basic validation, and insert the new account into our database.
+
+The registration page will require a connection to our database and therefore we must include the necessary variables and MySQL functions. Edit the register.php file and add the following code:
+
+PHP
+Copy
+<?php
+// Change this to your connection info.
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'phplogin';
+// Try and connect using the info above.
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if (mysqli_connect_errno()) {
+	// If there is an error with the connection, stop the script and display the error.
+	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+Don't forget to update the MySQL variables if your MySQL credentials do not reflect the declared values.
+
+Next, we can add basic validation to ensure the user has entered their details and check for empty variables.
+
+PHP
+Copy
+// Now we check if the data was submitted, isset() function will check if the data exists.
+if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
+	// Could not get the data that should have been sent.
+	exit('Please complete the registration form!');
+}
+// Make sure the submitted registration values are not empty.
+if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
+	// One or more values are empty.
+	exit('Please complete the registration form');
+}
+Now we need to check if the account already exists in the database. We can check this by selecting a record from our accounts table with the same username that the user has provided.
+
+Add after:
+
+PHP
+Copy
+// We need to check if the account with that username exists.
+if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
+	// Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
+	$stmt->bind_param('s', $_POST['username']);
+	$stmt->execute();
+	$stmt->store_result();
+	// Store the result so we can check if the account exists in the database.
+	if ($stmt->num_rows > 0) {
+		// Username already exists
+		echo 'Username exists, please choose another!';
+	} else {
+		// Insert new account
+	}
+	$stmt->close();
+} else {
+	// Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
+	echo 'Could not prepare statement!';
+}
+$con->close();
+?>
+Replace:
+
+// Insert new account
+With:
+
+PHP
+Copy
+// Username doesnt exists, insert new account
+if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)')) {
+	// We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
+	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+	$stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
+	$stmt->execute();
+	echo 'You have successfully registered, you can now login!';
+} else {
+	// Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
+	echo 'Could not prepare statement!';
+}
+This will insert a new account into our accounts table.
+
+Remember in our Login System we used the password_verify function? As you can see in the code above we use the password_hash function, this will encrypt the user's password using the one-way algorithm — this will prevent your users passwords from being exposed if for somehow your database becomes vulnerable.
+
+That's basically all we need to do to register accounts on our website.
+
+5. Validating Form Data
+We already have basic validation in our PHP script but what if we want to check if the email is actually an email or if the username and password should be a certain amount of characters long, you can do that with the codes below, add them in the register.php file before the following line:
+
+if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
+
+Email Validation
+PHP
+Copy
+if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+	exit('Email is not valid!');
+}
+
+Invalid Characters Validation
+PHP
+Copy
+if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
+    exit('Username is not valid!');
+}
+
+Character Length Check
+PHP
+Copy
+if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
+	exit('Password must be between 5 and 20 characters long!');
+}
+You should always implement your own validation, these are just basic examples.
+
+6. Implementing Account Activation
+The account activation system will send an email to the user with the activation link when the user has registered.
+
+The first thing we need to do is to go into phpMyAdmin and select our database, in our case this would be phplogin, you can either add the column activation_code to the accounts table or execute the SQL statement below.
+
+SQL
+Copy
+ALTER TABLE accounts ADD activation_code varchar(50) DEFAULT ''
+Now we need to edit our register.php file, search for this line of code:
+
+if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)')) {
+Replace with:
+
+PHP
+Copy
+if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email, activation_code) VALUES (?, ?, ?, ?)')) {
+Search for:
+
+$stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
+Replace with:
+
+PHP
+Copy
+$uniqid = uniqid();
+$stmt->bind_param('ssss', $_POST['username'], $password, $_POST['email'], $uniqid);
+The $uniqud variable will generate a unique ID that we'll use for our activation code, this will be sent to the user's email address.
+
+Search for:
+
+echo 'You have successfully registered, you can now login!';
+Replace with:
+
+PHP
+Copy
+$from    = 'noreply@yourdomain.com';
+$subject = 'Account Activation Required';
+$headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
+// Update the activation variable below
+$activate_link = 'http://yourdomain.com/phplogin/activate.php?email=' . $_POST['email'] . '&code=' . $uniqid;
+$message = '<p>Please click the following link to activate your account: <a href="' . $activate_link . '">' . $activate_link . '</a></p>';
+mail($_POST['email'], $subject, $message, $headers);
+echo 'Please check your email to activate your account!';
+Upon account registration, the user will need to activate their account using the activation link that is sent to their email address. You need to update both the $from and $activate_link variables.
+
+Now we can proceed to create the activation file. The activation file will process the GET parameters and verify the email and code. The user's account will be activated if the code is valid.
+
+Edit/create the activate.php file and add the following code:
+
+PHP
+Copy
+<?php
+// Change this to your connection info.
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'phplogin';
+// Try and connect using the info above.
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if (mysqli_connect_errno()) {
+	// If there is an error with the connection, stop the script and display the error.
+	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+// First we check if the email and code exists...
+if (isset($_GET['email'], $_GET['code'])) {
+	if ($stmt = $con->prepare('SELECT * FROM accounts WHERE email = ? AND activation_code = ?')) {
+		$stmt->bind_param('ss', $_GET['email'], $_GET['code']);
+		$stmt->execute();
+		// Store the result so we can check if the account exists in the database.
+		$stmt->store_result();
+		if ($stmt->num_rows > 0) {
+			// Account exists with the requested email and code.
+			if ($stmt = $con->prepare('UPDATE accounts SET activation_code = ? WHERE email = ? AND activation_code = ?')) {
+				// Set the new activation code to 'activated', this is how we can check if the user has activated their account.
+				$newcode = 'activated';
+				$stmt->bind_param('sss', $newcode, $_GET['email'], $_GET['code']);
+				$stmt->execute();
+				echo 'Your account is now activated! You can now <a href="index.html">login</a>!';
+			}
+		} else {
+			echo 'The account is already activated or doesn\'t exist!';
+		}
+	}
+}
+?>
+If the code reflects the one in the database that is associated with the user's account then the value of the activation_code column will be updated to activated.
+
+If we want to check if the user has activated their account, we can add the following code to the pages we want to restrict non-activated users:
+
+PHP
+Copy
+if ($account['activation_code'] == 'activated') {
+	// account is activated
+	// Display home page etc
+} else {
+	// account is not activated
+	// redirect user or display an error
+}
+For the above code to work, you will need to connect to your MySQL database and select the user's account.
+
+Also, take note PHP mail function will only work if your computer or server supports it. If it doesn't send an email, check your configuration or install a mail server such as Postfix.
+
+2.
+
+https://codeshack.io/secure-login-system-php-mysql/
+
+2. Creating the Login Form Design
+We will now create a form that our users can use to enter their details and submit them for processing. We will be using HTML and CSS for this part of the tutorial as PHP will not be necessary on this page.
+
+Edit the index.html file with your favorite code editor and add the following code:
+
+HTML
+Copy
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<div class="login">
+			<h1>Login</h1>
+			<form action="authenticate.php" method="post">
+				<label for="username">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="username" placeholder="Username" id="username" required>
+				<label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="password" placeholder="Password" id="password" required>
+				<input type="submit" value="Login">
+			</form>
+		</div>
+	</body>
+</html>
+If we navigate to the index page in our web browser, it will look like the following:
+
+http://localhost/phplogin/index.html
+Basic HTML Login Form Layout
+Pretty basic right? Let's edit our style.css file and implement code that will improve the appearance of the form.
+
+Add the following code to the style.css file:
+
+CSS
+Copy
+* {
+  	box-sizing: border-box;
+  	font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+  	font-size: 16px;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+body {
+  	background-color: #435165;
+}
+.login {
+  	width: 400px;
+  	background-color: #ffffff;
+  	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  	margin: 100px auto;
+}
+.login h1 {
+  	text-align: center;
+  	color: #5b6574;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0;
+  	border-bottom: 1px solid #dee0e4;
+}
+.login form {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  	padding-top: 20px;
+}
+.login form label {
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	width: 50px;
+  	height: 50px;
+  	background-color: #3274d6;
+  	color: #ffffff;
+}
+.login form input[type="password"], .login form input[type="text"] {
+  	width: 310px;
+  	height: 50px;
+  	border: 1px solid #dee0e4;
+  	margin-bottom: 20px;
+  	padding: 0 15px;
+}
+.login form input[type="submit"] {
+  	width: 100%;
+  	padding: 15px;
+ 	margin-top: 20px;
+  	background-color: #3274d6;
+  	border: 0;
+  	cursor: pointer;
+  	font-weight: bold;
+  	color: #ffffff;
+  	transition: background-color 0.2s;
+}
+.login form input[type="submit"]:hover {
+	background-color: #2868c7;
+  	transition: background-color 0.2s;
+}
+We need to include our stylesheet in our index.html file and therefore we must add the following code to the head section:
+
+HTML
+Copy
+<link href="style.css" rel="stylesheet" type="text/css">
+And now if we refresh the index.html page in our web browser, our login form will look more appealing:
+
+http://localhost/phplogin/index.html
+Awesome HTML Login Form Layout
+That looks much better! Let's narrow down the form elements, so we can get a better understanding on what's going on.
+
+Form — We need to use both the action and post attributes. The action attribute will be set to the authentication file. When the form is submitted, the form data will be sent to the authentication file for processing. In addition, the method is declared as post as this will enable us to process the form data using the POST request method.
+Input (text/password) — We need to name our form fields so the server can recognize them. The value of the attribute name we can declare as username, which we can use to retrieve the post variable in our authentication file to get the data, for example: $_POST['username'].
+Input (submit) — On form submission, the data will be sent to our authentication file for processing.
+3. Creating the Database and setting-up Tables
+For this part, you will need to access your MySQL database, either using phpMyAdmin or your preferred MySQL database management application.
+
+Follow the below instructions if you're using phpMyAdmin.
+
+Navigate to: http://localhost/phpmyadmin/
+Click the Databases tab at the top
+Under Create database, enter phplogin in the text box
+Select utf8_general_ci as the collation
+Click Create
+You can use your own database name, but for this tutorial, we'll use phplogin.
+
+What we need now is an accounts table as this will store all the accounts (usernames, passwords, emails, etc) that are registered with the system.
+
+Click the database on the left side panel (phplogin) and execute the following SQL statement:
+
+SQL
+Copy
+CREATE TABLE IF NOT EXISTS `accounts` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+  	`username` varchar(50) NOT NULL,
+  	`password` varchar(255) NOT NULL,
+  	`email` varchar(100) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO `accounts` (`id`, `username`, `password`, `email`) VALUES (1, 'test', '$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa', 'test@test.com');
+On phpMyAdmin this should look like:
+
+http://localhost/phpmyadmin/
+phpMyAdmin Accounts Table
+The above SQL statement code will create the accounts table with the columns id, username, password, and email.
+
+The SQL statement will insert a test account with the username: test, and the password: test. The test account will be used for testing purposes to ensure our login system is functioning correctly.
+
+4. Authenticating Users with PHP
+Now that we have our database setup, we can go ahead and start coding with PHP. We're going to start with the authentication file, which will process and validate the form data that we'll send from our index.html file.
+
+Edit the authenticate.php file and add the following:
+
+PHP
+Copy
+<?php
+session_start();
+// Change this to your connection info.
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'phplogin';
+// Try and connect using the info above.
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if ( mysqli_connect_errno() ) {
+	// If there is an error with the connection, stop the script and display the error.
+	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+Initially, the code will start the session as this enables us to preserve account details on the server and will be used later on to remember logged-in users.
+
+Connecting to the database is essential. Without it, how can we retrieve and store information related to our users? Therefore, we must make sure to update the variables to reflect our MySQL database credentials.
+
+Add below:
+
+PHP
+Copy
+// Now we check if the data from the login form was submitted, isset() will check if the data exists.
+if ( !isset($_POST['username'], $_POST['password']) ) {
+	// Could not get the data that should have been sent.
+	exit('Please fill both the username and password fields!');
+}
+The above code will make sure the form data exists, whereas if the user tries to access the file without submitting the form, it will output a simple error.
+
+Add below:
+
+PHP
+Copy
+// Prepare our SQL, preparing the SQL statement will prevent SQL injection.
+if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
+	// Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+	$stmt->bind_param('s', $_POST['username']);
+	$stmt->execute();
+	// Store the result so we can check if the account exists in the database.
+	$stmt->store_result();
+
+
+	$stmt->close();
+}
+?>
+The above code will prepare the SQL statement that will select the id and password columns from the accounts table. In addition, it will bind the username to the SQL statement, execute, and then store the result.
+
+After the following line:
+
+$stmt->store_result();
+Add:
+
+PHP
+Copy
+if ($stmt->num_rows > 0) {
+	$stmt->bind_result($id, $password);
+	$stmt->fetch();
+	// Account exists, now we verify the password.
+	// Note: remember to use password_hash in your registration file to store the hashed passwords.
+	if (password_verify($_POST['password'], $password)) {
+		// Verification success! User has logged-in!
+		// Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
+		session_regenerate_id();
+		$_SESSION['loggedin'] = TRUE;
+		$_SESSION['name'] = $_POST['username'];
+		$_SESSION['id'] = $id;
+		echo 'Welcome ' . $_SESSION['name'] . '!';
+	} else {
+		// Incorrect password
+		echo 'Incorrect username and/or password!';
+	}
+} else {
+	// Incorrect username
+	echo 'Incorrect username and/or password!';
+}
+First, we need to check if the query has returned any results. If the username doesn't exist in the database then there would be no results.
+
+If the username exists, we can bind the results to both the $id and $password variables.
+
+Subsequently, we proceed to verify the password with the password_verify function. Only passwords that were created with the password_hash function will work.
+
+If you don't want to use any password encryption method, you can simply replace the following code:
+
+PHP
+Copy
+if (password_verify($_POST['password'], $password)) {
+With:
+
+PHP
+Copy
+if ($_POST['password'] === $password) {
+However, I don't recommend removing the hashing functions because if somehow your database becomes exposed, all the passwords stored in the accounts table will also be exposed. In addition, the user will have a sense of privacy knowing their password is encrypted.
+
+Upon successful authentication from the user, session variables will be initialized and preserved until they're destroyed by either logging out or the session expiring. These session variables are stored on the server and are associated with a session ID stored in the user's browser. We'll use these variables to determine whether the user is logged in or not and to associate the session variables with our retrieved MySQL database results.
+
+Did you know?
+The session_regenerate_id() function will help prevent session hijacking as it regenerates the user's session ID that is stored on the server and as a cookie in the browser.
+
+The user cannot change the session variables in their browser and therefore you don't need to be concerned about such matter. The only variable they can change is the encrypted session ID, which is used to associate the user with the server sessions.
+
+Now we can test the login system and make sure the authentication works correctly. Navigate to http://localhost/phplogin/index.html in your browser.
+
+Type in a random username and password, and click the login button. It should output an error that should look like the following:
+
+http://localhost/phplogin/authenticate.php
+Authentication Incorrect Username PHP
+Don't worry, it's not broken! If we navigate back to our login form and enter test for both the username and password fields, the authentication page will look like the following:
+
+http://localhost/phplogin/authenticate.php
+Authentication Loggedin PHP
+If you receive an error, make sure to double-check your code to make sure you haven't missed anything or check if the test account exists in your database.
+
+5. Creating the Home Page
+The home page will be the first page our users see when they've logged-in. The only way they can access this page is if they're logged-in, whereas if they aren't, they will be redirected back to the login page.
+
+Edit the home.php file and add the following code:
+
+PHP
+Copy
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: index.html');
+	exit;
+}
+?>
+Basically, the above code will check if the user is logged in, if they are not, they will be redirected to the login page. Remember the $_SESSION['loggedin'] variable we defined in the authenticate.php file? This is what we can use to determine whether users are logged in or not.
+
+Now we can add some HTML to our home page. Below the closing tag, add the following code:
+
+PHP
+Copy
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Home Page</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body class="loggedin">
+		<nav class="navtop">
+			<div>
+				<h1>Website Title</h1>
+				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+			</div>
+		</nav>
+		<div class="content">
+			<h2>Home Page</h2>
+			<p>Welcome back, <?=$_SESSION['name']?>!</p>
+		</div>
+	</body>
+</html>
+The above code is the template for our home page. On this page, the user will encounter a welcome message along with their name being displayed.
+
+We need to add CSS for the home page. Add the following code to style.css file:
+
+PHP
+Copy
+.navtop {
+	background-color: #2f3947;
+	height: 60px;
+	width: 100%;
+	border: 0;
+}
+.navtop div {
+	display: flex;
+	margin: 0 auto;
+	width: 1000px;
+	height: 100%;
+}
+.navtop div h1, .navtop div a {
+	display: inline-flex;
+	align-items: center;
+}
+.navtop div h1 {
+	flex: 1;
+	font-size: 24px;
+	padding: 0;
+	margin: 0;
+	color: #eaebed;
+	font-weight: normal;
+}
+.navtop div a {
+	padding: 0 20px;
+	text-decoration: none;
+	color: #c1c4c8;
+	font-weight: bold;
+}
+.navtop div a i {
+	padding: 2px 8px 0 0;
+}
+.navtop div a:hover {
+	color: #eaebed;
+}
+body.loggedin {
+	background-color: #f3f4f7;
+}
+.content {
+	width: 1000px;
+	margin: 0 auto;
+}
+.content h2 {
+	margin: 0;
+	padding: 25px 0;
+	font-size: 22px;
+	border-bottom: 1px solid #e0e0e3;
+	color: #4a536e;
+}
+.content > p, .content > div {
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+	margin: 25px 0;
+	padding: 25px;
+	background-color: #fff;
+}
+.content > p table td, .content > div table td {
+	padding: 5px;
+}
+.content > p table td:first-child, .content > div table td:first-child {
+	font-weight: bold;
+	color: #4a536e;
+	padding-right: 15px;
+}
+.content > div p {
+	padding: 5px;
+	margin: 0 0 10px 0;
+}
+Now that we have our home page set-up, we can redirect our users from the authenticate.php file to our home page, edit authenticate.php and replace the following line of code:
+
+PHP
+Copy
+echo 'Welcome ' . $_SESSION['name'] . '!';
+With:
+
+PHP
+Copy
+header('Location: home.php');
+If you log in with the test account, you should see something like this:
+
+http://localhost/phplogin/home.php
+PHP Loggedin Home Page
+This is a pretty basic home page. You can customize it to how you want now that you understand how it works.
+
+6. Creating the Profile Page
+The profile page will display the account information for the logged-in user.
+
+Edit the profile.php file and add the following code:
+
+PHP
+Copy
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: index.html');
+	exit;
+}
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'phplogin';
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if (mysqli_connect_errno()) {
+	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+// We don't have the password or email info stored in sessions so instead we can get the results from the database.
+$stmt = $con->prepare('SELECT password, email FROM accounts WHERE id = ?');
+// In this case we can use the account ID to get the account info.
+$stmt->bind_param('i', $_SESSION['id']);
+$stmt->execute();
+$stmt->bind_result($password, $email);
+$stmt->fetch();
+$stmt->close();
+?>
+The above code retrieves additional account information from the database, as before with the home page, we didn't need to connect to the database because we retrieved the data stored in sessions.
+
+We're going to populate all the account information for the user and therefore we must retrieve the password and email columns from the database. We don't need to retrieve the username or id columns because we've them stored in session variables that were declared in the authenticate.php file.
+
+After the closing tag, add the following code:
+
+PHP
+Copy
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Profile Page</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body class="loggedin">
+		<nav class="navtop">
+			<div>
+				<h1>Website Title</h1>
+				<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+			</div>
+		</nav>
+		<div class="content">
+			<h2>Profile Page</h2>
+			<div>
+				<p>Your account details are below:</p>
+				<table>
+					<tr>
+						<td>Username:</td>
+						<td><?=$_SESSION['name']?></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><?=$password?></td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><?=$email?></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
+A simple layout that will populate account information. If you navigate to the profile.php file, it will look like the following:
+
+http://localhost/phplogin/profile.php
+PHP Loggedin Profile Page
+Remember, the passwords are encrypted, so you cannot see the decrypted password unless you create a new session variable and store the password in the authenticate.php file.
+
+7. Creating the Logout Script
+Creating the logout script is straightforward. All you need to do is destroy the sessions that were declared in the authenticate file.
+
+Edit the logout.php file and add the following code:
+
+PHP
+Copy
+<?php
+session_start();
+session_destroy();
+// Redirect to the login page:
+header('Location: index.html');
+?>
+Initialize sessions, destroy them, and redirect the user to the login page. We use sessions to determine whether the user is logged in or not, so by removing them, the user will not be logged in.
