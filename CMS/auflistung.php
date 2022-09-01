@@ -31,7 +31,8 @@ echo '<br><b>Auflistung!:</br></b>';
                      $compl = "https://bad-timing.eu/cms/images/"."/".$file;
                      echo '<br></br>';
                      echo "<img src=\"".$compl."\"></img><br/>";
-                     echo "<center><h1>images/".$file."</h1></center>";
+                     echo "<textarea id=\"textArea\">images/".$file."</textarea>";
+                     echo "<button onclick=\"copyToClipBoard()\">Text Kopieren</button>";
                      echo "<button onclick=\"bilderdelete()\">Delete</button>";
              }
          }}
