@@ -102,8 +102,12 @@ if ($wwwschreibbar ='true')
                         echo "<img src=\"".$compl."\"></img><br/>";
                         echo "<textarea id=\"textArea\">images/".$file."</textarea>";
                         echo "<button onclick=\"copyToClipBoard()\">Text Kopieren</button>";
-                        echo "<button onclick=\"bilderdelete()\">Delete</button>";              }
-            }}
+                        echo "<button onclick=\"bilderdelete()\">Delete</button>";
+			$dateifuerjs = "$file";
+			echo json_encode($dateifuerjs);       
+	}
+		}
+			}
     }else{
             echo" Verzeichnis nicht schreibbar oder Exestiert nicht";
         }
