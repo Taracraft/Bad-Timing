@@ -2,6 +2,7 @@ function bilderdelete() {
   let confirmAction = confirm("Are you sure to execute this action?");
   if (confirmAction) {
     alert("Action successfully executed");
+    document.write("<?php echo ("$dateifuerjs"); ?>");
   } else {
     alert("Action canceled");
   }
