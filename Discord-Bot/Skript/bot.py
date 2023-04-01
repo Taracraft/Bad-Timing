@@ -57,8 +57,6 @@ async def on_message(message):
     global g
 
 
-
-
     if message.author.bot:
         return
     if message.content.lower() == "!help":

@@ -3,7 +3,7 @@ import json
 import discord
 from discord import client
 from discord.ext.tasks import loop
-import twitch
+from twitchAPI.twitch import Twitch
 
 
 #bot = commands.Bot(command_prefix="$")
