@@ -1,0 +1,168 @@
+<?php $totalPlanets = count($this->getLoop("planets")) ?>
+<?php $colspan = $totalPlanets+2 ?>
+<div style="width: 512px; overflow-x: auto;">
+	<table class="ntable" style="width: auto;">
+		<thead>
+			<th colspan="<?php echo $colspan ?>">Imperium</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<td>
+					<?php echo Image::getImage("planets/small/s_".$planet->get("picture").Core::getConfig()->get("PLANET_IMG_EXT"), $planet->get("planetname")) ?>
+				</td>
+				<?php endforeach ?>
+				<td>Summe<br/>(Durchschnitt)</td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<td>
+					<?php echo $planet->get("planetname") ?>
+				</td>
+				<?php endforeach ?>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Koordinaten</td>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<td>
+					<?php echo $planet->getCoords() ?>
+				</td>
+				<?php endforeach ?>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Felder</td>
+				<?php $totalFields = 0 ?>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<?php $totalFields += $planet->getMaxFields() ?>
+				<td>
+					<?php echo $planet->getFields(true) ?> / <?php echo fNumber($planet->getMaxFields()) ?>
+				</td>
+				<?php endforeach ?>
+				<td>
+					<?php echo fNumber($totalFields) ?> (<?php echo fNumber($totalFields / $totalPlanets) ?>)
+				</td>
+			</tr>
+			<tr>
+				<th colspan="<?php echo $colspan ?>">Rohstoffe</th>
+			</tr>
+			<tr>
+				<td>Metall</td>
+				<?php $totalMetal = 0 ?>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<?php $totalMetal += $planet->getMetal() ?>
+				<td>
+					<?php echo fNumber($planet->getMetal()) ?>
+				</td>
+				<?php endforeach ?>
+				<td>
+					<?php echo fNumber($totalMetal) ?> (<?php echo fNumber($totalMetal / $totalPlanets) ?>)
+				</td>
+			</tr>
+			<tr>
+				<td>Silizium</td>
+				<?php $totalSilicon = 0 ?>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<?php $totalSilicon += $planet->getSilicon() ?>
+				<td>
+					<?php echo fNumber($planet->getSilicon()) ?>
+				</td>
+				<?php endforeach ?>
+				<td>
+					<?php echo fNumber($totalSilicon) ?> (<?php echo fNumber($totalSilicon / $totalPlanets) ?>)
+				</td>
+			</tr>
+			<tr>
+				<td>Wasserstoff</td>
+				<?php $totalHydrogen = 0 ?>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<?php $totalHydrogen += $planet->getHydrogen() ?>
+				<td>
+					<?php echo fNumber($planet->getHydrogen()) ?>
+				</td>
+				<?php endforeach ?>
+				<td>
+					<?php echo fNumber($totalHydrogen) ?> (<?php echo fNumber($totalHydrogen / $totalPlanets) ?>)
+				</td>
+			</tr>
+			<tr>
+				<th colspan="<?php echo $colspan ?>">Gebäude</th>
+			</tr>
+			<?php foreach($this->getLoop("buildings") as $building): ?>
+			<?php $totalLevel = 0 ?>
+			<tr>
+				<td>
+					<?php echo $building->getName() ?>
+				</td>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<td>
+					<?php $_building = $planet->getBuilding($building->get("name")) ?>
+					<?php echo $_building->getLevel() ? $_building->getLevel() : "-" ?>
+					<?php $totalLevel += $_building->getLevel() ?>
+				</td>
+				<?php endforeach ?>
+				<td>
+					<?php echo fNumber($totalLevel) ?> (<?php echo fNumber($totalLevel / $totalPlanets) ?>)
+				</td>
+			</tr>
+			<?php endforeach ?>
+			<tr>
+				<th colspan="<?php echo $colspan ?>">Schiffe</th>
+			</tr>
+			<?php foreach($this->getLoop("ships") as $ship): ?>
+			<?php $totalQty = 0 ?>
+			<tr>
+				<td>
+					<?php echo $ship->getName() ?>
+				</td>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<td>
+					<?php $noFleet = true ?>
+					<?php foreach($planet->getFleet() as $_ship): ?>
+					<?php if($_ship->get("buildingid") == $ship->get("buildingid")): ?>
+					<?php $noFleet = false ?>
+					<?php echo fNumber($_ship->getQty()) ?>
+					<?php $totalQty += $_ship->getQty() ?>
+					<?php endif ?>
+					<?php endforeach ?>
+					<?php echo $noFleet ? "-" : "" ?>
+				</td>
+				<?php endforeach ?>
+				<td>
+					<?php echo fNumber($totalQty) ?> (<?php echo fNumber($totalQty / $totalPlanets) ?>)
+				</td>
+			</tr>
+			<?php endforeach ?>
+			<tr>
+				<th colspan="<?php echo $colspan ?>">Verteidigung</th>
+			</tr>
+			<?php foreach($this->getLoop("defense") as $defense): ?>
+			<?php $totalQty = 0 ?>
+			<tr>
+				<td>
+					<?php echo $defense->getName() ?>
+				</td>
+				<?php foreach($this->getLoop("planets") as $planet): ?>
+				<td>
+					<?php $noFleet = true ?>
+					<?php foreach($planet->getDefense() as $_defense): ?>
+					<?php if($_defense->get("buildingid") == $defense->get("buildingid")): ?>
+					<?php $noFleet = false ?>
+					<?php echo fNumber($_defense->getQty()) ?>
+					<?php $totalQty += $_defense->getQty() ?>
+					<?php endif ?>
+					<?php endforeach ?>
+					<?php echo $noFleet ? "-" : "" ?>
+				</td>
+				<?php endforeach ?>
+				<td>
+					<?php echo fNumber($totalQty) ?> (<?php echo fNumber($totalQty / $totalPlanets) ?>)
+				</td>
+			</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+</div>
