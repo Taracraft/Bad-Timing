@@ -3,10 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>MY-CMS</title>
-		<script type="text/javascript" src="../../cms/funktionen/funktionen.js">
-	    </script>
-		<link href="../../cms/style/css/style.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="../../cms/style/css/style.css">
+		<link href="../../cms/style/css/layout.css" rel="stylesheet" type="text/css">
+        <link href="../../cms/style/css/nav.css" rel="stylesheet" type="text/css">
+        <link href="../../cms/style/css/table_forms_buttons.css" rel="stylesheet" type="text/css">
+        <link href="../../cms/funktionen/funktionen.js" type="text/javascript">
 	</head>
+		<body>
 	
 

@@ -1,0 +1,388 @@
+/* Allgemeine Body-Einstellungen */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Verhindert das horizontale Scrollen */
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #3274d6;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    box-shadow: none; /* Entfernt den Schatten der Navbar */
+}
+
+/* Navigation List Style */
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.nav-item a:hover {
+    background-color: #2868c7;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #3274d6;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 1000;
+}
+
+.dropdown li {
+    width: 100%;
+}
+
+.dropdown li a {
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.nav-item:hover .dropdown {
+    display: block;
+}
+
+/* Linke und rechte Navigationsleisten */
+.side-navbar {
+    position: fixed;
+    top: 0; /* Setzt die Seitenleisten direkt an den oberen Rand */
+    background-color: #3274d6;
+    padding-top: 60px; /* Platz für die Navbar oben */
+    height: 100%; /* Deckt die gesamte Höhe des Viewports ab */
+    width: 200px;
+    z-index: 9; /* Eine Ebene unter der Navbar */
+    border: none;
+    box-shadow: none; /* Entfernt den Schatten der Seitenleisten */
+}
+
+.left-navbar {
+    left: 0;
+}
+
+.right-navbar {
+    right: 0;
+}
+
+.side-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-top: 20px; /* Abstand von der Oberseite der Seitenleiste */
+}
+
+.side-nav-item {
+    margin: 15px 0;
+}
+
+.side-nav-item a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.side-nav-item a:hover {
+    background-color: #2868c7;
+}
+
+/* Content Bereich */
+.content {
+    flex: 1;
+    padding: 40px;
+    margin: 80px auto 15px auto;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Schattierung für den modernen Look */
+    border-radius: 10px; /* Abgerundete Ecken */
+    max-width: calc(100% - 440px); /* Berücksichtigt 200px Seitenleisten auf jeder Seite + 40px Abstand */
+    min-width: 1025px; /* Mindestbreite für kleine Bildschirme */
+    text-align: center;
+    position: relative;
+    background-clip: padding-box;
+    z-index: 5;
+}
+
+/* Tabellen-Styling */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th, .user-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.user-table th {
+    background-color: #3274d6;
+    color: white;
+    font-weight: bold;
+}
+
+.user-table td select, .user-table td button {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Erfolg- und Fehlermeldungen */
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #3274d6;
+    color: #fff;
+    padding: 10px 20px;
+    position: relative;
+    bottom: 0;
+    width: calc(100% - 400px); /* Platz für Seitenleisten berücksichtigt */
+    left: 200px; /* Seitenleistenbreite berücksichtigt */
+    text-align: center;
+    box-shadow: none; /* Entfernt den Schatten des Footers */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.footer-content .copyright {
+    text-align: left;
+}
+
+.footer-content .load-time {
+    text-align: right;
+}
+
+.footer-content a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* Login-Formular Styling */
+.login {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin: auto; /* zentriert das Login-Formular auf der Seite */
+    margin-top: 100px; /* gibt Platz für die obere Navigationsleiste */
+}
+
+.login h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login label {
+    display: none; /* Icons verstecken */
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.login input[type="text"]:focus,
+.login input[type="password"]:focus {
+    border-color: #3274d6;
+    outline: none;
+}
+
+.login input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #3274d6;
+    border: none;
+    border-radius: 5px;
+    margin-top: 0.5cm;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.login input[type="submit"]:hover {
+    background-color: #2868c7;
+    transform: translateY(-2px);
+}
+
+.login input[type="submit"]:active {
+    background-color: #255aa3;
+    transform: translateY(0);
+}
+
+/* Fehler- und Erfolgsmeldungen */
+.error-message, .success-message {
+    margin-bottom: 20px;
+    color: white;
+    background-color: #e74c3c;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.success-message {
+    background-color: #2ecc71;
+}
+/* Fehlerhafte Eingabe rot umranden */
+.input-error {
+    border: 2px solid red;
+}
+.user-table td button {
+    padding: 8px 16px;
+    background-color: #3274d6;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.user-table td button:hover {
+    background-color: #2868c7;
+    transform: translateY(-2px);
+}
+
+.user-table td button:active {
+    background-color: #255aa3;
+    transform: translateY(0);
+}
+.action-button {
+    padding: 10px 20px;
+    background-color: #3274d6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.action-button:hover {
+    background-color: #2868c7;
+    transform: translateY(-2px);
+}
+
+.action-button:active {
+    background-color: #255aa3;
+    transform: translateY(0);
+}
+

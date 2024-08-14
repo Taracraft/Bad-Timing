@@ -21,9 +21,9 @@ There are a few steps we need to take before we create our secure registration s
 1.1. Requirements
 If you haven't got a local web server set-up, you will need to download and install XAMPP. XAMPP is a server-side web development environment that includes the essentials for back-end web developers.
 1.2. What You Will Learn in this Tutorial
-Form Design â€” Design a registration form with HTML5 and CSS3.
-Prepared SQL Queries â€” How to prepare SQL queries to prevent SQL injection and insert new records into a MySQL database.
-Basic Validation â€” Validating form data that is sent to the server (username, password, and email).
+Form Design — Design a registration form with HTML5 and CSS3.
+Prepared SQL Queries — How to prepare SQL queries to prevent SQL injection and insert new records into a MySQL database.
+Basic Validation — Validating form data that is sent to the server (username, password, and email).
 1.3. File Structure & Setup
 We now need to start our web server and create the files and directories that we're going to use for our registration system.
 
@@ -42,10 +42,10 @@ File Structure
 
 Each file will contain the following:
 
-register.html â€” Registration form created with HTML5 and CSS3. As this file doesn't require us to use PHP, we'll save it as plain HTML.
-style.css â€” The stylesheet (CSS3) for our secure registration form.
-register.php â€” Validate form data and insert a new account into the MySQL database.
-activate.php â€” Activate the user's account with a unique code (email based activation).
+register.html — Registration form created with HTML5 and CSS3. As this file doesn't require us to use PHP, we'll save it as plain HTML.
+style.css — The stylesheet (CSS3) for our secure registration form.
+register.php — Validate form data and insert a new account into the MySQL database.
+activate.php — Activate the user's account with a unique code (email based activation).
 2. Creating the Registration Form Design
 The registration form will be used by our websites visitors. They can use it to input their account information. We'll be creating the registration form with HTML and CSS.
 
@@ -161,9 +161,9 @@ http://localhost/phplogin/register.html
 Awesome HTML Registration Form Layout
 Let's narrow down the form so we can get a better understanding on what's going on.
 
-Form â€” we need to use both the action and post attributes, the action attribute will be set to the registration file. When the form is submitted, the form data will be sent to the registration file for processing. The method is to post, this will allow us to process the form data.
-Input (text/password/email) â€” We need to name our form fields so the server can recognize them, so if we set the value of the attribute name to the username, we can use the post variable in our registration file to get the data, like this: $_POST['username'].
-Input (submit) â€” On click the form data will be sent to our registration file.
+Form — we need to use both the action and post attributes, the action attribute will be set to the registration file. When the form is submitted, the form data will be sent to the registration file for processing. The method is to post, this will allow us to process the form data.
+Input (text/password/email) — We need to name our form fields so the server can recognize them, so if we set the value of the attribute name to the username, we can use the post variable in our registration file to get the data, like this: $_POST['username'].
+Input (submit) — On click the form data will be sent to our registration file.
 That's basically all we need to do on the client-side, next step is to set-up the database and create the registration file with PHP.
 
 3. Creating the Database and setting-up Tables
@@ -280,7 +280,7 @@ if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email) VALU
 }
 This will insert a new account into our accounts table.
 
-Remember in our Login System we used the password_verify function? As you can see in the code above we use the password_hash function, this will encrypt the user's password using the one-way algorithm â€” this will prevent your users passwords from being exposed if for somehow your database becomes vulnerable.
+Remember in our Login System we used the password_verify function? As you can see in the code above we use the password_hash function, this will encrypt the user's password using the one-way algorithm — this will prevent your users passwords from being exposed if for somehow your database becomes vulnerable.
 
 That's basically all we need to do to register accounts on our website.
 
@@ -528,9 +528,9 @@ http://localhost/phplogin/index.html
 Awesome HTML Login Form Layout
 That looks much better! Let's narrow down the form elements, so we can get a better understanding on what's going on.
 
-Form â€” We need to use both the action and post attributes. The action attribute will be set to the authentication file. When the form is submitted, the form data will be sent to the authentication file for processing. In addition, the method is declared as post as this will enable us to process the form data using the POST request method.
-Input (text/password) â€” We need to name our form fields so the server can recognize them. The value of the attribute name we can declare as username, which we can use to retrieve the post variable in our authentication file to get the data, for example: $_POST['username'].
-Input (submit) â€” On form submission, the data will be sent to our authentication file for processing.
+Form — We need to use both the action and post attributes. The action attribute will be set to the authentication file. When the form is submitted, the form data will be sent to the authentication file for processing. In addition, the method is declared as post as this will enable us to process the form data using the POST request method.
+Input (text/password) — We need to name our form fields so the server can recognize them. The value of the attribute name we can declare as username, which we can use to retrieve the post variable in our authentication file to get the data, for example: $_POST['username'].
+Input (submit) — On form submission, the data will be sent to our authentication file for processing.
 3. Creating the Database and setting-up Tables
 For this part, you will need to access your MySQL database, either using phpMyAdmin or your preferred MySQL database management application.
 

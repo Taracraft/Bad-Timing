@@ -3,9 +3,10 @@
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: ../../cms/index.html');
+    header('Location: ../../cms/index.php');
 	exit;
 }
+
 include("style/template/header.php");
 include("style/template/nav.php");
 ?>

@@ -1,85 +1,75 @@
-<?
-// We need to use sessions, so you should always start sessions using the below code.
+<?php
 session_start();
-// If the user is not logged in redirect to the login page...
-if (!isset($_SESSION['loggedin'])) {
-	header('Location: ../../cms/index.html');
-	exit;
-}
+
+// Funktion zur Anzeige von Fehlermeldungen
 include("../../cms/config/db.php");
+include("../../cms/funktionen/funktionen.php");  // Angepasster Pfad zur funktionen.php
 include("../../cms/style/template/header.php");
 include("../../cms/style/template/nav.php");
-?>
-<div class="content">
-<h2>Benutzer-Liste</h2>
-<?
-// Create connection
+
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-// Check connection
 if ($con->connect_error) {
-  die("Connection failed: " . $con->connect_error);
+    display_error('Failed to connect to MySQL: ' . $con->connect_error);
 }
 
-$sql = "SELECT id, username, password, email FROM accounts";
+// Benutzeraktionen behandeln
+handle_user_actions($con);
+
+// Benutzerliste anzeigen
+$sql = "SELECT id, username, role, email, status FROM accounts";
 $result = $con->query($sql);
-if ($result->num_rows > 0) {
-    echo "<div class='contents'>";
-    echo "<table><tr><th>ID</th><th>Username</th><th>Passwort</th><th>E-Mail-Adresse</th></tr></table></div>";
-    // output data of each row
-    while ($row = $result->fetch_assoc()) {
-        echo "<div class='contents'>";
-        echo "<th>" . $row['id']. "\t" . "</th>";
-        echo "<th><a href=useredit.php?var=$row[id]' 
-            onClick='window.open(\"useredit.php\",\"Fenster\",\"width=310,height=400,left=0,top=0\"); return false;
-            '>$row[username] \t</a></th>";
-        echo "<th><a href=pwedit.php?var=$row[id]'
-            onClick='window.open(\"useredit.php\",\"Fenster\",\"width=310,height=400,left=0,top=0\"); return false;
-            '>$row[password] \t</a></th>";
-        echo "<th><a href=mailedit.php?var=$row[id]'
-            onClick='window.open(\"mailedit.php\",\"Fenster\",\"width=310,height=400,left=0,top=0\"); return false;
-            '>$row[email] \t</a></th>";
-        echo "<br>";
-        echo "</br>";
-        echo "</table>";
-        echo "</div>";
-    }
-}
-
-
 ?>
+
+<div class="content">
+    <h2>Benutzer-Liste</h2>
+    <form method="post">
+        <table class="user-table">
+            <tr>
+                <th><input type="checkbox" id="select_all"></th>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Rolle</th>
+                <th>E-Mail-Adresse</th>
+                <th>Passwort</th>
+                <th>Deaktivieren</th>
+                <th>Erneut Aktivieren erzwingen</th>
+                <th>Löschen</th>
+            </tr>
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td><input type='checkbox' name='user_ids[]' value='" . $row['id'] . "' class='user_checkbox'></td>";
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['username'] . "</td>";
+                    echo "<td><select name='new_role[" . $row['id'] . "]'>
+                                <option value='user' " . ($row['role'] == 'user' ? 'selected' : '') . ">Benutzer</option>
+                                <option value='admin' " . ($row['role'] == 'admin' ? 'selected' : '') . ">Administrator</option>
+                                <option value='deactivated' " . ($row['role'] == 'deactivated' ? 'selected' : '') . ">Deaktiviert</option>
+                            </select></td>";
+                    echo "<td><button type='button' onclick='openEmailModal(" . $row['id'] . ", \"" . $row['email'] . "\")'>E-Mail ändern</button></td>";
+                    echo "<td><button type='button' onclick='openPasswordModal(" . $row['id'] . ")'>Passwort ändern</button></td>";
+                    echo "<td><input type='checkbox' name='deactivate_user_ids[" . $row['id'] . "]' value='1' " . ($row['status'] == 'deactivated' ? 'checked' : '') . "></td>";
+                    echo "<td><input type='checkbox' name='reactivate_user_ids[" . $row['id'] . "]' value='1'></td>";
+                    echo "<td><input type='checkbox' name='delete_user_ids[" . $row['id'] . "]' value='1'></td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='9'>Keine Benutzer gefunden.</td></tr>";
+            }
+            ?>
+        </table>
+        <div class="actions">
+            <input type="submit" value="Aktionen ausführen" class="action-button">
+        </div>
+    </form>
 </div>
-<?
-include("../../cms/style/template/footer.php");
 
-/*
-if (isset($_GET['id']) && is_numeric($_GET['id']))
-{
-    $link = mysqli_connect("localhost", "user", "password", "db");
-    if (mysqli_connect_errno())
-        die("Connect failed: " . mysqli_connect_error());
-    $query = "Delete from `tabelle` where `id`=" . $_GET['id'];
+<!-- Modal HTML für E-Mail und Passwort Änderung -->
 
-    $result = mysqli_query($link, $query)
-    or die ("MySQL-Error: " . mysqli_error($link));
+<script src="../../cms/funktionen/funktionen.js"></script>
 
-    echo "Eintrag mit ID " . $_GET['id'] . " gelöscht";
-}
-else
-    echo "Keine oder falsche Daten";
-?>
 <?php
-$link = mysqli_connect("localhost", "user", "password", "db");
-if (mysqli_connect_errno())
-    die("Connect failed: " . mysqli_connect_error());
-$query = "Select `id`, `name` from `tabelle`";
-
-$result = mysqli_query($link, $query)
-or die ("MySQL-Error: " . mysqli_error($link));
-
-while ($row = mysqli_fetch_assoc($result))
-    echo $row['name'] . "<a href='delete.php?id=" . $row['id'] . "'>Löschen</a><br>\n";
-
-<p> <?php echo str_replace('?', '<br/> ●', $description); ?> </p>
-
-*/
+$con->close();
+include("../../cms/style/template/footer.php");
 ?>
