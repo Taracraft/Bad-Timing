@@ -1,8 +1,5 @@
 <?php
 $DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'cms';
-$DATABASE_PASS = '9hAf9crSQxRz9BZF';
-$DATABASE_NAME = 'cms_';
 $DATABASE_USER = '';
 $DATABASE_PASS = '';
 $DATABASE_NAME = '';
