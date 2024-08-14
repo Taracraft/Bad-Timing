@@ -1,5 +1,8 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Funktion zur Anzeige von Fehlermeldungen
 include("../../cms/config/db.php");
@@ -15,14 +18,23 @@ if ($con->connect_error) {
 // Benutzeraktionen behandeln
 handle_user_actions($con);
 
+// Statusmeldungen anzeigen
+if (isset($_SESSION['status_message'])) {
+    $status_class = isset($_SESSION['status_type']) ? $_SESSION['status_type'] : 'success';
+    echo '<div class="status-message ' . $status_class . '">' . $_SESSION['status_message'] . '</div>';
+    unset($_SESSION['status_message'], $_SESSION['status_type']); // Nachricht nach dem Anzeigen löschen
+}
+
 // Benutzerliste anzeigen
 $sql = "SELECT id, username, role, email, status FROM accounts";
 $result = $con->query($sql);
 ?>
 
+<!-- Dein HTML- und PHP-Code bleibt gleich -->
+
 <div class="content">
     <h2>Benutzer-Liste</h2>
-    <form method="post">
+    <form method="post" action="">
         <table class="user-table">
             <tr>
                 <th><input type="checkbox" id="select_all"></th>
@@ -33,7 +45,7 @@ $result = $con->query($sql);
                 <th>Passwort</th>
                 <th>Deaktivieren</th>
                 <th>Erneut Aktivieren erzwingen</th>
-                <th>Löschen</th>
+                <th class="delete-checkbox">Löschen</th>
             </tr>
             <?php
             if ($result->num_rows > 0) {
@@ -51,7 +63,7 @@ $result = $con->query($sql);
                     echo "<td><button type='button' onclick='openPasswordModal(" . $row['id'] . ")'>Passwort ändern</button></td>";
                     echo "<td><input type='checkbox' name='deactivate_user_ids[" . $row['id'] . "]' value='1' " . ($row['status'] == 'deactivated' ? 'checked' : '') . "></td>";
                     echo "<td><input type='checkbox' name='reactivate_user_ids[" . $row['id'] . "]' value='1'></td>";
-                    echo "<td><input type='checkbox' name='delete_user_ids[" . $row['id'] . "]' value='1'></td>";
+                    echo "<td class='delete-checkbox'><input type='checkbox' name='delete_user_ids[" . $row['id'] . "]' value='1'></td>";
                     echo "</tr>";
                 }
             } else {

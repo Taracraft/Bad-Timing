@@ -159,18 +159,30 @@ function deactivate_user($con, $user_id) {
     $stmt = $con->prepare('UPDATE accounts SET status = ? WHERE id = ?');
     $status = 'deactivated';
     $stmt->bind_param('si', $status, $user_id);
-    $stmt->execute();
-    $stmt->close();
+    if ($stmt->execute()) {
+        $stmt->close();
+        return true;
+    } else {
+        $stmt->close();
+        return false;
+    }
 }
 
+
 function reactivate_user($con, $user_id) {
-    $stmt = $con->prepare('UPDATE accounts SET activation_code = ?, status = ? WHERE id = ?');
-    $activation_code = uniqid();
-    $status = 'inactive';
-    $stmt->bind_param('ssi', $activation_code, $status, $user_id);
-    $stmt->execute();
-    $stmt->close();
+    $stmt = $con->prepare('UPDATE accounts SET status = ? WHERE id = ?');
+    $status = 'active';
+    $stmt->bind_param('si', $status, $user_id);
+    if ($stmt->execute()) {
+        $stmt->close();
+        return true;
+    } else {
+        $stmt->close();
+        return false;
+    }
 }
+
+
 function add_user($con, $username, $password, $email, $role) {
     // Überprüfen, ob die Eingaben gültig sind
     if (empty($username) || empty($password) || empty($email) || empty($role)) {
@@ -273,6 +285,9 @@ function update_password($con, $user_id, $new_password) {
 function handle_user_actions($con) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST['user_ids'])) {
+            $status_messages = [];
+            $has_error = false;
+
             foreach ($_POST['user_ids'] as $user_id) {
                 // Rolle und Status des Benutzers überprüfen
                 $user_info_sql = "SELECT role, status FROM accounts WHERE id = ?";
@@ -289,25 +304,55 @@ function handle_user_actions($con) {
                 $reactivate = isset($_POST['reactivate_user_ids'][$user_id]);
                 $delete = isset($_POST['delete_user_ids'][$user_id]);
 
-                // Aktionen nur durchführen, wenn die Bedingungen stimmen
+                // Aktionen durchführen und Statusmeldungen sammeln
                 if ($deactivate && $user_status !== 'deactivated') {
-                    update_user_status($con, $user_id, 'deactivated');
+                    if (deactivate_user($con, $user_id)) {
+                        $status_messages[] = "Benutzer ID $user_id wurde deaktiviert.";
+                    } else {
+                        $status_messages[] = "Fehler beim Deaktivieren von Benutzer ID $user_id.";
+                        $has_error = true;
+                    }
                 } elseif ($reactivate && $user_status === 'deactivated') {
-                    update_user_status($con, $user_id, 'active');
+                    if (reactivate_user($con, $user_id)) {
+                        $status_messages[] = "Benutzer ID $user_id wurde aktiviert.";
+                    } else {
+                        $status_messages[] = "Fehler beim Aktivieren von Benutzer ID $user_id.";
+                        $has_error = true;
+                    }
                 }
 
-                // Rolle aktualisieren, wenn erforderlich
                 if ($new_role !== $user_role) {
-                    update_user_role($con, $user_id, $new_role);
+                    if (update_user_role($con, $user_id, $new_role)) {
+                        $status_messages[] = "Rolle von Benutzer ID $user_id wurde auf $new_role geändert.";
+                    } else {
+                        $status_messages[] = "Fehler beim Ändern der Rolle von Benutzer ID $user_id.";
+                        $has_error = true;
+                    }
                 }
 
-                // Benutzer löschen, wenn erforderlich
                 if ($delete) {
-                    delete_user($con, $user_id);
+                    if (delete_user($con, $user_id)) {
+                        $status_messages[] = "Benutzer ID $user_id wurde gelöscht.";
+                    } else {
+                        $status_messages[] = "Fehler beim Löschen von Benutzer ID $user_id.";
+                        $has_error = true;
+                    }
                 }
             }
+
+            // Statusnachrichten in der Session speichern
+            $_SESSION['status_message'] = implode('<br>', $status_messages);
+            $_SESSION['status_type'] = $has_error ? 'error' : 'success';
+
+            // Umleiten, um das Formular zu "resetten" und doppelte Aktionen zu verhindern
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
         } else {
-            display_error('Es wurden keine Benutzer ausgewählt.');
+            $_SESSION['status_message'] = 'Es wurden keine Benutzer ausgewählt.';
+            $_SESSION['status_type'] = 'error';
+            // Weiterleitung hinzufügen
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
         }
     }
 }
@@ -324,24 +369,26 @@ function update_user_status($con, $user_id, $status) {
 }
 
 function update_user_role($con, $user_id, $new_role) {
-    $update_sql = "UPDATE accounts SET role = ? WHERE id = ?";
-    $stmt = $con->prepare($update_sql);
+    $stmt = $con->prepare('UPDATE accounts SET role = ? WHERE id = ?');
     $stmt->bind_param('si', $new_role, $user_id);
-    if ($stmt->execute() !== TRUE) {
-        display_error('Fehler beim Aktualisieren der Rolle für Benutzer ID: ' . $user_id);
+    if ($stmt->execute()) {
+        $stmt->close();
+        return true;
     } else {
-        display_success('Rolle für Benutzer mit ID ' . $user_id . ' erfolgreich aktualisiert.');
+        $stmt->close();
+        return false;
     }
 }
 
 function delete_user($con, $user_id) {
-    $delete_sql = "DELETE FROM accounts WHERE id = ?";
-    $stmt = $con->prepare($delete_sql);
+    $stmt = $con->prepare('DELETE FROM accounts WHERE id = ?');
     $stmt->bind_param('i', $user_id);
-    if ($stmt->execute() !== TRUE) {
-        display_error('Fehler beim Löschen des Benutzers mit ID: ' . $user_id);
+    if ($stmt->execute()) {
+        $stmt->close();
+        return true;
     } else {
-        display_success('Benutzer mit ID ' . $user_id . ' erfolgreich gelöscht.');
+        $stmt->close();
+        return false;
     }
 }
 

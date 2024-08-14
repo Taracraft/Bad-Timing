@@ -385,4 +385,49 @@ body {
     background-color: #255aa3;
     transform: translateY(0);
 }
+/* Checkbox zum Löschen rot einfärben */
+.user-table td.delete-checkbox {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.user-table td.delete-checkbox input[type="checkbox"] {
+    accent-color: #e74c3c; /* Ändert die Farbe des Kontrollkästchens */
+}
+
+/* Statusmeldungen */
+.status-message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.status-message.success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.status-message.error {
+    background-color: #e74c3c;
+    color: white;
+}
+.status-message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.status-message.success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.status-message.error {
+    background-color: #e74c3c;
+    color: white;
+}
 
